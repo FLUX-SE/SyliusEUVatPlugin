@@ -42,26 +42,51 @@ class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInterface
             $channel !== null
             && $channel->getEuropeanZone() !== null
             && $channel->getBaseCountry() !== null
+            && $order->getBillingAddress() !== null
         ) {
-            /** @var VATNumberAwareInterface|AddressInterface $billingAddress */
+            // These weird assignments are required for PHPStan
+            $billingCountryCode = $order->getBillingAddress()->getCountryCode();
+            /** @var VATNumberAwareInterface $billingAddress */
             $billingAddress = $order->getBillingAddress();
-            if ($billingAddress->hasVatNumber()) {
-                $billingCountryCode = $billingAddress->getCountryCode();
-                $vatNumberArr = VatNumberUtil::split($billingAddress->getVatNumber());
-                if (
-                    $vatNumberArr !== null
-                    && $zone === $channel->getEuropeanZone()
-                    && $channel->getBaseCountry()->getCode() !== $billingCountryCode
-                    && $billingCountryCode === $vatNumberArr[0]
-                ) {
-                    foreach ($order->getItems() as $item) {
-                        $quantity = $item->getQuantity();
-                        Assert::notSame($quantity, 0, 'Cannot apply tax to order item with 0 quantity.');
 
-                        $item->removeAdjustmentsRecursively(AdjustmentInterface::TAX_ADJUSTMENT);
-                    }
+            if ($this->isValidForZeroEuropeanVAT($billingAddress, $billingCountryCode, $zone, $channel)) {
+                foreach ($order->getItems() as $item) {
+                    $quantity = $item->getQuantity();
+                    Assert::notSame($quantity, 0, 'Cannot apply tax to order item with 0 quantity.');
+
+                    $item->removeAdjustmentsRecursively(AdjustmentInterface::TAX_ADJUSTMENT);
                 }
             }
         }
+    }
+
+    /**
+     * @param VATNumberAwareInterface $billingAddress
+     * @param string $billingCountryCode
+     * @param ZoneInterface $zone
+     * @param EuropeanChannelAwareInterface $channel
+     * @return bool
+     */
+    public function isValidForZeroEuropeanVAT(
+        VATNumberAwareInterface $billingAddress,
+        string $billingCountryCode,
+        ZoneInterface $zone,
+        EuropeanChannelAwareInterface $channel
+    ): bool
+    {
+        if ($billingAddress->hasVatNumber()) {
+            $vatNumberArr = VatNumberUtil::split($billingAddress->getVatNumber());
+            if (
+                $vatNumberArr !== null
+                && $zone === $channel->getEuropeanZone()
+                && $channel->getBaseCountry() !== null
+                && $channel->getBaseCountry()->getCode() !== $billingCountryCode
+                && $billingCountryCode === $vatNumberArr[0]
+            ) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

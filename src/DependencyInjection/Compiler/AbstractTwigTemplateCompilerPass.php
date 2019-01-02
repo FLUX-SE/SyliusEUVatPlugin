@@ -13,12 +13,16 @@ abstract class AbstractTwigTemplateCompilerPass implements CompilerPassInterface
 
     public function loadOverridenBundlesDirectory($dir)
     {
-        foreach (scandir($dir) as $item) {
-            $path = $dir . '/' . $item;
-            if (preg_match('#(Bundle|Plugin)$#', $item) && is_dir($path)) {
-                $this->overridden_bundles_views[$path] = preg_replace('#(Bundle)$#', '', $item);
+        $dirs = scandir($dir);
+        if ($dirs !== false) {
+            foreach ($dirs as $item) {
+                $path = $dir . '/' . $item;
+                if (preg_match('#(Bundle|Plugin)$#', $item) && is_dir($path)) {
+                    $this->overridden_bundles_views[$path] = preg_replace('#(Bundle)$#', '', $item);
+                }
             }
         }
+
     }
 
     public function process(ContainerBuilder $container)
