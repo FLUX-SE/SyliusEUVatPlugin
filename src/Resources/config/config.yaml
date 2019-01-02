@@ -1,0 +1,14 @@
+imports:
+    - { resource: "fixtures.yaml" }
+
+sylius_addressing:
+    resources:
+        address:
+            classes:
+                model: Prometee\SyliusVIESClientPlugin\Entity\Address
+                
+sylius_channel:
+    resources:
+        channel:
+            classes:
+                model: Prometee\SyliusVIESClientPlugin\Entity\Channel

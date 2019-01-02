@@ -1,0 +1,9 @@
+{% set form = settings.form %}
+
+<div class="ui segment">
+    <h4 class="ui dividing header">{{ 'prometee_sylius_vies_client.ui.european_channel'|trans }}</h4>
+    <div class="two fields">
+        {{ form_row(form.baseCountry) }}
+        {{ form_row(form.europeanZone) }}
+    </div>
+</div>
