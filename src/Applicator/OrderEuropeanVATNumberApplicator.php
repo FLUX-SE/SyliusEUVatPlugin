@@ -38,16 +38,17 @@ class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInterface
     {
         /** @var EuropeanChannelAwareInterface $channel */
         $channel = $order->getChannel();
+        /** @var VATNumberAwareInterface $billingAddress */
+        $billingAddress = $order->getBillingAddress();
         if (
             $channel !== null
             && $channel->getEuropeanZone() !== null
             && $channel->getBaseCountry() !== null
             && $order->getBillingAddress() !== null
+            && $billingAddress !== null
         ) {
-            // These weird assignments are required for PHPStan
+            // These weird assignment is required for PHPStan
             $billingCountryCode = $order->getBillingAddress()->getCountryCode();
-            /** @var VATNumberAwareInterface $billingAddress */
-            $billingAddress = $order->getBillingAddress();
 
             if ($this->isValidForZeroEuropeanVAT($billingAddress, $billingCountryCode, $zone, $channel)) {
                 foreach ($order->getItems() as $item) {
@@ -62,14 +63,14 @@ class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInterface
 
     /**
      * @param VATNumberAwareInterface $billingAddress
-     * @param string $billingCountryCode
+     * @param string|null $billingCountryCode
      * @param ZoneInterface $zone
      * @param EuropeanChannelAwareInterface $channel
      * @return bool
      */
     public function isValidForZeroEuropeanVAT(
         VATNumberAwareInterface $billingAddress,
-        string $billingCountryCode,
+        ?string $billingCountryCode,
         ZoneInterface $zone,
         EuropeanChannelAwareInterface $channel
     ): bool
@@ -81,6 +82,7 @@ class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInterface
                 && $zone === $channel->getEuropeanZone()
                 && $channel->getBaseCountry() !== null
                 && $channel->getBaseCountry()->getCode() !== $billingCountryCode
+                && $billingCountryCode !== null
                 && $billingCountryCode === $vatNumberArr[0]
             ) {
                 return true;
