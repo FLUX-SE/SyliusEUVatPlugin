@@ -5,6 +5,13 @@
 
 # Sylius Plugin for VIES Client
 
+This plugin is making :
+
+- VAT Number field to the `Address` entity
+- Add validation over VIES API on this field
+- Add the basic European rule allowing the seller not to charge
+  VAT to foreign European customers who have provided a valid VAT number
+
 ## Installation
 
 ```$bash
