@@ -19,5 +19,10 @@ class OrderItemsBasedStrategyCompilerPass implements CompilerPassInterface
         $arg = $definition->getArgument(1);
         $arg[] = new Reference('prometee.sylius_viesclient_plugin.applicator.order_european_vatnumber_applicator');
         $definition->setArgument(1, $arg);
+
+        $definition = $container->getDefinition('sylius.taxation.order_item_units_based_strategy');
+        $arg = $definition->getArgument(1);
+        $arg[] = new Reference('prometee.sylius_viesclient_plugin.applicator.order_european_vatnumber_applicator');
+        $definition->setArgument(1, $arg);
     }
 }
