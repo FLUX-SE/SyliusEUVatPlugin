@@ -58,7 +58,7 @@ class EuropeanChannelExampleFactory extends AbstractExampleFactory implements Ex
     {
         $options = $this->optionsResolver->resolve($options);
 
-        /** @var EuropeanChannelAwareInterface $channel */
+        /** @var EuropeanChannelAwareInterface|null $channel */
         $channel = $this->channelRepository->findOneByCode($options['code']);
 
         if ($channel === null) {
