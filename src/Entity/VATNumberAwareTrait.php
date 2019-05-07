@@ -31,7 +31,11 @@ trait VATNumberAwareTrait
      */
     public function setVatNumber(?string $vatNumber): void
     {
-        $this->vatNumber = VatNumberUtil::clean($vatNumber);
+        if ($vatNumber !== null) {
+            $vatNumber = VatNumberUtil::clean($vatNumber);
+        }
+
+        $this->vatNumber = $vatNumber;
     }
 
     /**

@@ -1,5 +1,5 @@
 services:
-    prometee.sylius_vies_client_plugin.fixture.factory.european_channel_example_factory:
+    prometee.sylius_vies_client_plugin.fixture.factory.european_channel_example:
         public: true
         class: Prometee\SyliusVIESClientPlugin\Fixture\Factory\EuropeanChannelExampleFactory
         arguments:
@@ -8,11 +8,29 @@ services:
             $countryRepository: '@sylius.repository.country'
             $zoneRepository: '@sylius.repository.zone'
     
-    prometee.sylius_viesclient_plugin.fixture.european_channel_fixture:
+    prometee.sylius_viesclient_plugin.fixture.european_channel:
         public: true
         class: Prometee\SyliusVIESClientPlugin\Fixture\EuropeanChannelFixture
         arguments:
             $objectManager: '@sylius.manager.channel'
-            $exampleFactory: '@prometee.sylius_vies_client_plugin.fixture.factory.european_channel_example_factory'
+            $exampleFactory: '@prometee.sylius_vies_client_plugin.fixture.factory.european_channel_example'
+        tags:
+            - { name: sylius_fixtures.fixture }
+
+    prometee.sylius_vies_client_plugin.fixture.factory.address_example:
+        public: true
+        class: Prometee\SyliusVIESClientPlugin\Fixture\Factory\AddressExampleFactory
+        arguments:
+            $addressFactory: '@sylius.factory.address'
+            $countryRepository: '@sylius.repository.country'
+            $customerRepository: '@sylius.repository.customer'
+            $viesHelper: '@Prometee\VIESClient\Helper\ViesHelper'
+
+    prometee.sylius_viesclient_plugin.fixture.address:
+        public: true
+        class: Prometee\SyliusVIESClientPlugin\Fixture\AddressFixture
+        arguments:
+            $objectManager: '@sylius.manager.address'
+            $exampleFactory: '@prometee.sylius_vies_client_plugin.fixture.factory.address_example'
         tags:
             - { name: sylius_fixtures.fixture }
