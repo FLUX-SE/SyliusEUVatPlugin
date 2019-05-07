@@ -5,4 +5,4 @@ prometee_sylius_vies_client:
         european_zone: 'European zone'
     ui:
         eu_vat_number: 'European VAT Number'
-        european_channel: 'European required informations'
+        european_channel: 'European required information'
