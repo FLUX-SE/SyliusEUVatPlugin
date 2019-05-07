@@ -13,9 +13,8 @@ use Sylius\Component\Addressing\Model\ZoneInterface;
 use Sylius\Component\Channel\Context\ChannelNotFoundException;
 use Sylius\Component\Channel\Factory\ChannelFactoryInterface;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
-use Sylius\Component\Core\Formatter\StringInflector;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
-use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class EuropeanChannelExampleFactory extends AbstractExampleFactory implements ExampleFactoryInterface
@@ -59,18 +58,18 @@ class EuropeanChannelExampleFactory extends AbstractExampleFactory implements Ex
         $options = $this->optionsResolver->resolve($options);
 
         /** @var EuropeanChannelAwareInterface|null $channel */
-        $channel = $this->channelRepository->findOneByCode($options['code']);
+        $channel = $options['channel'];
 
         if ($channel === null) {
             throw new ChannelNotFoundException(
                 sprintf(
                     'Channel "%s" has not been found, please create it before adding this fixture !',
-                    $options['code']
+                    $options['channel']
                 )
             );
         }
 
-        $channel->setBaseCountry($options['base_currency']);
+        $channel->setBaseCountry($options['base_country']);
         $channel->setEuropeanZone($options['european_zone']);
 
         return $channel;
@@ -82,9 +81,13 @@ class EuropeanChannelExampleFactory extends AbstractExampleFactory implements Ex
     protected function configureOptions(OptionsResolver $resolver): void
     {
         $resolver
-            ->setDefault('code', function (Options $options): string {
-                return StringInflector::nameToCode($options['name']);
-            })
+            ->setRequired([
+                'channel',
+                'base_country',
+                'european_zone',
+            ])
+            ->setAllowedTypes('channel', ['string', ChannelInterface::class])
+            ->setNormalizer('channel', LazyOption::findOneBy($this->channelRepository, 'code'))
             ->setAllowedTypes('base_country', ['string', CountryInterface::class])
             ->setNormalizer('base_country', LazyOption::findOneBy($this->countryRepository, 'code'))
             ->setAllowedTypes('european_zone', ['string', ZoneInterface::class])

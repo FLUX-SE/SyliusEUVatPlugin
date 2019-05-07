@@ -9,6 +9,7 @@
 - Remove `Channel` and `Address` have been removed from the `Entity` folder (see [README.md](README.md) for more information)
 - Add fixture to allow auto-configuration of `Channel`
 - Rename the listener service
+- Rename services beginning with `prometee.sylius_viesclient_plugin` by `prometee.sylius_vies_client_plugin`
 
 #### Details
 

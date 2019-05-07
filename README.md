@@ -186,7 +186,7 @@ sylius_fixtures:
                     options:
                         custom:
                             default:
-                                code: "default_channel_code" # Put an existing Channel code
+                                channel: "default_channel_code" # Put an existing Channel code
                                 base_country: "FR" # Existing Country code
                                 european_zone: "EU" # Existing Zone code
 ``` 
