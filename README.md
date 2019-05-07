@@ -182,17 +182,14 @@ sylius_fixtures:
                 logger: ~
                 
             fixtures:
-                european_channel:
-                    listeners:
-                        logger: ~
-                        fixtures:
-                            vies_plugin_european_channel:
-                                options:
-                                    custom:
-                                        default:
-                                            code: "default_channel_code" # put an existing Channel code
-                                            base_country: "FR" # Existing Country code
-                                            european_zone: "EU" # existing Zone code
+                fixtures:
+                    vies_plugin_european_channel:
+                        options:
+                            custom:
+                                default:
+                                    code: "default_channel_code" # put an existing Channel code
+                                    base_country: "FR" # Existing Country code
+                                    european_zone: "EU" # existing Zone code
 ``` 
 
 [ico-version]: https://img.shields.io/packagist/v/Prometee/sylius-vies-client-plugin.svg?style=flat-square
