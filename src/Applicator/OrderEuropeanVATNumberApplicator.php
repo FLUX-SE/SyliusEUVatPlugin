@@ -15,7 +15,7 @@ use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Taxation\Applicator\OrderTaxesApplicatorInterface;
 use Webmozart\Assert\Assert;
 
-class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInterface
+final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInterface
 {
     /** @var ViesHelperInterface */
     protected $viesHelper;

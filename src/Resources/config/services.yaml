@@ -1,23 +1,6 @@
-
-services:
-    prometee.sylius_vies_client_plugin.form.extension.vatnumber:
-        class: Prometee\SyliusVIESClientPlugin\Form\Extension\VATNumberTypeExtension
-        tags:
-            - { name: form.type_extension }
-    prometee.sylius_vies_client_plugin.form.extension.channel:
-        class: Prometee\SyliusVIESClientPlugin\Form\Extension\ChannelTypeExtension
-        tags:
-            - { name: form.type_extension }
-              
-    prometee.sylius_viesclient_plugin.applicator.order_european_vatnumber_applicator:
-        class: Prometee\SyliusVIESClientPlugin\Applicator\OrderEuropeanVATNumberApplicator
-        arguments:
-            $viesHelper: '@Prometee\VIESClient\Helper\ViesHelper'
-
-    flux_sylius_pace_eden_remote.block_event_listener.order_show:
-        class: Sylius\Bundle\UiBundle\Block\BlockEventListener
-        arguments:
-            - '@@PrometeeSyliusVIESClientPlugin/Admin/Channel/europeanChannelForm.html.twig'
-        tags:
-            - {name: kernel.event_listener, event: sonata.block.event.sylius.admin.channel.update.form, method: onBlockEvent}
+imports:
+    - { resource: "services/applicator.yaml" }
+    - { resource: "services/fixture.yaml" }
+    - { resource: "services/form.yaml" }
+    - { resource: "services/listener.yaml" }
 
