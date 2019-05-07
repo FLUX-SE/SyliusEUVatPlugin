@@ -1,5 +1,5 @@
 services:
-    prometee.sylius_viesclient_plugin.fixture.factory.european_channel_example_factory:
+    prometee.sylius_vies_client_plugin.fixture.factory.european_channel_example_factory:
         public: true
         class: Prometee\SyliusVIESClientPlugin\Fixture\Factory\EuropeanChannelExampleFactory
         arguments:
@@ -13,6 +13,6 @@ services:
         class: Prometee\SyliusVIESClientPlugin\Fixture\EuropeanChannelFixture
         arguments:
             $objectManager: '@sylius.manager.channel'
-            $exampleFactory: '@prometee.sylius_viesclient_plugin.fixture.factory.european_channel_example_factory'
+            $exampleFactory: '@prometee.sylius_vies_client_plugin.fixture.factory.european_channel_example_factory'
         tags:
             - { name: sylius_fixtures.fixture }
