@@ -30,19 +30,19 @@ final class EuropeanChannelFixtureTest extends TestCase
     /** @test */
     public function european_channel_channel_is_required(): void
     {
-        $this->assertConfigurationIsInvalid([['custom' => [['base_country' => 'CUSTOM', 'european_zone' => 'CUSTOM']]]], 'custom.*.channel');
+        $this->assertPartialConfigurationIsInvalid([['custom' => [['base_country' => 'CUSTOM', 'european_zone' => 'CUSTOM']]]], 'custom.*.channel');
     }
 
     /** @test */
     public function european_channel_base_country_is_required(): void
     {
-        $this->assertConfigurationIsInvalid([['custom' => [['channel' => 'CUSTOM', 'european_zone' => 'CUSTOM']]]], 'custom.*.base_country');
+        $this->assertPartialConfigurationIsInvalid([['custom' => [['channel' => 'CUSTOM', 'european_zone' => 'CUSTOM']]]], 'custom.*.base_country');
     }
 
     /** @test */
     public function european_channel_european_zone_is_required(): void
     {
-        $this->assertConfigurationIsInvalid([['custom' => [['base_country' => 'CUSTOM', 'channel' => 'CUSTOM']]]], 'custom.*.european_zone');
+        $this->assertPartialConfigurationIsInvalid([['custom' => [['base_country' => 'CUSTOM', 'channel' => 'CUSTOM']]]], 'custom.*.european_zone');
     }
 
     /**
