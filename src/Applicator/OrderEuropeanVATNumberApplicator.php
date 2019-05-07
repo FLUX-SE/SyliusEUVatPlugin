@@ -18,7 +18,7 @@ use Webmozart\Assert\Assert;
 final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInterface
 {
     /** @var ViesHelperInterface */
-    protected $viesHelper;
+    private $viesHelper;
 
     /**
      * @param ViesHelperInterface $viesHelper
@@ -65,6 +65,7 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
      * @param string|null $billingCountryCode
      * @param ZoneInterface $zone
      * @param EuropeanChannelAwareInterface $channel
+     *
      * @return bool
      */
     public function isValidForZeroEuropeanVAT(
@@ -72,8 +73,7 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
         ?string $billingCountryCode,
         ZoneInterface $zone,
         EuropeanChannelAwareInterface $channel
-    ): bool
-    {
+    ): bool {
         if ($billingAddress->hasVatNumber()) {
             $vatNumberArr = VatNumberUtil::split($billingAddress->getVatNumber());
             if (

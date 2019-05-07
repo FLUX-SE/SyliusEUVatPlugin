@@ -22,7 +22,6 @@ abstract class AbstractTwigTemplateCompilerPass implements CompilerPassInterface
                 }
             }
         }
-
     }
 
     public function process(ContainerBuilder $container)
