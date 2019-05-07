@@ -1,0 +1,7 @@
+services:
+    prometee.sylius_viesclient_plugin.block_event_listener.order_show:
+        class: Sylius\Bundle\UiBundle\Block\BlockEventListener
+        arguments:
+            - '@@PrometeeSyliusVIESClientPlugin/Admin/Channel/europeanChannelForm.html.twig'
+        tags:
+            - {name: kernel.event_listener, event: sonata.block.event.sylius.admin.channel.update.form, method: onBlockEvent}
