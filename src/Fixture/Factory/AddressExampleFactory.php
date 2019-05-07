@@ -60,10 +60,12 @@ class AddressExampleFactory extends BaseAddressExampleFactory
      */
     public function create(array $options = []): AddressInterface
     {
-        /** @var AddressInterface|VATNumberAwareInterface $address */
         $address = parent::create($options);
 
-        $address->setVatNumber($options['vat_number']);
+        if ($address instanceof VATNumberAwareInterface) {
+            $address->setVatNumber($options['vat_number']);
+        }
+
 
         return $address;
     }
