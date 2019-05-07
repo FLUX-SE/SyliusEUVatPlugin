@@ -7,7 +7,6 @@ namespace Prometee\SyliusVIESClientPlugin\Applicator;
 use InvalidArgumentException;
 use Prometee\SyliusVIESClientPlugin\Entity\EuropeanChannelAwareInterface;
 use Prometee\SyliusVIESClientPlugin\Entity\VATNumberAwareInterface;
-use Prometee\VIESClient\Helper\ViesHelperInterface;
 use Prometee\VIESClient\Util\VatNumberUtil;
 use Sylius\Component\Addressing\Model\ZoneInterface;
 use Sylius\Component\Core\Model\AdjustmentInterface;
@@ -17,17 +16,6 @@ use Webmozart\Assert\Assert;
 
 final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInterface
 {
-    /** @var ViesHelperInterface */
-    private $viesHelper;
-
-    /**
-     * @param ViesHelperInterface $viesHelper
-     */
-    public function __construct(ViesHelperInterface $viesHelper)
-    {
-        $this->viesHelper = $viesHelper;
-    }
-
     /**
      * {@inheritdoc}
      *

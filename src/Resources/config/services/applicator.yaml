@@ -1,5 +1,3 @@
 services:
     prometee.sylius_vies_client_plugin.applicator.order_european_vatnumber_applicator:
         class: Prometee\SyliusVIESClientPlugin\Applicator\OrderEuropeanVATNumberApplicator
-        arguments:
-            $viesHelper: '@Prometee\VIESClient\Helper\ViesHelper'
