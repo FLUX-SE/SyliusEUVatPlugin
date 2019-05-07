@@ -181,7 +181,7 @@ sylius_fixtures:
             listeners:
                 logger: ~
                 
-            features:
+            fixtures:
                 european_channel:
                     listeners:
                         logger: ~
