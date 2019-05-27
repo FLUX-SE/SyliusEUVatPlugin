@@ -1,5 +1,17 @@
 # CHANGELOG FOR `1.0.X`
 
+## v1.0.2 (2019-05-27)
+
+#### TL;DR
+
+- Change from annotation mapping validation to xml mapping validation for `VatNumber`
+- Add `CountryVatNumber` validation : the VAT Number should be the same country as the one selected in the `Address`
+- Add `YAML` mapping infos [@kappaj](https://github.com/kappaj)
+
+#### Details
+
+- [See the diff since the last patch release](https://github.com/Prometee/SyliusVIESClientPlugin/compare/v1.0.1...v1.0.2)
+
 ## v1.0.1 (2019-05-07)
 
 #### TL;DR

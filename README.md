@@ -85,9 +85,11 @@ interface ChannelInterface extends BaseChannelInterface, EuropeanChannelAwareInt
 }
 ```
 
-If you are using YAML orm definitions, create file: `config/doctrine/Address.orm.yml`
+If you are using YAML orm definitions :
 
 ```yaml
+# config/doctrine/Address.orm.yml
+
 App\Entity\Adressing\Address :
     type: entity
     table: sylius_address
@@ -150,9 +152,11 @@ interface AddressInterface extends BaseAddressInterface, VATNumberAwareInterface
 {
 }
 ```
-If you are using YAML orm definitions, create file: `config/doctrine/Channel.orm.yml`
+If you are using YAML orm definitions :
 
 ```yaml
+# config/doctrine/Channel.orm.yml
+
 App\Entity\Channel\Channel:
     type: entity
     table: sylius_channel
