@@ -85,6 +85,20 @@ interface ChannelInterface extends BaseChannelInterface, EuropeanChannelAwareInt
 }
 ```
 
+If you are using YAML orm definitions, create file: `config/doctrine/Address.orm.yml`
+
+```yaml
+App\Entity\Adressing\Address :
+    type: entity
+    table: sylius_address
+
+    fields:
+        vatNumber:
+            name: vat_number
+            type: string
+            nullable: true
+```
+
 Then change the default Sylius model class :
 
 ```yaml
@@ -94,7 +108,7 @@ sylius_channel:
     resources:
         channel:
             classes:
-                model: App\Entity\Channel
+                model: App\Entity\Channel\Channel
 ```
 
 Update `Address` entity : `src/Entity/Addressing/Address.php`
@@ -136,6 +150,27 @@ interface AddressInterface extends BaseAddressInterface, VATNumberAwareInterface
 {
 }
 ```
+If you are using YAML orm definitions, create file: `config/doctrine/Channel.orm.yml`
+
+```yaml
+App\Entity\Channel\Channel:
+    type: entity
+    table: sylius_channel
+
+    manyToOne:
+        baseCountry:
+            targetEntity: Sylius\Component\Addressing\Model\CountryInterface
+            fetch: EAGER
+            joinColumn:
+                name: base_country_id
+                onDelete: "SET NULL"
+        europeanZone:
+            targetEntity: Sylius\Component\Addressing\Model\ZoneInterface
+            fetch: EAGER
+            joinColumn:
+                name: european_zone_id
+                onDelete: "SET NULL"
+```
 
 Then change the default Sylius model class :
 
@@ -146,7 +181,7 @@ sylius_addressing:
     resources:
         address:
             classes:
-                model: App\Entity\Address
+                model: App\Entity\Addressing\Address
 ```
 
 Update your database :
