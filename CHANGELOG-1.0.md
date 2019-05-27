@@ -6,7 +6,7 @@
 
 - Change from annotation mapping validation to xml mapping validation for `VatNumber`
 - Add `CountryVatNumber` validation : the VAT Number should be the same country as the one selected in the `Address`
-- Add `YAML` mapping infos [@kappaj](https://github.com/kappaj)
+- Add `YAML` mapping infos ([@kappaj](https://github.com/kappaj))
 
 #### Details
 

@@ -234,7 +234,7 @@ sylius_fixtures:
                                 phone_number: "+33912345678"
                                 company: "My Company Inc."
                                 street: "1234 Street Avenue"
-                                city: "Londo"
+                                city: "London"
                                 postcode: "1234"
                                 country_code: "GB"
                                 customer: "john.doe@mycompany.com"
