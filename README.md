@@ -11,8 +11,11 @@ This plugin is adding :
   which country your shop is from and what's the European zone to target
 - VAT Number field to the `Address` entity
 - validation over VIES API on this field
+- validation of the address country (vat number country should equal to the address country)
 - the basic European rule allowing the seller not to charge
-  VAT to foreign European customers who have provided a valid VAT number
+  VAT to foreign European customers who have provided a valid VAT number :
+    - (Shop country === customer country vat number) then do nothing
+    - (Shop country !== customer country vat number) then remove taxes
 
 ## Installation
 
