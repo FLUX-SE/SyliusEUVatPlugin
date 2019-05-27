@@ -94,7 +94,7 @@ sylius_channel:
     resources:
         channel:
             classes:
-                model: App\Entity\Channel
+                model: App\Entity\Channel\Channel
 ```
 
 Update `Address` entity : `src/Entity/Addressing/Address.php`
@@ -146,7 +146,7 @@ sylius_addressing:
     resources:
         address:
             classes:
-                model: App\Entity\Address
+                model: App\Entity\Addressing\Address
 ```
 
 Update your database :
