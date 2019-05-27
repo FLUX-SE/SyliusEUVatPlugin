@@ -9,17 +9,13 @@ use Symfony\Component\Validator\Constraint;
 /**
  * @Annotation
  */
-class VatNumber extends Constraint
+class CountryVatNumber extends Constraint
 {
-    const IS_A_SUBSCRIPTION_ERROR = '403';
+    const CORRESPONDENCE_ERROR = '403';
 
-    protected static $errorNames = [
-        self::IS_A_SUBSCRIPTION_ERROR => 'ALREADY_USED_LICENCE_CODE_ERROR',
-    ];
+    public $message = 'prometee_sylius_vies_client.country_vat_number.invalid';
 
-    public $message = 'app.b2b.order_item.is_a_subscription';
-
-    public $vatNumberPath = 'vat_number';
+    public $vatNumberPath = 'vatNumber';
 
     public function getTargets()
     {

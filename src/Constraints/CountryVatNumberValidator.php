@@ -4,71 +4,43 @@ declare(strict_types=1);
 
 namespace Prometee\SyliusVIESClientPlugin\Constraints;
 
-use Prometee\VIESClient\Helper\ViesHelperInterface;
+use Prometee\SyliusVIESClientPlugin\Entity\VATNumberAwareInterface;
 use Prometee\VIESClient\Util\VatNumberUtil;
+use Sylius\Component\Core\Model\AddressInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
-class VatNumberValidator extends ConstraintValidator
+class CountryVatNumberValidator extends ConstraintValidator
 {
-
-    /** @var ViesHelperInterface */
-    protected $helper;
-
-    /**
-     * @param ViesHelperInterface $helper
-     */
-    public function __construct(ViesHelperInterface $helper)
-    {
-        $this->helper = $helper;
-    }
-
-    /**
-     * @return ViesHelperInterface
-     */
-    public function getHelper(): ViesHelperInterface
-    {
-        return $this->helper;
-    }
-
     /**
      * {@inheritdoc}
      */
     public function validate($value, Constraint $constraint)
     {
-        if (!$constraint instanceof VatNumber) {
-            throw new UnexpectedTypeException($constraint, VatNumber::class);
+        if (!$constraint instanceof CountryVatNumber) {
+            throw new UnexpectedTypeException($constraint, CountryVatNumber::class);
         }
 
-        if (null === $value || '' === $value) {
+        if (!$value instanceof VATNumberAwareInterface) {
+            throw new UnexpectedTypeException($value, VATNumberAwareInterface::class);
+        }
+
+        if (null === $value->getVatNumber() || '' === $value->getVatNumber()) {
             return;
         }
 
-        if (!is_string($value)) {
-            throw new UnexpectedTypeException($value, 'string');
+        $vatNumberArr = VatNumberUtil::split($value->getVatNumber());
+
+        if (!$value instanceof AddressInterface) {
+            throw new UnexpectedTypeException($value, VATNumberAwareInterface::class);
         }
 
-        $status = $this->helper->isValid($value);
-        switch ($status) {
-            case ViesHelperInterface::CHECK_STATUS_INVALID_WEBSERVICE:
-                $this->context->buildViolation($constraint->message)
-                    ->setParameter('{{ value }}', $this->formatValue($value))
-                    ->setCode($constraint::WRONG_NUMBER_ERROR)
-                    ->addViolation();
-                break;
-            case ViesHelperInterface::CHECK_STATUS_INVALID:
-                $this->context->buildViolation($constraint->message)
-                    ->setParameter('{{ value }}', $this->formatValue($value))
-                    ->setCode($constraint::WRONG_FORMAT_ERROR)
-                    ->addViolation();
-                break;
+        if ($vatNumberArr[0] !== $value->getCountryCode()) {
+            $this->context->buildViolation($constraint->message)
+                ->setCode($constraint::CORRESPONDENCE_ERROR)
+                ->atPath($constraint->vatNumberPath)
+                ->addViolation();
         }
-    }
-
-    protected function formatValue($value, $format = 0)
-    {
-        $value = VatNumberUtil::clean($value);
-        return parent::formatValue($value, $format);
     }
 }
