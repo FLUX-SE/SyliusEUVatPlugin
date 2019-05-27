@@ -1,0 +1,3 @@
+prometee_vies_client:
+    vat_number:
+        invalid: 'Numéro de TVA invalid'

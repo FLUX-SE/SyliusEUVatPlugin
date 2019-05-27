@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/services/constraint-mapping-1.0.xsd">
+
+    <class name="Prometee\SyliusVIESClientPlugin\Entity\VATNumberAwareInterface">
+
+        <!--
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">code</option>
+            <option name="message">loevgaard_sylius_brand.brand.code.unique</option>
+            <option name="groups">loevgaard_sylius_brand</option>
+        </constraint>
+        -->
+
+        <getter property="vatNumber">
+            <constraint name="Prometee\VIESClientBundle\Constraints\VatNumber">
+                <option name="groups">
+                    <value>sylius</value>
+                </option>
+            </constraint>
+        </getter>
+    </class>
+
+</constraint-mapping>
