@@ -224,6 +224,22 @@ sylius_fixtures:
                 logger: ~
                 
             fixtures:
+                
+                address_with_vat_number:
+                    options:
+                        custom:
+                            my_customer:
+                                first_name: "John"
+                                last_name: "Doe"
+                                phone_number: "+33912345678"
+                                company: "My Company Inc."
+                                street: "1234 Street Avenue"
+                                city: "Londo"
+                                postcode: "1234"
+                                country_code: "GB"
+                                customer: "john.doe@mycompany.com"
+                                vat_number: ~ # could also be "GB123456789"
+            
                 vies_plugin_european_channel:
                     options:
                         custom:
