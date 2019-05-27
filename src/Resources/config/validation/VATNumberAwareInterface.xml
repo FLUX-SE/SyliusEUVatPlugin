@@ -6,19 +6,13 @@
 
     <class name="Prometee\SyliusVIESClientPlugin\Entity\VATNumberAwareInterface">
 
-        <!--
-        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
-            <option name="fields">code</option>
-            <option name="message">loevgaard_sylius_brand.brand.code.unique</option>
-            <option name="groups">loevgaard_sylius_brand</option>
+        <constraint name="Prometee\SyliusVIESClientPlugin\Constraints\CountryVatNumber">
+            <option name="groups">sylius</option>
         </constraint>
-        -->
 
         <getter property="vatNumber">
             <constraint name="Prometee\VIESClientBundle\Constraints\VatNumber">
-                <option name="groups">
-                    <value>sylius</value>
-                </option>
+                <option name="groups">sylius</option>
             </constraint>
         </getter>
     </class>

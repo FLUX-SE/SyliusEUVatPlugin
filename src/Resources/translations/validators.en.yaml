@@ -1,3 +1,5 @@
-prometee_vies_client:
-    vat_number:
-        invalid: 'Invalid VAT Number'
+prometee_sylius_vies_client:
+    country_vat_number:
+        invalid: 'This VAT number does not correspond to the selected country'
+
+

@@ -1,0 +1,5 @@
+services:
+
+    Prometee\SyliusVIESClientPlugin\Constraints\CountryVatNumberValidator:
+        tags:
+            - { name: validator.constraint_validator }

@@ -1,8 +1,10 @@
 services:
+    
     prometee.sylius_vies_client_plugin.form.extension.vatnumber:
         class: Prometee\SyliusVIESClientPlugin\Form\Extension\VATNumberTypeExtension
         tags:
             - { name: form.type_extension }
+
     prometee.sylius_vies_client_plugin.form.extension.channel:
         class: Prometee\SyliusVIESClientPlugin\Form\Extension\ChannelTypeExtension
         tags:
