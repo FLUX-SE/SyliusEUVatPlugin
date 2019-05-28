@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Prometee\SyliusVIESClientPlugin;
 
 use Prometee\SyliusVIESClientPlugin\DependencyInjection\Compiler\OrderItemsBasedStrategyCompilerPass;
-use Prometee\SyliusVIESClientPlugin\DependencyInjection\Compiler\TwigTemplateCompilerPass;
+use Prometee\SyliusVIESClientPlugin\DependencyInjection\Compiler\OrderItemUnitsBasedStrategyCompilerPass;
 use Prometee\SyliusVIESClientPlugin\DependencyInjection\PrometeeSyliusVIESClientExtension;
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -20,8 +20,8 @@ class PrometeeSyliusVIESClientPlugin extends Bundle
     {
         parent::build($container);
 
-        $container->addCompilerPass(new TwigTemplateCompilerPass(__DIR__ . '/Resources/views/overrides'));
         $container->addCompilerPass(new OrderItemsBasedStrategyCompilerPass());
+        $container->addCompilerPass(new OrderItemUnitsBasedStrategyCompilerPass());
     }
 
     /**

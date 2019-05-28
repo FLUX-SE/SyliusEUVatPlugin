@@ -1,5 +1,16 @@
 # CHANGELOG FOR `1.0.X`
 
+## v1.0.3 (2019-05-28)
+
+#### TL;DR
+
+- Add doc for address fixture named : `address_with_vat_number`
+- Remove Twig `addPath` overrides (now you have to copy the templates override into your `templates/bundles` )
+
+#### Details
+
+- [See the diff since the last patch release](https://github.com/Prometee/SyliusVIESClientPlugin/compare/v1.0.1...v1.0.2)
+
 ## v1.0.2 (2019-05-27)
 
 #### TL;DR

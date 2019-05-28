@@ -48,6 +48,15 @@ imports:
 
 ```
 
+Copy Sylius templates overridden in plugin to your templates directory (e.g `templates/bundles/`):
+
+```bash
+mkdir -p templates/bundles/SyliusAdminBundle/
+cp -R vendor/prometee/sylius-vies-client-plugin/src/Resources/views/SyliusAdminBundle/* templates/bundles/SyliusAdminBundle/
+mkdir -p templates/bundles/SyliusShopBundle/
+cp -R vendor/prometee/sylius-vies-client-plugin/src/Resources/views/SyliusShopBundle/* templates/bundles/SyliusShopBundle/
+```
+
 Update `Channel` entity : `src/Entity/Channel/Channel.php`
 
 ```php
