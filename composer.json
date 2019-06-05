@@ -28,7 +28,7 @@
         "phpstan/phpstan-symfony": "^0.10",
         "phpstan/phpstan-webmozart-assert": "^0.10",
         "phpunit/phpunit": "^8.1",
-        "sensiolabs/security-checker": "^5.0",
+        "sensiolabs/security-checker": "^6.0",
         "sylius-labs/coding-standard": "^3.0"
     },
     "prefer-stable": true,
