@@ -1,8 +1,8 @@
 prometee_sylius_vies_client:
     form:
-        vat_number: 'Numéro de TVA'
+        vat_number: 'Numéro de TVA de l''UE'
         base_country: 'Pays de l''entité juridique'
-        european_zone: 'Zone européenne'
+        european_zone: 'Zone de l''union européenne'
     ui:
         eu_vat_number: 'Numéro de TVA Européen'
         european_channel: 'Informations européenne requises'
