@@ -1,5 +1,15 @@
 # CHANGELOG FOR `1.0.X`
 
+## v1.0.4 (2019-06-19)
+
+#### TL;DR
+
+- Sync list of countries into the zone `Rest of the world` from `symfony/intl` package.
+
+#### Details
+
+- [See the diff since the last patch release](https://github.com/Prometee/SyliusVIESClientPlugin/compare/v1.0.3...v1.0.4)
+
 ## v1.0.3 (2019-05-28)
 
 #### TL;DR
@@ -9,7 +19,7 @@
 
 #### Details
 
-- [See the diff since the last patch release](https://github.com/Prometee/SyliusVIESClientPlugin/compare/v1.0.1...v1.0.2)
+- [See the diff since the last patch release](https://github.com/Prometee/SyliusVIESClientPlugin/compare/v1.0.2...v1.0.3)
 
 ## v1.0.2 (2019-05-27)
 
