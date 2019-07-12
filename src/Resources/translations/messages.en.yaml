@@ -1,6 +1,6 @@
 prometee_sylius_vies_client:
     form:
-        vat_number: 'UE VAT Number'
+        vat_number: 'EU VAT Number'
         base_country: 'Juridic country'
         european_zone: 'European union zone'
     ui:
