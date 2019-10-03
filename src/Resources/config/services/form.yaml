@@ -3,9 +3,9 @@ services:
     prometee.sylius_vies_client_plugin.form.extension.vatnumber:
         class: Prometee\SyliusVIESClientPlugin\Form\Extension\VATNumberTypeExtension
         tags:
-            - { name: form.type_extension, extended-type: Sylius\Bundle\AddressingBundle\Form\Type\AddressType }
+            - { name: form.type_extension, extended_type: Sylius\Bundle\AddressingBundle\Form\Type\AddressType }
 
     prometee.sylius_vies_client_plugin.form.extension.channel:
         class: Prometee\SyliusVIESClientPlugin\Form\Extension\ChannelTypeExtension
         tags:
-            - { name: form.type_extension, extended-type: Sylius\Bundle\ChannelBundle\Form\Type\ChannelType }
+            - { name: form.type_extension, extended_type: Sylius\Bundle\ChannelBundle\Form\Type\ChannelType }
