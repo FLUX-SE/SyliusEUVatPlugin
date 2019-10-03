@@ -36,6 +36,6 @@ class VATNumberTypeExtension extends AbstractTypeExtension
      */
     public function getExtendedType()
     {
-        return self::getExtendedTypes()[0];
+        return self::getExtendedTypes()->current();
     }
 }
