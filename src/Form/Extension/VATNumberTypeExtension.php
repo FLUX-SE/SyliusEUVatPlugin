@@ -28,8 +28,6 @@ class VATNumberTypeExtension extends AbstractTypeExtension
      */
     public static function getExtendedTypes(): iterable
     {
-        return [
-            AddressType::class,
-        ];
+        yield AddressType::class;
     }
 }
