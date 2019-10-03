@@ -30,4 +30,9 @@ final class ChannelTypeExtension extends AbstractTypeExtension
     {
         yield ChannelType::class;
     }
+    
+    public function getExtendedType()
+    {
+        return self::getExtendedTypes()[0];
+    }
 }
