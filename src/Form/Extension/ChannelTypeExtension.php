@@ -28,6 +28,6 @@ final class ChannelTypeExtension extends AbstractTypeExtension
 
     public static function getExtendedTypes(): iterable
     {
-        return [ChannelType::class];
+        yield ChannelType::class;
     }
 }
