@@ -11,7 +11,6 @@ use Sylius\Bundle\CoreBundle\Fixture\OptionsResolver\LazyOption;
 use Sylius\Component\Addressing\Model\CountryInterface;
 use Sylius\Component\Addressing\Model\ZoneInterface;
 use Sylius\Component\Channel\Context\ChannelNotFoundException;
-use Sylius\Component\Channel\Factory\ChannelFactoryInterface;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
@@ -19,9 +18,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class EuropeanChannelExampleFactory extends AbstractExampleFactory implements ExampleFactoryInterface
 {
-    /** @var ChannelFactoryInterface */
-    private $channelFactory;
-
     /** @var ChannelRepositoryInterface */
     private $channelRepository;
 
@@ -35,12 +31,10 @@ class EuropeanChannelExampleFactory extends AbstractExampleFactory implements Ex
     private $optionsResolver;
 
     public function __construct(
-        ChannelFactoryInterface $channelFactory,
         ChannelRepositoryInterface $channelRepository,
         RepositoryInterface $countryRepository,
         RepositoryInterface $zoneRepository
     ) {
-        $this->channelFactory = $channelFactory;
         $this->channelRepository = $channelRepository;
         $this->countryRepository = $countryRepository;
         $this->zoneRepository = $zoneRepository;

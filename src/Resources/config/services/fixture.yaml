@@ -3,7 +3,6 @@ services:
         public: true
         class: Prometee\SyliusVIESClientPlugin\Fixture\Factory\EuropeanChannelExampleFactory
         arguments:
-            $channelFactory: '@sylius.factory.channel'
             $channelRepository: '@sylius.repository.channel'
             $countryRepository: '@sylius.repository.country'
             $zoneRepository: '@sylius.repository.zone'
