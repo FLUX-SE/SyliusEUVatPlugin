@@ -30,9 +30,11 @@ final class ChannelTypeExtension extends AbstractTypeExtension
     {
         yield ChannelType::class;
     }
-    
+
     public function getExtendedType()
     {
-        foreach (self::getExtendedTypes() as $class) return $class;
+        foreach (self::getExtendedTypes() as $class) {
+            return $class;
+        }
     }
 }

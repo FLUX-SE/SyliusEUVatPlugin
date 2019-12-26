@@ -28,8 +28,7 @@ class AddressExampleFactory extends BaseAddressExampleFactory
         RepositoryInterface $countryRepository,
         RepositoryInterface $customerRepository,
         ViesHelperInterface $viesHelper
-    )
-    {
+    ) {
         parent::__construct($addressFactory, $countryRepository, $customerRepository);
 
         $this->viesHelper = $viesHelper;
@@ -45,7 +44,6 @@ class AddressExampleFactory extends BaseAddressExampleFactory
         $resolver
             ->setDefault('vat_number', null)
             ->setAllowedValues('vat_number', function ($value) {
-
                 if ($value === null) {
                     return true;
                 }
@@ -65,7 +63,6 @@ class AddressExampleFactory extends BaseAddressExampleFactory
         if ($address instanceof VATNumberAwareInterface) {
             $address->setVatNumber($options['vat_number']);
         }
-
 
         return $address;
     }

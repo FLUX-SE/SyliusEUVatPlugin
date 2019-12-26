@@ -26,7 +26,7 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
         /** @var EuropeanChannelAwareInterface $channel */
         $channel = $order->getChannel();
 
-        if (null === $channel){
+        if (null === $channel) {
             return;
         }
 
@@ -78,16 +78,16 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
         ZoneInterface $zone,
         EuropeanChannelAwareInterface $channel
     ): bool {
-
         if (null === $billingCountryCode) {
             return false;
         }
 
-        if (false === $billingAddress->hasVatNumber()) {
+        $vatNumber = $billingAddress->getVatNumber();
+        if (false === $vatNumber) {
             return false;
         }
 
-        $vatNumberArr = VatNumberUtil::split($billingAddress->getVatNumber());
+        $vatNumberArr = VatNumberUtil::split($vatNumber);
         if (null === $vatNumberArr) {
             return false;
         }

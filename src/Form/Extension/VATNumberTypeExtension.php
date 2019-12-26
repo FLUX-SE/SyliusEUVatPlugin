@@ -30,12 +30,14 @@ class VATNumberTypeExtension extends AbstractTypeExtension
     {
         yield AddressType::class;
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function getExtendedType()
     {
-        foreach (self::getExtendedTypes() as $class) return $class;
+        foreach (self::getExtendedTypes() as $class) {
+            return $class;
+        }
     }
 }
