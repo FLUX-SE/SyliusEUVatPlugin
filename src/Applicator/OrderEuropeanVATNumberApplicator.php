@@ -83,7 +83,7 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
         }
 
         $vatNumber = $billingAddress->getVatNumber();
-        if (false === $vatNumber) {
+        if (null === $vatNumber) {
             return false;
         }
 
