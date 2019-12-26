@@ -1,5 +1,5 @@
 sylius_channel:
-    resources:
-        channel:
-            classes:
-                model: Tests\Prometee\SyliusVIESClientPlugin\App\Entity\Channel
+  resources:
+    channel:
+      classes:
+        model: Tests\Prometee\SyliusVIESClientPlugin\Application\Entity\Channel

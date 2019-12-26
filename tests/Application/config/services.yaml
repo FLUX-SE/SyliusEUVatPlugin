@@ -2,9 +2,3 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en_US
-
-services:
-    sylius.security.user_password_encoder.sha512:
-        class: Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder
-        arguments:
-            - "sha512"

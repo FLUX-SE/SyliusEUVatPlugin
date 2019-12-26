@@ -1,5 +1,5 @@
 sylius_addressing:
-    resources:
-        address:
-            classes:
-                model: Tests\Prometee\SyliusVIESClientPlugin\App\Entity\Address
+  resources:
+    address:
+      classes:
+        model: Tests\Prometee\SyliusVIESClientPlugin\Application\Entity\Address

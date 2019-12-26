@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Prometee\SyliusVIESClientPlugin\App\Entity;
+namespace Tests\Prometee\SyliusVIESClientPlugin\Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Prometee\SyliusVIESClientPlugin\Entity\VATNumberAwareTrait;

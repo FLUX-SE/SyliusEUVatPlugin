@@ -1,0 +1,18 @@
+services:
+
+  prometee.sylius.vies.client.behat.page.shop.checkout.address:
+    class: Tests\Prometee\SyliusVIESClientPlugin\Behat\Page\Shop\Checkout\AddressPage
+    parent: sylius.behat.page.shop.checkout.address
+
+  prometee.sylius.vies.client.behat.context.ui.shop.checkout.adressing:
+    public: true
+    class: Tests\Prometee\SyliusVIESClientPlugin\Behat\Context\Ui\Shop\Checkout\CheckoutAddressingContext
+    arguments:
+      $addressPage: '@prometee.sylius.vies.client.behat.page.shop.checkout.address'
+      $sharedStorage: '@sylius.behat.shared_storage'
+
+  prometee.sylius.vies.client.behat.context.setup.european_channel_aware_context:
+    public: true
+    class: Tests\Prometee\SyliusVIESClientPlugin\Behat\Context\Setup\EuropeanChannelAwareContext
+    arguments:
+      $channelManager: '@sylius.manager.channel'
