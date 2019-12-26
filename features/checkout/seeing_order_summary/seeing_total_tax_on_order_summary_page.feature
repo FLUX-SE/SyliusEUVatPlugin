@@ -20,7 +20,7 @@ Feature: Seeing tax total on order summary page
     And I am a logged in customer
 
   @ui
-  Scenario: Seeing the tax total on order summary page
+  Scenario: Seeing the tax total of 0% when VAT number country is different from the channel base country on order summary page
     Given I have product "The Sorting Hat" in the cart
     When I specified the shipping address as "Ankh Morpork", "Frost Alley", "90210", "France" for "Jon Snow" with VAT number "FR10632012100"
     And I proceed with "Free" shipping method and "Offline" payment
@@ -28,7 +28,7 @@ Feature: Seeing tax total on order summary page
     And my tax total should be "$0.00"
 
   @ui
-  Scenario: Seeing the tax total on order summary page
+  Scenario: Seeing the tax total of 20% when VAT number country is the same as the channel base country on order summary page
     Given I have product "The Sorting Hat" in the cart
     And this channel is based in the "France" country and allow VAT numbers for the "EU" zone
     When I specified the shipping address as "Ankh Morpork", "Frost Alley", "90210", "France" for "Jon Snow" with VAT number "FR10632012100"
