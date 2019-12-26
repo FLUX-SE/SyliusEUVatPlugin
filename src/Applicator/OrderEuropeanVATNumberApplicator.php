@@ -25,26 +25,42 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
     {
         /** @var EuropeanChannelAwareInterface $channel */
         $channel = $order->getChannel();
+
+        if (null === $channel){
+            return;
+        }
+
         /** @var VATNumberAwareInterface $billingAddress */
         $billingAddress = $order->getBillingAddress();
-        if (
-            $channel !== null
-            && $channel->getEuropeanZone() !== null
-            && $channel->getBaseCountry() !== null
-            && $order->getBillingAddress() !== null
-            && $billingAddress !== null
-        ) {
-            // These weird assignment is required for PHPStan
-            $billingCountryCode = $order->getBillingAddress()->getCountryCode();
 
-            if ($this->isValidForZeroEuropeanVAT($billingAddress, $billingCountryCode, $zone, $channel)) {
-                foreach ($order->getItems() as $item) {
-                    $quantity = $item->getQuantity();
-                    Assert::notSame($quantity, 0, 'Cannot apply tax to order item with 0 quantity.');
+        if (null === $billingAddress) {
+            return;
+        }
 
-                    $item->removeAdjustmentsRecursively(AdjustmentInterface::TAX_ADJUSTMENT);
-                }
-            }
+        if (null === $order->getBillingAddress()) {
+            return;
+        }
+
+        if (null === $channel->getBaseCountry()) {
+            return;
+        }
+
+        if (null === $channel->getEuropeanZone()) {
+            return;
+        }
+
+        // These weird assignment is required for PHPStan
+        $billingCountryCode = $order->getBillingAddress()->getCountryCode();
+
+        if (false === $this->isValidForZeroEuropeanVAT($billingAddress, $billingCountryCode, $zone, $channel)) {
+            return;
+        }
+
+        foreach ($order->getItems() as $item) {
+            $quantity = $item->getQuantity();
+            Assert::notSame($quantity, 0, 'Cannot apply tax to order item with 0 quantity.');
+
+            $item->removeAdjustmentsRecursively(AdjustmentInterface::TAX_ADJUSTMENT);
         }
     }
 
@@ -62,20 +78,35 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
         ZoneInterface $zone,
         EuropeanChannelAwareInterface $channel
     ): bool {
-        if ($billingAddress->hasVatNumber()) {
-            $vatNumberArr = VatNumberUtil::split($billingAddress->getVatNumber());
-            if (
-                $vatNumberArr !== null
-                && $zone === $channel->getEuropeanZone()
-                && $channel->getBaseCountry() !== null
-                && $channel->getBaseCountry()->getCode() !== $billingCountryCode
-                && $billingCountryCode !== null
-                && $billingCountryCode === $vatNumberArr[0]
-            ) {
-                return true;
-            }
+
+        if (null === $billingCountryCode) {
+            return false;
         }
 
-        return false;
+        if (false === $billingAddress->hasVatNumber()) {
+            return false;
+        }
+
+        $vatNumberArr = VatNumberUtil::split($billingAddress->getVatNumber());
+        if (null === $vatNumberArr) {
+            return false;
+        }
+
+        if (null === $channel->getBaseCountry()) {
+            return false;
+        }
+        if ($billingCountryCode === $channel->getBaseCountry()->getCode()) {
+            return false;
+        }
+
+        if ($zone !== $channel->getEuropeanZone()) {
+            return false;
+        }
+
+        if ($billingCountryCode !== $vatNumberArr[0]) {
+            return false;
+        }
+
+        return true;
     }
 }
