@@ -12,6 +12,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 final class ChannelTypeExtension extends AbstractTypeExtension
 {
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -26,15 +29,11 @@ final class ChannelTypeExtension extends AbstractTypeExtension
         ;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public static function getExtendedTypes(): iterable
     {
         yield ChannelType::class;
-    }
-
-    public function getExtendedType()
-    {
-        foreach (self::getExtendedTypes() as $class) {
-            return $class;
-        }
     }
 }

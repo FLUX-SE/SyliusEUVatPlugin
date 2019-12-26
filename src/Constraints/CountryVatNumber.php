@@ -13,10 +13,15 @@ class CountryVatNumber extends Constraint
 {
     const CORRESPONDENCE_ERROR = '403';
 
+    /** @var string */
     public $message = 'prometee_sylius_vies_client.country_vat_number.invalid';
 
+    /** @var string */
     public $vatNumberPath = 'vatNumber';
 
+    /**
+     * {@inheritdoc}
+     */
     public function getTargets()
     {
         return self::CLASS_CONSTRAINT;

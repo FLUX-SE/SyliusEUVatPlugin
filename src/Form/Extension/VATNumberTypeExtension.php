@@ -14,7 +14,7 @@ class VATNumberTypeExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('vatNumber', TextType::class, [
@@ -29,15 +29,5 @@ class VATNumberTypeExtension extends AbstractTypeExtension
     public static function getExtendedTypes(): iterable
     {
         yield AddressType::class;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getExtendedType()
-    {
-        foreach (self::getExtendedTypes() as $class) {
-            return $class;
-        }
     }
 }

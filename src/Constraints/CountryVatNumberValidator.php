@@ -16,7 +16,7 @@ class CountryVatNumberValidator extends ConstraintValidator
     /**
      * {@inheritdoc}
      */
-    public function validate($value, Constraint $constraint)
+    public function validate($value, Constraint $constraint): void
     {
         if (!$constraint instanceof CountryVatNumber) {
             throw new UnexpectedTypeException($constraint, CountryVatNumber::class);
