@@ -21,7 +21,7 @@ class AddressPage extends BaseAddressPage implements AddressPageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @throws ElementNotFoundException
      */
@@ -31,7 +31,7 @@ class AddressPage extends BaseAddressPage implements AddressPageInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      *
      * @throws ElementNotFoundException
      */

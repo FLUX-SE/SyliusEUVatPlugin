@@ -29,5 +29,5 @@ default:
                 - sylius.behat.context.ui.shop.checkout.complete
 
                 - prometee.sylius.vies.client.behat.context.ui.shop.checkout.adressing
-        filters:
-            tags: "@checkout_with_vat && @ui"
+            filters:
+                tags: "@checkout_with_vat && @ui"

@@ -26,8 +26,7 @@ final class CheckoutAddressingContext implements Context
     public function __construct(
         AddressPageInterface $addressPage,
         SharedStorageInterface $sharedStorage
-    )
-    {
+    ) {
         $this->addressPage = $addressPage;
         $this->sharedStorage = $sharedStorage;
     }
