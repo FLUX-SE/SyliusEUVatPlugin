@@ -21,9 +21,7 @@ class AddressFixture extends BaseAddressFixture
     {
         parent::configureResourceNode($resourceNode);
 
-        $resourceNode
-            ->children()
-                ->scalarNode('vat_number')->end()
-        ;
+        $node = $resourceNode->children();
+        $node->scalarNode('vat_number');
     }
 }

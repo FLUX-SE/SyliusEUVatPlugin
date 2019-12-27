@@ -22,11 +22,9 @@ class EuropeanChannelFixture extends AbstractResourceFixture
      */
     protected function configureResourceNode(ArrayNodeDefinition $resourceNode): void
     {
-        $resourceNode
-            ->children()
-            ->scalarNode('channel')->cannotBeEmpty()->end()
-            ->scalarNode('base_country')->cannotBeEmpty()->end()
-            ->scalarNode('european_zone')->cannotBeEmpty()->end()
-        ;
+        $node = $resourceNode->children();
+        $node->scalarNode('channel')->cannotBeEmpty();
+        $node->scalarNode('base_country')->cannotBeEmpty();
+        $node->scalarNode('european_zone')->cannotBeEmpty();
     }
 }
