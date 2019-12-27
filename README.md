@@ -2,6 +2,7 @@
 [![Software License][ico-license]](LICENSE)
 [![Build Status][ico-travis]][link-travis]
 [![Quality Score][ico-code-quality]][link-code-quality]
+[![Symfony Insight][ico-symfony-insight]][link-symfony-insight]
 
 # Sylius Plugin for VIES Client
 
@@ -262,8 +263,10 @@ sylius_fixtures:
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/Prometee/SyliusVIESClientPlugin/master.svg?style=flat-square
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/Prometee/SyliusVIESClientPlugin.svg?style=flat-square
+[ico-symfony-insight]: https://insight.symfony.com/projects/7adbee69-87a3-4598-88c2-a54978815862/mini.svg
 
 [link-packagist]: https://packagist.org/packages/prometee/sylius-vies-client-plugin
 [link-travis]: https://travis-ci.org/Prometee/SyliusVIESClientPlugin
 [link-scrutinizer]: https://scrutinizer-ci.com/g/Prometee/SyliusVIESClientPlugin/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/Prometee/SyliusVIESClientPlugin
+[link-symfony-insight]: https://insight.symfony.com/projects/7adbee69-87a3-4598-88c2-a54978815862
