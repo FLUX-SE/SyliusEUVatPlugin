@@ -26,18 +26,4 @@ class PrometeeSyliusVIESClientPlugin extends Bundle
         $container->addCompilerPass(new OrderItemsBasedStrategyCompilerPass());
         $container->addCompilerPass(new OrderItemUnitsBasedStrategyCompilerPass());
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getContainerExtension(): ?ExtensionInterface
-    {
-        // return the right extension instead of "auto-registering" it. Now the
-        // alias can be flux_sylius_pace_oauth instead of flux_sylius_pace_o_auth
-        if (null === $this->extension) {
-            return new PrometeeSyliusVIESClientExtension();
-        }
-
-        return $this->extension;
-    }
 }
