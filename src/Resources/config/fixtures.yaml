@@ -41,7 +41,6 @@ sylius_fixtures:
                                     - "SI"
                                     - "ES"
                                     - "SE"
-                                    - "GB"
                                     # This are french overseas departments
                                     # Disable those not real countries if you are managing French VAT
                                     #- "BL"
