@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Sylius\InvoicingPlugin\Unit\Fixture;
+namespace Tests\Sylius\SyliusVIESClientPlugin\Unit\Fixture;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
