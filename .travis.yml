@@ -58,8 +58,8 @@ before_script:
 
     # Download and configure Selenium
     - |
-        if [ ! -f $SYLIUS_CACHE_DIR/selenium.jar ] || [ "$(java -jar $SYLIUS_CACHE_DIR/selenium.jar --version | grep -c 3.5.0)" = "0" ]; then
-            curl http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.0.jar > selenium.jar
+        if [ ! -f $SYLIUS_CACHE_DIR/selenium.jar ] || [ "$(java -jar $SYLIUS_CACHE_DIR/selenium.jar --version | grep -c 3.4.0)" = "0" ]; then
+            curl http://selenium-release.storage.googleapis.com/3.4/selenium-server-standalone-3.4.0.jar > selenium.jar
             mv selenium.jar $SYLIUS_CACHE_DIR
         fi
 
