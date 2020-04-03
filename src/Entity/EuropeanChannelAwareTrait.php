@@ -26,33 +26,21 @@ trait EuropeanChannelAwareTrait
      */
     protected $europeanZone;
 
-    /**
-     * @return CountryInterface|null
-     */
     public function getBaseCountry(): ?CountryInterface
     {
         return $this->baseCountry;
     }
 
-    /**
-     * @param CountryInterface|null $baseCountry
-     */
     public function setBaseCountry(?CountryInterface $baseCountry): void
     {
         $this->baseCountry = $baseCountry;
     }
 
-    /**
-     * @return ZoneInterface|null
-     */
     public function getEuropeanZone(): ?ZoneInterface
     {
         return $this->europeanZone;
     }
 
-    /**
-     * @param ZoneInterface|null $europeanZone
-     */
     public function setEuropeanZone(?ZoneInterface $europeanZone): void
     {
         $this->europeanZone = $europeanZone;

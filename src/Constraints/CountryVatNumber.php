@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class CountryVatNumber extends Constraint
 {
-    const CORRESPONDENCE_ERROR = '403';
+    public const CORRESPONDENCE_ERROR = '403';
 
     /** @var string */
     public $message = 'prometee_sylius_vies_client.country_vat_number.invalid';

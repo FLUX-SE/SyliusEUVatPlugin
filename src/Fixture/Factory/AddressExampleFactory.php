@@ -17,12 +17,6 @@ class AddressExampleFactory extends BaseAddressExampleFactory
     /** @var ViesHelperInterface */
     private $viesHelper;
 
-    /**
-     * @param FactoryInterface $addressFactory
-     * @param RepositoryInterface $countryRepository
-     * @param RepositoryInterface $customerRepository
-     * @param ViesHelperInterface $viesHelper
-     */
     public function __construct(
         FactoryInterface $addressFactory,
         RepositoryInterface $countryRepository,

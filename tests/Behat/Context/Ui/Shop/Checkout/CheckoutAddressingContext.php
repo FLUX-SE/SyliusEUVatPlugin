@@ -16,13 +16,10 @@ final class CheckoutAddressingContext implements Context
 {
     /** @var AddressPageInterface */
     private $addressPage;
+
     /** @var SharedStorageInterface */
     private $sharedStorage;
 
-    /**
-     * @param AddressPageInterface $addressPage
-     * @param SharedStorageInterface $sharedStorage
-     */
     public function __construct(
         AddressPageInterface $addressPage,
         SharedStorageInterface $sharedStorage
@@ -78,9 +75,6 @@ final class CheckoutAddressingContext implements Context
 
     /**
      * @When /^I specified the shipping (address as "[^"]+", "[^"]+", "[^"]+", "[^"]+" for "[^"]+") with VAT number "([^"]+)"$/
-     *
-     * @param AddressInterface $address
-     * @param string $vatNumber
      *
      * @throws UnexpectedPageException
      */

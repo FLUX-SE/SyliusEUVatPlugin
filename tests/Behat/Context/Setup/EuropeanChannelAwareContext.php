@@ -15,9 +15,6 @@ final class EuropeanChannelAwareContext implements Context
     /** @var ObjectManager */
     private $channelManager;
 
-    /**
-     * @param ObjectManager $channelManager
-     */
     public function __construct(ObjectManager $channelManager)
     {
         $this->channelManager = $channelManager;
@@ -26,10 +23,6 @@ final class EuropeanChannelAwareContext implements Context
     /**
      * @Given /^(its) based in the ("[^"]+" country) and allow VAT numbers for the ("[^"]+" zone)$/
      * @Given /^(this channel) is based in the ("[^"]+" country) and allow VAT numbers for the ("[^"]+" zone)$/
-     *
-     * @param EuropeanChannelAwareInterface $channel
-     * @param CountryInterface $baseCountry
-     * @param ZoneInterface $europeanZone
      */
     public function itsBasedInAndAllowVATNumbersForTheZone(EuropeanChannelAwareInterface $channel, CountryInterface $baseCountry, ZoneInterface $europeanZone)
     {

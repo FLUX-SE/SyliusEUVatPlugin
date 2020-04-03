@@ -6,10 +6,8 @@ namespace Prometee\SyliusVIESClientPlugin;
 
 use Prometee\SyliusVIESClientPlugin\DependencyInjection\Compiler\OrderItemsBasedStrategyCompilerPass;
 use Prometee\SyliusVIESClientPlugin\DependencyInjection\Compiler\OrderItemUnitsBasedStrategyCompilerPass;
-use Prometee\SyliusVIESClientPlugin\DependencyInjection\PrometeeSyliusVIESClientExtension;
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class PrometeeSyliusVIESClientPlugin extends Bundle

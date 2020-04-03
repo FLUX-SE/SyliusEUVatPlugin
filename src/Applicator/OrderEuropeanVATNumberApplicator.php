@@ -64,14 +64,6 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
         }
     }
 
-    /**
-     * @param VATNumberAwareInterface $billingAddress
-     * @param string|null $billingCountryCode
-     * @param ZoneInterface $zone
-     * @param EuropeanChannelAwareInterface $channel
-     *
-     * @return bool
-     */
     public function isValidForZeroEuropeanVAT(
         VATNumberAwareInterface $billingAddress,
         ?string $billingCountryCode,
