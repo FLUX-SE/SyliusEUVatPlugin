@@ -80,19 +80,27 @@ final class CheckoutAddressingContext implements Context
      */
     public function iSpecifiedTheShippingAddressWithVATNumber(AddressInterface $address, string $vatNumber)
     {
+        $address->setVatNumber($vatNumber);
+
         $this->addressPage->open();
+
+        $key = sprintf(
+            'billing_address_%s_%s',
+            strtolower((string) $address->getFirstName()),
+            strtolower((string) $address->getLastName())
+        );
+        $this->sharedStorage->set($key, $address);
+
+        $this->addressPage->specifyBillingAddress($address);
+        $this->iSpecifyTheBillingVatNumberAs($vatNumber);
+
         $key = sprintf(
             'shipping_address_%s_%s',
             strtolower((string) $address->getFirstName()),
             strtolower((string) $address->getLastName())
         );
-        $address->setVatNumber($vatNumber);
         $this->sharedStorage->set($key, $address);
 
-        $this->addressPage->specifyShippingAddress($address);
-        $this->iSpecifyTheShippingVatNumberAs($vatNumber);
-
-        $key = sprintf('billing_address_%s_%s', strtolower((string) $address->getFirstName()), strtolower((string) $address->getLastName()));
-        $this->sharedStorage->set($key, $address);
+        $this->addressPage->nextStep();
     }
 }
