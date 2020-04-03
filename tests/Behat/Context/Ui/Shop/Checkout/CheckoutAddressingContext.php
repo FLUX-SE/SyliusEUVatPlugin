@@ -100,7 +100,5 @@ final class CheckoutAddressingContext implements Context
 
         $key = sprintf('billing_address_%s_%s', strtolower((string) $address->getFirstName()), strtolower((string) $address->getLastName()));
         $this->sharedStorage->set($key, $address);
-
-        $this->addressPage->nextStep();
     }
 }
