@@ -37,7 +37,7 @@ class AddressExampleFactory extends BaseAddressExampleFactory
 
         $resolver
             ->setDefault('vat_number', null)
-            ->setAllowedValues('vat_number', function ($value) {
+            ->setAllowedValues('vat_number', function ($value): bool {
                 if ($value === null) {
                     return true;
                 }
