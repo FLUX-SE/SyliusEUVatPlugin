@@ -36,7 +36,7 @@ class CountryVatNumberValidator extends ConstraintValidator
             throw new UnexpectedTypeException($value, VATNumberAwareInterface::class);
         }
 
-        if ($vatNumberArr[0] !== $value->getCountryCode()) {
+        if ($vatNumberArr === null || $vatNumberArr[0] !== $value->getCountryCode()) {
             $this->context->buildViolation($constraint->message)
                 ->setCode($constraint::CORRESPONDENCE_ERROR)
                 ->atPath($constraint->vatNumberPath)
