@@ -22,6 +22,10 @@ class CountryVatNumberValidator extends ConstraintValidator
             throw new UnexpectedTypeException($constraint, CountryVatNumber::class);
         }
 
+        if (false === $value instanceof AddressInterface) {
+            throw new UnexpectedTypeException($value, AddressInterface::class);
+        }
+
         if (!$value instanceof VATNumberAwareInterface) {
             throw new UnexpectedTypeException($value, VATNumberAwareInterface::class);
         }
@@ -31,12 +35,9 @@ class CountryVatNumberValidator extends ConstraintValidator
         }
 
         $vatNumberArr = VatNumberUtil::split($value->getVatNumber());
+        $countryCode = null === $vatNumberArr ? null : $vatNumberArr[0];
 
-        if (!$value instanceof AddressInterface) {
-            throw new UnexpectedTypeException($value, VATNumberAwareInterface::class);
-        }
-
-        if ($vatNumberArr === null || $vatNumberArr[0] !== $value->getCountryCode()) {
+        if ($countryCode !== $value->getCountryCode()) {
             $this->context->buildViolation($constraint->message)
                 ->setCode($constraint::CORRESPONDENCE_ERROR)
                 ->atPath($constraint->vatNumberPath)
