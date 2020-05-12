@@ -43,11 +43,6 @@ class CountryVatNumberValidator extends ConstraintValidator
         }
     }
 
-    /**
-     * @param VATNumberAwareInterface $value
-     *
-     * @return string|null
-     */
     private function extractCountryCode(VATNumberAwareInterface $value): ?string
     {
         if (null === $value->getVatNumber()) {
