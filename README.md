@@ -18,6 +18,20 @@ This plugin is adding :
     - (Shop country === customer country vat number) then do nothing
     - (Shop country !== customer country vat number) then remove taxes
 
+## Screenshots
+
+### Shop checkout
+
+![Shop checkout address step form](docs/assets/shop-checkout-address-form.png "Shop checkout address step form")
+
+![Shop checkout summary page](docs/assets/shop-checkout-summary.png "Shop checkout summary page")
+
+### Shop account
+
+![Shop account address book](docs/assets/shop-account-address-book.png "Shop account address book")
+
+![Shop account order details](docs/assets/shop-account-order-details.png "Shop account order details")
+
 ## Installation
 
 ```bash
