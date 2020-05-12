@@ -30,12 +30,10 @@ class CountryVatNumberValidator extends ConstraintValidator
             throw new UnexpectedTypeException($value, VATNumberAwareInterface::class);
         }
 
-        if (null === $value->getVatNumber() || '' === $value->getVatNumber()) {
+        $countryCode = $this->extractCountryCode($value);
+        if (null === $countryCode) {
             return;
         }
-
-        $vatNumberArr = VatNumberUtil::split($value->getVatNumber());
-        $countryCode = null === $vatNumberArr ? null : $vatNumberArr[0];
 
         if ($countryCode !== $value->getCountryCode()) {
             $this->context->buildViolation($constraint->message)
@@ -43,5 +41,28 @@ class CountryVatNumberValidator extends ConstraintValidator
                 ->atPath($constraint->vatNumberPath)
                 ->addViolation();
         }
+    }
+
+    /**
+     * @param VATNumberAwareInterface $value
+     *
+     * @return string|null
+     */
+    private function extractCountryCode(VATNumberAwareInterface $value): ?string
+    {
+        if (null === $value->getVatNumber()) {
+            return null;
+        }
+
+        if ('' === $value->getVatNumber()) {
+            return null;
+        }
+
+        $vatNumberArr = VatNumberUtil::split($value->getVatNumber());
+        if (null === $vatNumberArr) {
+            return null;
+        }
+
+        return $vatNumberArr[0];
     }
 }
