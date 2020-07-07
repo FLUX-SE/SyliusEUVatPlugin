@@ -12,6 +12,9 @@ services:
 addons:
     chrome: stable
 
+node_js:
+    - node
+
 cache:
     yarn: true
     directories:
