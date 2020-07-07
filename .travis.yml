@@ -2,7 +2,7 @@ language: php
 
 os: linux
 
-dist: xenial
+dist: bionic
 
 services:
     - mysql
@@ -10,10 +10,12 @@ services:
     - memcached
 
 addons:
+    apt:
+        sources:
+            - google-chrome
+        packages:
+            - google-chrome-stable
     chrome: stable
-
-node_js:
-    - node
 
 cache:
     yarn: true
