@@ -1,0 +1,8 @@
+prometee_sylius_vies_client:
+    form:
+        vat_number: 'USt-ID'
+        base_country: 'Herkunftsland'
+        european_zone: 'Europäische Zone'
+    ui:
+        eu_vat_number: 'USt-ID'
+        european_channel: 'Information in Europa benötigt'
