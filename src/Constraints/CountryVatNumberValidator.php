@@ -58,6 +58,11 @@ class CountryVatNumberValidator extends ConstraintValidator
             return null;
         }
 
+        // Greece is the only case where the ISO code is not the same as the prefix
+        if ('EL' === $vatNumberArr[0]) {
+            return 'GR';
+        }
+
         return $vatNumberArr[0];
     }
 }
