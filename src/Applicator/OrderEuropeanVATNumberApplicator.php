@@ -147,9 +147,6 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
         EuropeanChannelAwareInterface $channel,
         string $billingCountryCode
     ): bool {
-        if (null === $billingCountryCode) {
-            return false;
-        }
 
         $baseCountry = $channel->getBaseCountry();
         if (null === $baseCountry) {
