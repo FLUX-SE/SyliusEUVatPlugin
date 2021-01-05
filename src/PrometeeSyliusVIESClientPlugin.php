@@ -14,14 +14,11 @@ class PrometeeSyliusVIESClientPlugin extends Bundle
 {
     use SyliusPluginTrait;
 
-    /**
-     * {@inheritdoc}
-     */
     public function build(ContainerBuilder $container): void
     {
-        parent::build($container);
-
         $container->addCompilerPass(new OrderItemsBasedStrategyCompilerPass());
         $container->addCompilerPass(new OrderItemUnitsBasedStrategyCompilerPass());
+
+        parent::build($container);
     }
 }

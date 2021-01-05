@@ -10,9 +10,6 @@ use Symfony\Component\DependencyInjection\Reference;
 
 class OrderItemsBasedStrategyCompilerPass implements CompilerPassInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function process(ContainerBuilder $container): void
     {
         $definition = $container->getDefinition('sylius.taxation.order_items_based_strategy');

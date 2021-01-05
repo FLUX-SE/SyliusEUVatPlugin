@@ -28,16 +28,13 @@ class AddressExampleFactory extends BaseAddressExampleFactory
         $this->viesHelper = $viesHelper;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);
 
         $resolver
             ->setDefault('vat_number', null)
-            ->setAllowedValues('vat_number', function ($value): bool {
+            ->setAllowedValues('vat_number', function (?string $value): bool {
                 if ($value === null) {
                     return true;
                 }
@@ -47,15 +44,17 @@ class AddressExampleFactory extends BaseAddressExampleFactory
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function create(array $options = []): AddressInterface
     {
         $address = parent::create($options);
 
+        $vatNumber = null;
+        if (isset($options['vat_number'])) {
+            $vatNumber = (string) $options['vat_number'];
+        }
+
         if ($address instanceof VATNumberAwareInterface) {
-            $address->setVatNumber($options['vat_number']);
+            $address->setVatNumber($vatNumber);
         }
 
         return $address;

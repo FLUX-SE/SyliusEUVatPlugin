@@ -13,9 +13,6 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 class CountryVatNumberValidator extends ConstraintValidator
 {
-    /**
-     * {@inheritdoc}
-     */
     public function validate($value, Constraint $constraint): void
     {
         if (!$constraint instanceof CountryVatNumber) {
@@ -45,15 +42,16 @@ class CountryVatNumberValidator extends ConstraintValidator
 
     private function extractCountryCode(VATNumberAwareInterface $value): ?string
     {
-        if (null === $value->getVatNumber()) {
+        $vatNumber = $value->getVatNumber();
+        if (null === $vatNumber) {
             return null;
         }
 
-        if ('' === $value->getVatNumber()) {
+        if ('' === $vatNumber) {
             return null;
         }
 
-        $vatNumberArr = VatNumberUtil::split($value->getVatNumber());
+        $vatNumberArr = VatNumberUtil::split($vatNumber);
         if (null === $vatNumberArr) {
             return null;
         }

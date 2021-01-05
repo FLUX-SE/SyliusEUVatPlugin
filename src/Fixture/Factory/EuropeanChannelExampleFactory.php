@@ -15,6 +15,7 @@ use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Webmozart\Assert\Assert;
 
 class EuropeanChannelExampleFactory extends AbstractExampleFactory implements ExampleFactoryInterface
 {
@@ -51,20 +52,27 @@ class EuropeanChannelExampleFactory extends AbstractExampleFactory implements Ex
     {
         $options = $this->optionsResolver->resolve($options);
 
-        /** @var EuropeanChannelAwareInterface|null $channel */
-        $channel = $options['channel'];
+        $channel = $options['channel'] ?? null;
 
         if ($channel === null) {
             throw new ChannelNotFoundException(
-                sprintf(
-                    'Channel "%s" has not been found, please create it before adding this fixture !',
-                    $options['channel']
-                )
+                'Channel has not been found, please create it before adding this fixture !'
             );
         }
 
-        $channel->setBaseCountry($options['base_country']);
-        $channel->setEuropeanZone($options['european_zone']);
+        Assert::isInstanceOf($channel, EuropeanChannelAwareInterface::class);
+
+        $baseCountry = $options['base_country'] ?? null;
+        if (null !== $baseCountry) {
+            Assert::isInstanceOf($baseCountry, CountryInterface::class);
+        }
+        $channel->setBaseCountry($baseCountry);
+
+        $europeanZone = $options['european_zone'] ?? null;
+        if (null !== $europeanZone) {
+            Assert::isInstanceOf($europeanZone, ZoneInterface::class);
+        }
+        $channel->setEuropeanZone($europeanZone);
 
         return $channel;
     }
