@@ -4,16 +4,34 @@ declare(strict_types=1);
 
 namespace Prometee\SyliusVIESClientPlugin\DependencyInjection;
 
+use Sylius\Bundle\CoreBundle\DependencyInjection\PrependDoctrineMigrationsTrait;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-final class PrometeeSyliusVIESClientExtension extends Extension
+final class PrometeeSyliusVIESClientExtension extends Extension implements PrependExtensionInterface
 {
-    /**
-     * {@inheritdoc}
-     */
+    use PrependDoctrineMigrationsTrait;
+
+    protected function getMigrationsNamespace(): string
+    {
+        return 'Prometee\SyliusVIESClientPlugin\Migrations';
+    }
+
+    protected function getMigrationsDirectory(): string
+    {
+        return '@PrometeeSyliusVIESClientPlugin/Migrations';
+    }
+
+    protected function getNamespacesOfMigrationsExecutedBefore(): array
+    {
+        return [
+            'Sylius\Bundle\CoreBundle\Migrations',
+        ];
+    }
+
     public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader(
@@ -24,10 +42,12 @@ final class PrometeeSyliusVIESClientExtension extends Extension
         $loader->load('services.yaml');
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getAlias()
+    public function prepend(ContainerBuilder $container): void
+    {
+        $this->prependDoctrineMigrations($container);
+    }
+
+    public function getAlias(): string
     {
         return 'prometee_sylius_vies_client';
     }

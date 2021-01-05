@@ -8,7 +8,7 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
-class OrderItemsBasedStrategyCompilerPass implements CompilerPassInterface
+final class OrderItemsBasedStrategyCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {
