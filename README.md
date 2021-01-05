@@ -218,7 +218,7 @@ sylius_addressing:
 Update your database :
 
 ```bash
-php ./bin/console doctrine:migrations:diff
+# This bundle use doctrine migrations ^3 (see `src/Migrations` folder for more details)
 php ./bin/console doctrine:migrations:migrate
 ```
 
