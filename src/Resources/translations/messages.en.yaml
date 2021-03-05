@@ -1,8 +1,9 @@
-prometee_sylius_vies_client:
-    form:
-        vat_number: 'EU VAT Number'
-        base_country: 'Juridic country'
-        european_zone: 'European union zone'
-    ui:
-        eu_vat_number: 'European VAT Number'
-        european_channel: 'European required information'
+flux_se:
+    sylius_eu_vat:
+        form:
+            vat_number: 'EU VAT Number'
+            base_country: 'Juridic country'
+            european_zone: 'European union zone'
+        ui:
+            eu_vat_number: 'European VAT Number'
+            european_channel: 'European required information'

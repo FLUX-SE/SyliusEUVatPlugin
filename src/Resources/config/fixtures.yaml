@@ -275,7 +275,7 @@ sylius_fixtures:
 #                logger: ~
 #
 #            fixtures:
-#                vies_plugin_european_channel:
+#                eu_vat_plugin_european_channel:
 #                    options:
 #                        custom:
 #                            default:

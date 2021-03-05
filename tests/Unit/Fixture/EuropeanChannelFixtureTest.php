@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Tests\Sylius\SyliusVIESClientPlugin\Unit\Fixture;
+namespace Tests\Sylius\SyliusEUVatPlugin\Unit\Fixture;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 use PHPUnit\Framework\TestCase;
-use Prometee\SyliusVIESClientPlugin\Fixture\EuropeanChannelFixture;
+use FluxSE\SyliusEUVatPlugin\Fixture\EuropeanChannelFixture;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\ExampleFactoryInterface;
 
 final class EuropeanChannelFixtureTest extends TestCase

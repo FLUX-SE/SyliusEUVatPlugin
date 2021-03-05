@@ -36,7 +36,7 @@
         
         <MixedArrayAccess>
             <errorLevel type="info">
-                <file name="src/DependencyInjection/PrometeeSyliusVIESClientExtension.php"/>
+                <file name="src/DependencyInjection/FluxSESyliusEUVatExtension.php"/>
             </errorLevel>
         </MixedArrayAccess>
     </issueHandlers>

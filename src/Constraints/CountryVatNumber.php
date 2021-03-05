@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Prometee\SyliusVIESClientPlugin\Constraints;
+namespace FluxSE\SyliusEUVatPlugin\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 
@@ -14,7 +14,7 @@ class CountryVatNumber extends Constraint
     public const CORRESPONDENCE_ERROR = '403';
 
     /** @var string */
-    public $message = 'prometee_sylius_vies_client.country_vat_number.invalid';
+    public $message = 'flux_se.sylius_eu_vat.country_vat_number.invalid';
 
     /** @var string */
     public $vatNumberPath = 'vatNumber';

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tests\Prometee\SyliusVIESClientPlugin\Application\Entity;
+namespace Tests\FluxSE\SyliusEUVatPlugin\Application\Entity;
 
-use Prometee\SyliusVIESClientPlugin\Entity\VATNumberAwareInterface;
+use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareInterface;
 use Sylius\Component\Core\Model\AddressInterface as BaseAddressInterface;
 
 interface AddressInterface extends BaseAddressInterface, VATNumberAwareInterface

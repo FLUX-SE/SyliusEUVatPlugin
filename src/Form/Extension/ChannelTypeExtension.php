@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Prometee\SyliusVIESClientPlugin\Form\Extension;
+namespace FluxSE\SyliusEUVatPlugin\Form\Extension;
 
 use Sylius\Bundle\AddressingBundle\Form\Type\CountryChoiceType;
 use Sylius\Bundle\AddressingBundle\Form\Type\ZoneChoiceType;
@@ -19,11 +19,11 @@ final class ChannelTypeExtension extends AbstractTypeExtension
     {
         $builder
             ->add('baseCountry', CountryChoiceType::class, [
-                'label' => 'prometee_sylius_vies_client.form.base_country',
+                'label' => 'flux_se.sylius_eu_vat.form.base_country',
                 'required' => false,
             ])
             ->add('europeanZone', ZoneChoiceType::class, [
-                'label' => 'prometee_sylius_vies_client.form.european_zone',
+                'label' => 'flux_se.sylius_eu_vat.form.european_zone',
                 'required' => false,
             ])
         ;

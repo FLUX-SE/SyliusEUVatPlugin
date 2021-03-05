@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Prometee\SyliusVIESClientPlugin\Form\Extension;
+namespace FluxSE\SyliusEUVatPlugin\Form\Extension;
 
 use Sylius\Bundle\AddressingBundle\Form\Type\AddressType;
 use Symfony\Component\Form\AbstractTypeExtension;
@@ -18,7 +18,7 @@ class VATNumberTypeExtension extends AbstractTypeExtension
     {
         $builder
             ->add('vatNumber', TextType::class, [
-                'label' => 'prometee_sylius_vies_client.form.vat_number',
+                'label' => 'flux_se.sylius_eu_vat.form.vat_number',
                 'required' => false,
             ]);
     }

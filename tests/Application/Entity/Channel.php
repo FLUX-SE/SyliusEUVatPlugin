@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Prometee\SyliusVIESClientPlugin\Application\Entity;
+namespace Tests\FluxSE\SyliusEUVatPlugin\Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Prometee\SyliusVIESClientPlugin\Entity\EuropeanChannelAwareTrait;
+use FluxSE\SyliusEUVatPlugin\Entity\EuropeanChannelAwareTrait;
 use Sylius\Component\Core\Model\Channel as BaseChannel;
 
 /**

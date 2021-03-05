@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Prometee\SyliusVIESClientPlugin\DependencyInjection;
+namespace FluxSE\SyliusEUVatPlugin\DependencyInjection;
 
 use Sylius\Bundle\CoreBundle\DependencyInjection\PrependDoctrineMigrationsTrait;
 use Symfony\Component\Config\FileLocator;
@@ -11,18 +11,18 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
-final class PrometeeSyliusVIESClientExtension extends Extension implements PrependExtensionInterface
+final class FluxSESyliusEUVatExtension extends Extension implements PrependExtensionInterface
 {
     use PrependDoctrineMigrationsTrait;
 
     protected function getMigrationsNamespace(): string
     {
-        return 'Prometee\SyliusVIESClientPlugin\Migrations';
+        return 'FluxSE\SyliusEUVatPlugin\Migrations';
     }
 
     protected function getMigrationsDirectory(): string
     {
-        return '@PrometeeSyliusVIESClientPlugin/Migrations';
+        return '@FluxSESyliusEUVatPlugin/Migrations';
     }
 
     protected function getNamespacesOfMigrationsExecutedBefore(): array
@@ -49,6 +49,6 @@ final class PrometeeSyliusVIESClientExtension extends Extension implements Prepe
 
     public function getAlias(): string
     {
-        return 'prometee_sylius_vies_client';
+        return 'flux_se_sylius_eu_vat';
     }
 }

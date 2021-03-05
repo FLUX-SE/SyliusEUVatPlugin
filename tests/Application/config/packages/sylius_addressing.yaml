@@ -2,4 +2,4 @@ sylius_addressing:
   resources:
     address:
       classes:
-        model: Tests\Prometee\SyliusVIESClientPlugin\Application\Entity\Address
+        model: Tests\FluxSE\SyliusEUVatPlugin\Application\Entity\Address

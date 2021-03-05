@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Prometee\SyliusVIESClientPlugin\Fixture\Factory;
+namespace FluxSE\SyliusEUVatPlugin\Fixture\Factory;
 
-use Prometee\SyliusVIESClientPlugin\Entity\EuropeanChannelAwareInterface;
+use FluxSE\SyliusEUVatPlugin\Entity\EuropeanChannelAwareInterface;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\AbstractExampleFactory;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\ExampleFactoryInterface;
 use Sylius\Bundle\CoreBundle\Fixture\OptionsResolver\LazyOption;

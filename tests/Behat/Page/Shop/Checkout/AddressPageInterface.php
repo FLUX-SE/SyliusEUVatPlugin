@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Prometee\SyliusVIESClientPlugin\Behat\Page\Shop\Checkout;
+namespace Tests\FluxSE\SyliusEUVatPlugin\Behat\Page\Shop\Checkout;
 
 use Sylius\Behat\Page\Shop\Checkout\AddressPageInterface as BaseAddressPageInterface;
 

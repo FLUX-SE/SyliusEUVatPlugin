@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Prometee\SyliusVIESClientPlugin\Application\Entity;
+namespace Tests\FluxSE\SyliusEUVatPlugin\Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Prometee\SyliusVIESClientPlugin\Entity\VATNumberAwareTrait;
+use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareTrait;
 use Sylius\Component\Core\Model\Address as BaseAddress;
 
 /**

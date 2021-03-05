@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Prometee\SyliusVIESClientPlugin\Applicator;
+namespace FluxSE\SyliusEUVatPlugin\Applicator;
 
 use InvalidArgumentException;
-use Prometee\SyliusVIESClientPlugin\Entity\EuropeanChannelAwareInterface;
-use Prometee\SyliusVIESClientPlugin\Entity\VATNumberAwareInterface;
+use FluxSE\SyliusEUVatPlugin\Entity\EuropeanChannelAwareInterface;
+use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareInterface;
 use Prometee\VIESClient\Util\VatNumberUtil;
 use Sylius\Component\Addressing\Model\ZoneInterface;
 use Sylius\Component\Core\Model\AddressInterface;

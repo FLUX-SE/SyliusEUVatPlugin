@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Tests\Prometee\SyliusVIESClientPlugin\Behat\Context\Ui\Shop\Checkout;
+namespace Tests\FluxSE\SyliusEUVatPlugin\Behat\Context\Ui\Shop\Checkout;
 
 use Behat\Behat\Context\Context;
 use FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException;
 use InvalidArgumentException;
 use Sylius\Behat\Service\SharedStorageInterface;
-use Tests\Prometee\SyliusVIESClientPlugin\Application\Entity\AddressInterface;
-use Tests\Prometee\SyliusVIESClientPlugin\Behat\Page\Shop\Checkout\AddressPageInterface;
+use Tests\FluxSE\SyliusEUVatPlugin\Application\Entity\AddressInterface;
+use Tests\FluxSE\SyliusEUVatPlugin\Behat\Page\Shop\Checkout\AddressPageInterface;
 use Webmozart\Assert\Assert;
 
 final class CheckoutAddressingContext implements Context

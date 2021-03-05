@@ -4,7 +4,7 @@
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![SymfonyInsight][ico-symfony-insight]][link-symfony-insight]
 
-# Sylius Plugin for VIES Client
+# EU VAT field and validation for Sylius using VIES API Webservice
 
 This plugin is adding :
 
@@ -35,7 +35,7 @@ This plugin is adding :
 ## Installation
 
 ```bash
-composer require prometee/sylius-vies-client-plugin
+composer require flux-se/sylius-eu-vat-plugin
 ```
 ## Configuration
 
@@ -48,7 +48,7 @@ Enable this plugin :
 
 return [
     // ...
-    Prometee\SyliusVIESClientPlugin\PrometeeSyliusVIESClientPlugin::class => ['all' => true],
+    FluxSE\SyliusEUVatPlugin\FluxSESyliusEUVatPlugin::class => ['all' => true],
     // ...
 ];
 ```
@@ -56,20 +56,20 @@ return [
 Add default config if you want to get access to the default fixtures this plugin need.
 
 ```yaml
-# config/packages/prometee_sylius_vies_client.yaml
+# config/packages/flux_se_sylius_eu_vat.yaml
 
 imports:
-    - { resource: "@PrometeeSyliusVIESClientPlugin/Resources/config/config.yaml" }
+    - { resource: "@FluxSESyliusEUVatPlugin/Resources/config/config.yaml" }
 
 ```
 
-Copy Sylius templates overridden in plugin to your templates directory (e.g `templates/bundles/`):
+Copy Sylius overridden templates to your templates directory (e.g `templates/bundles/`):
 
 ```bash
 mkdir -p templates/bundles/SyliusAdminBundle/
-cp -R vendor/prometee/sylius-vies-client-plugin/src/Resources/views/SyliusAdminBundle/* templates/bundles/SyliusAdminBundle/
+cp -R vendor/flux-se/sylius-eu-vat-plugin/src/Resources/views/SyliusAdminBundle/* templates/bundles/SyliusAdminBundle/
 mkdir -p templates/bundles/SyliusShopBundle/
-cp -R vendor/prometee/sylius-vies-client-plugin/src/Resources/views/SyliusShopBundle/* templates/bundles/SyliusShopBundle/
+cp -R vendor/flux-se/sylius-eu-vat-plugin/src/Resources/views/SyliusShopBundle/* templates/bundles/SyliusShopBundle/
 ```
 
 Update `Channel` entity : `src/Entity/Channel/Channel.php`
@@ -82,7 +82,7 @@ declare(strict_types=1);
 namespace App\Entity\Channel;
 
 use Doctrine\ORM\Mapping as ORM;
-use Prometee\SyliusVIESClientPlugin\Entity\EuropeanChannelAwareTrait;
+use FluxSE\SyliusEUVatPlugin\Entity\EuropeanChannelAwareTrait;
 use Sylius\Component\Core\Model\Channel as BaseChannel;
 
 /**
@@ -104,7 +104,7 @@ declare(strict_types=1);
 
 namespace App\Entity\Channel;
 
-use Prometee\SyliusVIESClientPlugin\Entity\EuropeanChannelAwareInterface;
+use FluxSE\SyliusEUVatPlugin\Entity\EuropeanChannelAwareInterface;
 use Sylius\Component\Core\Model\ChannelInterface as BaseChannelInterface;
 
 interface ChannelInterface extends BaseChannelInterface, EuropeanChannelAwareInterface
@@ -150,7 +150,7 @@ declare(strict_types=1);
 namespace App\Entity\Addressing;
 
 use Doctrine\ORM\Mapping as ORM;
-use Prometee\SyliusVIESClientPlugin\Entity\VATNumberAwareTrait;
+use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareTrait;
 use Sylius\Component\Core\Model\Address as BaseAddress;
 
 /**
@@ -172,7 +172,7 @@ declare(strict_types=1);
 
 namespace App\Entity\Addressing;
 
-use Prometee\SyliusVIESClientPlugin\Entity\VATNumberAwareInterface;
+use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareInterface;
 use Sylius\Component\Core\Model\AddressInterface as BaseAddressInterface;
 
 interface AddressInterface extends BaseAddressInterface, VATNumberAwareInterface
@@ -264,7 +264,7 @@ sylius_fixtures:
                                 customer: "john.doe@mycompany.com"
                                 vat_number: ~ # could also be "GB123456789"
             
-                vies_plugin_european_channel:
+                eu_vat_plugin_european_channel:
                     options:
                         custom:
                             default:
@@ -273,14 +273,14 @@ sylius_fixtures:
                                 european_zone: "EU" # Existing Zone code
 ``` 
 
-[ico-version]: https://img.shields.io/packagist/v/Prometee/sylius-vies-client-plugin.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/flux-se/sylius-eu-vat-plugin.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-github-actions]: https://github.com/Prometee/SyliusVIESClientPlugin/workflows/Build/badge.svg
-[ico-code-quality]: https://img.shields.io/scrutinizer/g/Prometee/SyliusVIESClientPlugin.svg?style=flat-square
+[ico-github-actions]: https://github.com/FLUX-SE/SyliusEUVatPlugin/workflows/Build/badge.svg
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/FLUX-SE/SyliusEUVatPlugin.svg?style=flat-square
 [ico-symfony-insight]: https://insight.symfony.com/projects/08c9f3db-7d34-487c-9c26-425a95fd9673/mini.svg
 
-[link-packagist]: https://packagist.org/packages/prometee/sylius-vies-client-plugin
-[link-github-actions]: https://github.com/Prometee/SyliusVIESClientPlugin/actions?query=workflow%3A"Build"
-[link-scrutinizer]: https://scrutinizer-ci.com/g/Prometee/SyliusVIESClientPlugin/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/Prometee/SyliusVIESClientPlugin
+[link-packagist]: https://packagist.org/packages/flux-se/sylius-eu-vat-plugin
+[link-github-actions]: https://github.com/FLUX-SE/SyliusEUVatPlugin/actions?query=workflow%3A"Build"
+[link-scrutinizer]: https://scrutinizer-ci.com/g/FLUX-SE/SyliusEUVatPlugin/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/FLUX-SE/SyliusEUVatPlugin
 [link-symfony-insight]: https://insight.symfony.com/projects/08c9f3db-7d34-487c-9c26-425a95fd9673

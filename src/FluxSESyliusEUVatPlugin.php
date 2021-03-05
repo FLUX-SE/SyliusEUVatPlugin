@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Prometee\SyliusVIESClientPlugin;
+namespace FluxSE\SyliusEUVatPlugin;
 
-use Prometee\SyliusVIESClientPlugin\DependencyInjection\Compiler\OrderItemsBasedStrategyCompilerPass;
-use Prometee\SyliusVIESClientPlugin\DependencyInjection\Compiler\OrderItemUnitsBasedStrategyCompilerPass;
+use FluxSE\SyliusEUVatPlugin\DependencyInjection\Compiler\OrderItemsBasedStrategyCompilerPass;
+use FluxSE\SyliusEUVatPlugin\DependencyInjection\Compiler\OrderItemUnitsBasedStrategyCompilerPass;
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class PrometeeSyliusVIESClientPlugin extends Bundle
+class FluxSESyliusEUVatPlugin extends Bundle
 {
     use SyliusPluginTrait;
 

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Prometee\SyliusVIESClientPlugin\Fixture\Factory;
+namespace FluxSE\SyliusEUVatPlugin\Fixture\Factory;
 
-use Prometee\SyliusVIESClientPlugin\Entity\VATNumberAwareInterface;
+use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareInterface;
 use Prometee\VIESClient\Helper\ViesHelperInterface;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\AddressExampleFactory as BaseAddressExampleFactory;
 use Sylius\Component\Core\Model\AddressInterface;

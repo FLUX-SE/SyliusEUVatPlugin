@@ -21,5 +21,5 @@ doctrine:
                 is_bundle: false
                 type: annotation
                 dir: '%kernel.project_dir%/Entity'
-                prefix: 'Tests\Prometee\SyliusVIESClientPlugin\Application\Entity'
+                prefix: 'Tests\FluxSE\SyliusEUVatPlugin\Application\Entity'
                 alias: App

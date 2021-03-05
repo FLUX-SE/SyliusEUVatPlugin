@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\Prometee\SyliusVIESClientPlugin\Behat\Context\Setup;
+namespace Tests\FluxSE\SyliusEUVatPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use Doctrine\Persistence\ObjectManager;
-use Prometee\SyliusVIESClientPlugin\Entity\EuropeanChannelAwareInterface;
+use FluxSE\SyliusEUVatPlugin\Entity\EuropeanChannelAwareInterface;
 use Sylius\Component\Addressing\Model\CountryInterface;
 use Sylius\Component\Addressing\Model\ZoneInterface;
 

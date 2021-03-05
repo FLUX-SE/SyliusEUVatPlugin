@@ -1,11 +1,11 @@
 services:
     
-    prometee.sylius_vies_client_plugin.form.extension.vatnumber:
-        class: Prometee\SyliusVIESClientPlugin\Form\Extension\VATNumberTypeExtension
+    flux_se.sylius_eu_vat_plugin.form.extension.vatnumber:
+        class: FluxSE\SyliusEUVatPlugin\Form\Extension\VATNumberTypeExtension
         tags:
             - { name: form.type_extension }
 
-    prometee.sylius_vies_client_plugin.form.extension.channel:
-        class: Prometee\SyliusVIESClientPlugin\Form\Extension\ChannelTypeExtension
+    flux_se.sylius_eu_vat_plugin.form.extension.channel:
+        class: FluxSE\SyliusEUVatPlugin\Form\Extension\ChannelTypeExtension
         tags:
             - { name: form.type_extension }

@@ -1,5 +1,5 @@
 services:
 
-    Prometee\SyliusVIESClientPlugin\Constraints\CountryVatNumberValidator:
+    FluxSE\SyliusEUVatPlugin\Constraints\CountryVatNumberValidator:
         tags:
             - { name: validator.constraint_validator }

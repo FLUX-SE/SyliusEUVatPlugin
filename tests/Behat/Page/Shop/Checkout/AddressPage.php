@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Prometee\SyliusVIESClientPlugin\Behat\Page\Shop\Checkout;
+namespace Tests\FluxSE\SyliusEUVatPlugin\Behat\Page\Shop\Checkout;
 
 use Behat\Mink\Exception\ElementNotFoundException;
 use Sylius\Behat\Page\Shop\Checkout\AddressPage as BaseAddressPage;

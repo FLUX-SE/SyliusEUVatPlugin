@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Prometee\SyliusVIESClientPlugin\Constraints;
+namespace FluxSE\SyliusEUVatPlugin\Constraints;
 
-use Prometee\SyliusVIESClientPlugin\Entity\VATNumberAwareInterface;
+use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareInterface;
 use Prometee\VIESClient\Util\VatNumberUtil;
 use Sylius\Component\Core\Model\AddressInterface;
 use Symfony\Component\Validator\Constraint;

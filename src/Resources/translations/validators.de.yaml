@@ -1,5 +1,6 @@
-prometee_sylius_vies_client:
-    country_vat_number:
-        invalid: 'Die angegebene USt-ID passt nicht zum ausgewählten Land.'
+flux_se:
+    sylius_eu_vat:
+        country_vat_number:
+            invalid: 'Die angegebene USt-ID passt nicht zum ausgewählten Land.'
 
 

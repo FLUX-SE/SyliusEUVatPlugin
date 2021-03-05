@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Prometee\SyliusVIESClientPlugin\Entity;
+namespace FluxSE\SyliusEUVatPlugin\Entity;
 
 interface VATNumberAwareInterface
 {

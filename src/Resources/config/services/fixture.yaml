@@ -1,35 +1,35 @@
 services:
-    prometee.sylius_vies_client_plugin.fixture.factory.european_channel_example:
+    flux_se.sylius_eu_vat_plugin.fixture.factory.european_channel_example:
         public: true
-        class: Prometee\SyliusVIESClientPlugin\Fixture\Factory\EuropeanChannelExampleFactory
+        class: FluxSE\SyliusEUVatPlugin\Fixture\Factory\EuropeanChannelExampleFactory
         arguments:
             $channelRepository: '@sylius.repository.channel'
             $countryRepository: '@sylius.repository.country'
             $zoneRepository: '@sylius.repository.zone'
     
-    prometee.sylius_viesclient_plugin.fixture.european_channel:
+    flux_se.sylius_eu_vat_plugin.fixture.european_channel:
         public: true
-        class: Prometee\SyliusVIESClientPlugin\Fixture\EuropeanChannelFixture
+        class: FluxSE\SyliusEUVatPlugin\Fixture\EuropeanChannelFixture
         arguments:
             $objectManager: '@sylius.manager.channel'
-            $exampleFactory: '@prometee.sylius_vies_client_plugin.fixture.factory.european_channel_example'
+            $exampleFactory: '@flux_se.sylius_eu_vat_plugin.fixture.factory.european_channel_example'
         tags:
             - { name: sylius_fixtures.fixture }
 
-    prometee.sylius_vies_client_plugin.fixture.factory.address_example:
+    flux_se.sylius_eu_vat_plugin.fixture.factory.address_example:
         public: true
-        class: Prometee\SyliusVIESClientPlugin\Fixture\Factory\AddressExampleFactory
+        class: FluxSE\SyliusEUVatPlugin\Fixture\Factory\AddressExampleFactory
         arguments:
             $addressFactory: '@sylius.factory.address'
             $countryRepository: '@sylius.repository.country'
             $customerRepository: '@sylius.repository.customer'
             $viesHelper: '@Prometee\VIESClient\Helper\ViesHelper'
 
-    prometee.sylius_viesclient_plugin.fixture.address:
+    flux_se.sylius_eu_vat_plugin.fixture.address:
         public: true
-        class: Prometee\SyliusVIESClientPlugin\Fixture\AddressFixture
+        class: FluxSE\SyliusEUVatPlugin\Fixture\AddressFixture
         arguments:
             $objectManager: '@sylius.manager.address'
-            $exampleFactory: '@prometee.sylius_vies_client_plugin.fixture.factory.address_example'
+            $exampleFactory: '@flux_se.sylius_eu_vat_plugin.fixture.factory.address_example'
         tags:
             - { name: sylius_fixtures.fixture }

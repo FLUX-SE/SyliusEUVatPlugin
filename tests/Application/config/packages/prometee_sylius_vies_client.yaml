@@ -1,2 +1,2 @@
 imports:
-  - { resource: "@PrometeeSyliusVIESClientPlugin/Resources/config/config.yaml" }
+  - { resource: "@FluxSESyliusEUVatPlugin/Resources/config/config.yaml" }
