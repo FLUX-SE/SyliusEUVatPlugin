@@ -2,7 +2,6 @@
 [![Software License][ico-license]](LICENSE)
 [![Build Status][ico-github-actions]][link-github-actions]
 [![Quality Score][ico-code-quality]][link-code-quality]
-[![SymfonyInsight][ico-symfony-insight]][link-symfony-insight]
 
 # EU VAT field and validation for Sylius using VIES API Webservice
 
@@ -277,10 +276,8 @@ sylius_fixtures:
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 [ico-github-actions]: https://github.com/FLUX-SE/SyliusEUVatPlugin/workflows/Build/badge.svg
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/FLUX-SE/SyliusEUVatPlugin.svg?style=flat-square
-[ico-symfony-insight]: https://insight.symfony.com/projects/08c9f3db-7d34-487c-9c26-425a95fd9673/mini.svg
 
 [link-packagist]: https://packagist.org/packages/flux-se/sylius-eu-vat-plugin
 [link-github-actions]: https://github.com/FLUX-SE/SyliusEUVatPlugin/actions?query=workflow%3A"Build"
 [link-scrutinizer]: https://scrutinizer-ci.com/g/FLUX-SE/SyliusEUVatPlugin/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/FLUX-SE/SyliusEUVatPlugin
-[link-symfony-insight]: https://insight.symfony.com/projects/08c9f3db-7d34-487c-9c26-425a95fd9673
