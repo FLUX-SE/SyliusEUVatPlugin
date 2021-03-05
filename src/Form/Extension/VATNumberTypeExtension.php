@@ -11,9 +11,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class VATNumberTypeExtension extends AbstractTypeExtension
 {
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -23,11 +20,8 @@ class VATNumberTypeExtension extends AbstractTypeExtension
             ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getExtendedTypes(): iterable
     {
-        yield AddressType::class;
+        return [AddressType::class];
     }
 }

@@ -29,11 +29,8 @@ final class ChannelTypeExtension extends AbstractTypeExtension
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public static function getExtendedTypes(): iterable
     {
-        yield ChannelType::class;
+        return [ChannelType::class];
     }
 }
