@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Sylius\SyliusEUVatPlugin\Unit\Fixture;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 use PHPUnit\Framework\TestCase;
 use FluxSE\SyliusEUVatPlugin\Fixture\EuropeanChannelFixture;
@@ -45,9 +45,6 @@ final class EuropeanChannelFixtureTest extends TestCase
         $this->assertPartialConfigurationIsInvalid([['custom' => [['base_country' => 'CUSTOM', 'channel' => 'CUSTOM']]]], 'custom.*.european_zone');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function getConfiguration(): EuropeanChannelFixture
     {
         return new EuropeanChannelFixture(
