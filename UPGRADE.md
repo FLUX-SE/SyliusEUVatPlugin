@@ -1,6 +1,6 @@
 # UPGRADE FROM `v1.0.8` TO `v1.1.0`
 
-* Execute this sql query to avoid retrying to add the `Migration` script :
+* Execute this sql query to avoid the `Migration` script to be re-added :
 
 ```mysql
 UPDATE sylius_migrations SET version="FluxSE\\SyliusEUVatPlugin\\Migrations\\Version20190507174705"
