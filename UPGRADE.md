@@ -11,6 +11,8 @@
   `flux_se.sylius_vies_client_plugin.*` to `flux_se.sylius_eu_vat.*`
 * **BC BREAK**: Rename translations name from
   `flux_se_sylius_vies_client.*` to `flux_se.sylius_eu_vat`
+* **BC BREAK**: Rename channel fixture name from
+  `vies_plugin_european_channel` to `eu_vat_plugin_european_channel`
 
 # UPGRADE FROM `v1.0.0` TO `v1.0.1`
 

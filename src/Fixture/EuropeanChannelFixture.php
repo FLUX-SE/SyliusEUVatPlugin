@@ -9,17 +9,11 @@ use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 class EuropeanChannelFixture extends AbstractResourceFixture
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): string
     {
-        return 'vies_plugin_european_channel';
+        return 'eu_vat_plugin_european_channel';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureResourceNode(ArrayNodeDefinition $resourceNode): void
     {
         $node = $resourceNode->children();

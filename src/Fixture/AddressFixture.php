@@ -14,9 +14,6 @@ class AddressFixture extends BaseAddressFixture
         return 'address_with_vat_number';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configureResourceNode(ArrayNodeDefinition $resourceNode): void
     {
         parent::configureResourceNode($resourceNode);
