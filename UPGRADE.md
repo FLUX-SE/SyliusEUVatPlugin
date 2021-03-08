@@ -1,5 +1,12 @@
 # UPGRADE FROM `v1.0.8` TO `v1.1.0`
 
+* Execute this sql query to avoid retrying to add the `Migration` script :
+
+```mysql
+UPDATE sylius_migrations SET version="FluxSE\\SyliusEUVatPlugin\\Migrations\\Version20190507174705"
+    WHERE version="Prometee\\SyliusVIESClientPlugin\\Migrations\\Version20190507174705";
+```
+
 * **BC BREAK**: Rename composer vendor name from
   `prometee\sylius-vies-client-plugin` to `flux-se\sylius-eu-vat-plugin`
 * **BC BREAK**: Rename the namespace vendor name from
