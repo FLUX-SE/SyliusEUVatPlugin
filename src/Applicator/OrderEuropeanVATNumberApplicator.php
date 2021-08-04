@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace FluxSE\SyliusEUVatPlugin\Applicator;
 
-use InvalidArgumentException;
 use FluxSE\SyliusEUVatPlugin\Entity\EuropeanChannelAwareInterface;
 use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareInterface;
+use InvalidArgumentException;
 use Prometee\VIESClient\Util\VatNumberUtil;
 use Sylius\Component\Addressing\Model\ZoneInterface;
 use Sylius\Component\Core\Model\AddressInterface;

@@ -54,10 +54,8 @@ class EuropeanChannelExampleFactory extends AbstractExampleFactory implements Ex
 
         $channel = $options['channel'] ?? null;
 
-        if ($channel === null) {
-            throw new ChannelNotFoundException(
-                'Channel has not been found, please create it before adding this fixture !'
-            );
+        if (null === $channel) {
+            throw new ChannelNotFoundException('Channel has not been found, please create it before adding this fixture !');
         }
 
         Assert::isInstanceOf($channel, EuropeanChannelAwareInterface::class);
