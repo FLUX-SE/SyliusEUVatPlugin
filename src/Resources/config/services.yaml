@@ -3,5 +3,5 @@ imports:
     - { resource: "services/fixture.yaml" }
     - { resource: "services/form.yaml" }
     - { resource: "services/listener.yaml" }
-    - { resource: "services/validators.yaml" }
+    - { resource: "services/validator.yaml" }
 
