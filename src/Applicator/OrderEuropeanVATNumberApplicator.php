@@ -152,6 +152,21 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
             return false;
         }
 
+        // Greece country ISO code is not 'GR'
+        if ($billingCountryCode === 'GR' && $vatCountryCode === 'EL') {
+            return true;
+        }
+
+        // Greece country ISO code is not 'GR'
+        if ($billingCountryCode === 'GR' && $vatCountryCode === 'EL') {
+            return true;
+        }
+        
+        // Northern Ireland exception
+        if ($billingCountryCode === 'GB' && $vatCountryCode === 'XI') {
+            return true;
+        }
+
         if ($billingCountryCode !== $baseCountry->getCode()) {
             return false;
         }
