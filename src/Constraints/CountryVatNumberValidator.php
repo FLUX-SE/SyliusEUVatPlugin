@@ -61,6 +61,11 @@ class CountryVatNumberValidator extends ConstraintValidator
             return 'GR';
         }
 
+        // Northern Ireland part of United Kingdom
+        if ('XI' === $vatNumberArr[0]) {
+            return 'GB';
+        }
+
         return $vatNumberArr[0];
     }
 }
