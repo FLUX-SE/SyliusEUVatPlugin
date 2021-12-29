@@ -30,4 +30,4 @@ default:
 
                 - flux_se.sylius_eu_vat.behat.context.ui.shop.checkout.adressing
             filters:
-                tags: "@checkout_with_vat && @ui"
+                tags: "@checkout_with_vat&&@ui"
