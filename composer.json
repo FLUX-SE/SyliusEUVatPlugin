@@ -32,15 +32,14 @@
         "phpstan/phpstan-strict-rules": "^0.12.0",
         "phpstan/phpstan-webmozart-assert": "0.12.12",
         "phpunit/phpunit": "^9.5",
-        "sylius-labs/coding-standard": "^4.0.2",
+        "sylius-labs/coding-standard": "^4.0",
         "symfony/browser-kit": "^4.4 || ^5.2",
         "symfony/debug-bundle": "^4.4 || ^5.2",
         "symfony/dotenv": "^4.4 || ^5.2",
         "symfony/intl": "^4.4 || ^5.2",
         "symfony/web-profiler-bundle": "^4.4 || ^5.2",
         "matthiasnoback/symfony-config-test": "^4.1",
-        "vimeo/psalm": "^4.6.4",
-        "friendsofsymfony/oauth-server-bundle": "^1.6 || >2.0.0-alpha.0 ^2.0@dev"
+        "vimeo/psalm": "^4.6.4"
     },
     "autoload": {
         "psr-4": { "FluxSE\\SyliusEUVatPlugin\\": "src/" }
@@ -52,26 +51,14 @@
         }
     },
     "scripts": {
-        "analyse": [
-            "@composer validate --strict",
-            "vendor/bin/phpstan.phar analyse -l max src/",
-            "vendor/bin/psalm"
-        ],
-        "analyse-with-ecs": [
-            "vendor/bin/ecs check src",
-            "@analyse"
-        ],
-        "fix": [
-            "vendor/bin/ecs check src --fix"
-        ],
         "post-install-cmd": [
-            "php bin/create_node_symlink.php"
+            "@php bin/create_node_symlink.php"
         ],
         "post-update-cmd": [
-            "php bin/create_node_symlink.php"
+            "@php bin/create_node_symlink.php"
         ],
         "post-create-project-cmd": [
-            "php bin/create_node_symlink.php"
+            "@php bin/create_node_symlink.php"
         ]
     }
 }

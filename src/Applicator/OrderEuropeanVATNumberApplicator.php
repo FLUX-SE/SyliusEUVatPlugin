@@ -73,14 +73,14 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
 
         $vatNumberArr = VatNumberUtil::split($billingVatNumber);
         $vatCountryCode = null === $vatNumberArr ? null : $vatNumberArr[0];
-        
+
         // Greece country ISO code is not 'GR'
-        if ($billingCountryCode === 'GR' && $vatCountryCode === 'EL') {
+        if ('GR' === $billingCountryCode && 'EL' === $vatCountryCode) {
             return true;
         }
-        
+
         // Northern Ireland exception
-        if ($billingCountryCode === 'GB' && $vatCountryCode === 'XI') {
+        if ('GB' === $billingCountryCode && 'XI' === $vatCountryCode) {
             return true;
         }
 
