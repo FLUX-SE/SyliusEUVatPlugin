@@ -8,6 +8,8 @@ use FluxSE\SyliusEUVatPlugin\Entity\EuropeanChannelAwareInterface;
 use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareInterface;
 use InvalidArgumentException;
 use Prometee\VIESClient\Util\VatNumberUtil;
+use Sylius\Component\Addressing\Matcher\ZoneMatcherInterface;
+use Sylius\Component\Addressing\Model\Scope;
 use Sylius\Component\Addressing\Model\ZoneInterface;
 use Sylius\Component\Core\Model\AddressInterface;
 use Sylius\Component\Core\Model\AdjustmentInterface;
@@ -18,6 +20,14 @@ use Webmozart\Assert\Assert;
 
 final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInterface
 {
+    /** @var ZoneMatcherInterface */
+    private $zoneMatcher;
+
+    public function __construct(ZoneMatcherInterface $zoneMatcher)
+    {
+        $this->zoneMatcher = $zoneMatcher;
+    }
+
     /**
      * {@inheritdoc}
      *
@@ -25,25 +35,23 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
      */
     public function apply(OrderInterface $order, ZoneInterface $zone): void
     {
-        $billingVatNumber = $this->extractSupportedBillingVatNumber($order);
-        if (null === $billingVatNumber) {
+        $billingAddress = $this->extractSupportedBillingAddress($order);
+        if (null === $billingAddress) {
             return;
         }
 
-        $billingCountryCode = $this->extractSupportedBillingCountryCode($order);
-        if (null === $billingCountryCode) {
+        $channel = $order->getChannel();
+        if (false === $channel instanceof EuropeanChannelAwareInterface) {
             return;
         }
 
-        $channel = $this->extractSupportedChannel($order->getChannel());
+        $channel = $this->extractSupportedChannel($channel);
         if (null === $channel) {
             return;
         }
 
         if (false === $this->isValidForZeroEuropeanVAT(
-            $billingVatNumber,
-            $billingCountryCode,
-            $zone,
+            $billingAddress,
             $channel
         )) {
             return;
@@ -58,16 +66,33 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
     }
 
     private function isValidForZeroEuropeanVAT(
-        string $billingVatNumber,
-        string $billingCountryCode,
-        ZoneInterface $zone,
+        VATNumberAwareInterface $billingAddress,
         EuropeanChannelAwareInterface $channel
     ): bool {
-        if (true === $this->isChannelSameCountryCode($channel, $billingCountryCode)) {
+        if (false === $billingAddress instanceof AddressInterface) {
             return false;
         }
 
-        if ($zone !== $channel->getEuropeanZone()) {
+        $billingCountryCode = $billingAddress->getCountryCode();
+        if (null === $billingCountryCode) {
+            return false;
+        }
+
+        if (true === $this->isBaseCountrySameAsCountryCode($channel, $billingCountryCode)) {
+            return false;
+        }
+
+        $channelEUZone = $channel->getEuropeanZone();
+        if (null === $channelEUZone) {
+            return false;
+        }
+
+        if (false === $this->addressBelongsToEUZone($billingAddress, $channelEUZone)) {
+            return false;
+        }
+
+        $billingVatNumber = $billingAddress->getVatNumber();
+        if (null === $billingVatNumber) {
             return false;
         }
 
@@ -84,22 +109,7 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
             return true;
         }
 
-        if ($billingCountryCode !== $vatCountryCode) {
-            return false;
-        }
-
-        return true;
-    }
-
-    private function extractSupportedBillingVatNumber(OrderInterface $order): ?string
-    {
-        $billingAddress = $this->extractSupportedBillingAddress($order);
-
-        if (null === $billingAddress) {
-            return null;
-        }
-
-        return $billingAddress->getVatNumber();
+        return $billingCountryCode === $vatCountryCode;
     }
 
     private function extractSupportedChannel(?ChannelInterface $channel): ?EuropeanChannelAwareInterface
@@ -131,29 +141,10 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
             return null;
         }
 
-        if (false === $billingAddress instanceof VATNumberAwareInterface) {
-            return null;
-        }
-
-        return $billingAddress;
+        return $billingAddress instanceof VATNumberAwareInterface ? $billingAddress : null;
     }
 
-    private function extractSupportedBillingCountryCode(OrderInterface $order): ?string
-    {
-        $billingAddress = $this->extractSupportedBillingAddress($order);
-
-        if (null === $billingAddress) {
-            return null;
-        }
-
-        if (false === $billingAddress instanceof AddressInterface) {
-            return null;
-        }
-
-        return $billingAddress->getCountryCode();
-    }
-
-    private function isChannelSameCountryCode(
+    private function isBaseCountrySameAsCountryCode(
         EuropeanChannelAwareInterface $channel,
         string $billingCountryCode
     ): bool {
@@ -162,10 +153,21 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
             return false;
         }
 
-        if ($billingCountryCode !== $baseCountry->getCode()) {
-            return false;
+        return $billingCountryCode === $baseCountry->getCode();
+    }
+
+    private function addressBelongsToEUZone(AddressInterface $address, ZoneInterface $channelEUZone): bool
+    {
+        $matchedZones = $this->zoneMatcher->matchAll($address, Scope::ALL);
+
+        $belongsToEUZone = false;
+        /** @var ZoneInterface $matchedZone */
+        foreach ($matchedZones as $matchedZone) {
+            if ($matchedZone === $channelEUZone) {
+                $belongsToEUZone = true;
+            }
         }
 
-        return true;
+        return $belongsToEUZone;
     }
 }

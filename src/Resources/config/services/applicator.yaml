@@ -1,3 +1,5 @@
 services:
     flux_se.sylius_eu_vat_plugin.applicator.order_european_vatnumber_applicator:
         class: FluxSE\SyliusEUVatPlugin\Applicator\OrderEuropeanVATNumberApplicator
+        arguments:
+            $zoneMatcher: '@sylius.zone_matcher'
