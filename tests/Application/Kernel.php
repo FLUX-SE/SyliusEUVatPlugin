@@ -58,7 +58,7 @@ final class Kernel extends BaseKernel
         }
     }
 
-    private function configureRoutes(RoutingConfigurator $routes): void
+    private function configureRoutes($routes): void
     {
         foreach ($this->getConfigurationDirectories() as $confDir) {
             $this->loadRoutesConfiguration($routes, $confDir);
@@ -87,11 +87,17 @@ final class Kernel extends BaseKernel
         $loader->load($confDir . '/{services}_' . $this->environment . self::CONFIG_EXTS, 'glob');
     }
 
-    private function loadRoutesConfiguration(RoutingConfigurator $routes, string $confDir): void
+    private function loadRoutesConfiguration($routes, string $confDir): void
     {
-        $routes->import($confDir . '/{routes}/*' . self::CONFIG_EXTS);
-        $routes->import($confDir . '/{routes}/' . $this->environment . '/**/*' . self::CONFIG_EXTS);
-        $routes->import($confDir . '/{routes}' . self::CONFIG_EXTS);
+        if ($routes instanceof RoutingConfigurator) {
+            $routes->import($confDir . '/{routes}/*' . self::CONFIG_EXTS);
+            $routes->import($confDir . '/{routes}/' . $this->environment . '/**/*' . self::CONFIG_EXTS);
+            $routes->import($confDir . '/{routes}' . self::CONFIG_EXTS);
+        } else {
+            $routes->import($confDir . '/{routes}/*' . self::CONFIG_EXTS, '/', 'glob');
+            $routes->import($confDir . '/{routes}/' . $this->environment . '/**/*' . self::CONFIG_EXTS, '/', 'glob');
+            $routes->import($confDir . '/{routes}' . self::CONFIG_EXTS, '/', 'glob');
+        }
     }
 
     /**
