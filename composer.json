@@ -40,7 +40,8 @@
         "symfony/intl": "^4.4|^5.4|^6.0",
         "symfony/web-profiler-bundle": "^4.4|^5.4|^6.0",
         "vimeo/psalm": "^4.6.4",
-        "symfony/webpack-encore-bundle": "^1.16"
+        "symfony/webpack-encore-bundle": "^1.16",
+        "matthiasnoback/symfony-config-test": "^4.3"
     },
     "autoload": {
         "psr-4": { "FluxSE\\SyliusEUVatPlugin\\": "src/" }
