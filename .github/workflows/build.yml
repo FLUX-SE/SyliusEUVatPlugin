@@ -29,8 +29,8 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php: ["8.0"]
-                symfony: ["^4.4", "^5.4"]
+                php: [8.0]
+                symfony: [^4.4, ^5.4, ^6.0]
 
         steps:
             -
@@ -43,15 +43,15 @@ jobs:
                     php-version: "${{ matrix.php }}"
                     ini-values: date.timezone=Europe/Paris, opcache.enable=1, opcache.enable_cli=0, opcache.memory_consumption=512, opcache.max_accelerated_files=65407, opcache.interned_strings_buffer=8, opcache.validate_timestamps=0, opcache.save_comments=1, opcache.fast_shutdown=0
                     extensions: intl, gd, opcache, mysql, pdo_mysql
-                    tools: symfony
+                    tools: flex,symfony
                     coverage: none
 
             -
-                name: Restrict Symfony version
+                name: Configure global composer
                 if: matrix.symfony != ''
                 run: |
-                    composer global require --no-progress --no-scripts --no-plugins "symfony/flex:^1.10"
-                    composer config extra.symfony.require "${{ matrix.symfony }}"
+                    composer global config --no-plugins allow-plugins.symfony/flex true
+                    composer global require --no-progress --no-scripts --no-plugins "symfony/flex"
             -
                 name: Get Composer cache directory
                 id: composer-cache
@@ -68,6 +68,8 @@ jobs:
             -
                 name: Install PHP dependencies
                 run: composer update --no-interaction --no-scripts
+                env:
+                    SYMFONY_REQUIRE: ${{ matrix.symfony }}
                 id: end-of-setup
 
             -
@@ -97,7 +99,7 @@ jobs:
 
             -
                 name: Run PHPStan
-                run: vendor/bin/phpstan analyse -l max src
+                run: vendor/bin/phpstan analyse
                 if: always() && steps.end-of-setup.outcome == 'success'
     tests:
         runs-on: ubuntu-latest
@@ -108,9 +110,9 @@ jobs:
             fail-fast: false
             matrix:
                 php: [7.3, 7.4, 8.0]
-                symfony: [^4.4, ^5.4]
-                sylius: [~1.8.0, ~1.9.0, ~1.10.0]
-                node: [10.x]
+                symfony: [^4.4, ^5.4, ^6.0]
+                sylius: [~1.8.0, ~1.9.0, ~1.10.0, ~1.11.0, ~1.12.0]
+                node: [18.x]
                 mysql: [5.7]
 
                 exclude:
@@ -126,6 +128,15 @@ jobs:
                     -
                         sylius: ~1.10.0
                         php: 7.3
+                    -
+                        sylius: ~1.11.0
+                        php: 7.3
+                    -
+                        sylius: ~1.11.0
+                        php: 7.4
+                    -
+                        sylius: ~1.11.0
+                        symfony: ^4.4
 
         env:
             APP_ENV: test
@@ -141,7 +152,7 @@ jobs:
                 with:
                     php-version: "${{ matrix.php }}"
                     extensions: intl
-                    tools: symfony
+                    tools: flex,symfony
                     coverage: none
 
             -
@@ -191,11 +202,12 @@ jobs:
                     restore-keys: |
                         ${{ runner.os }}-php-${{ matrix.php }}-composer-
             -
-                name: Restrict Symfony version
+                name: Configure global composer
                 if: matrix.symfony != ''
                 run: |
-                    composer global require --no-progress --no-scripts --no-plugins "symfony/flex:^1.10"
-                    composer config extra.symfony.require "${{ matrix.symfony }}"
+                    composer global config --no-plugins allow-plugins.symfony/flex true
+                    composer global require --no-progress --no-scripts --no-plugins "symfony/flex"
+
             -
                 name: Restrict Sylius version
                 if: matrix.sylius != ''
@@ -222,6 +234,8 @@ jobs:
             -
                 name: Install PHP dependencies
                 run: composer install --no-interaction
+                env:
+                    SYMFONY_REQUIRE: ${{ matrix.symfony }}
 
             -
                 name: Get Yarn cache directory
