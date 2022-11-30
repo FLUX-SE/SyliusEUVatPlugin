@@ -61,5 +61,12 @@
         "post-create-project-cmd": [
             "@php bin/create_node_symlink.php"
         ]
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true,
+            "symfony/thanks": true
+        }
     }
 }
