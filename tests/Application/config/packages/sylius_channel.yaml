@@ -2,4 +2,4 @@ sylius_channel:
   resources:
     channel:
       classes:
-        model: Tests\FluxSE\SyliusEUVatPlugin\Application\Entity\Channel
+        model: Tests\FluxSE\SyliusEUVatPlugin\App\Entity\Channel
