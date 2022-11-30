@@ -8,7 +8,7 @@ use Behat\Behat\Context\Context;
 use FriendsOfBehat\PageObjectExtension\Page\UnexpectedPageException;
 use InvalidArgumentException;
 use Sylius\Behat\Service\SharedStorageInterface;
-use Tests\FluxSE\SyliusEUVatPlugin\Application\Entity\AddressInterface;
+use Tests\FluxSE\SyliusEUVatPlugin\App\Entity\AddressInterface;
 use Tests\FluxSE\SyliusEUVatPlugin\Behat\Page\Shop\Checkout\AddressPageInterface;
 use Webmozart\Assert\Assert;
 
