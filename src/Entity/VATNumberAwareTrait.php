@@ -18,17 +18,11 @@ trait VATNumberAwareTrait
      */
     protected $vatNumber;
 
-    /**
-     * {@inheritdoc}
-     */
     public function getVatNumber(): ?string
     {
         return $this->vatNumber;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setVatNumber(?string $vatNumber): void
     {
         if (null !== $vatNumber) {
@@ -38,11 +32,8 @@ trait VATNumberAwareTrait
         $this->vatNumber = $vatNumber;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function hasVatNumber(): bool
     {
-        return !empty($this->getVatNumber());
+        return $this->vatNumber !== null && $this->vatNumber !== '';
     }
 }

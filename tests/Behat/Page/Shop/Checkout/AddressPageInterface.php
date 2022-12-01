@@ -8,13 +8,7 @@ use Sylius\Behat\Page\Shop\Checkout\AddressPageInterface as BaseAddressPageInter
 
 interface AddressPageInterface extends BaseAddressPageInterface
 {
-    /**
-     * @param string $vatNumber
-     */
-    public function specifyShippingVatNumber($vatNumber);
+    public function specifyShippingVatNumber(string $vatNumber): void;
 
-    /**
-     * @param string $vatNumber
-     */
-    public function specifyBillingVatNumber($vatNumber);
+    public function specifyBillingVatNumber(string $vatNumber): void;
 }

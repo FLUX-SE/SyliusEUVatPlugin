@@ -17,20 +17,24 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Webmozart\Assert\Assert;
 
-class EuropeanChannelExampleFactory extends AbstractExampleFactory implements ExampleFactoryInterface
+class EuropeanChannelExampleFactory extends AbstractExampleFactory
 {
     /** @var ChannelRepositoryInterface */
     private $channelRepository;
 
-    /** @var RepositoryInterface */
+    /** @var RepositoryInterface<CountryInterface> */
     private $countryRepository;
 
-    /** @var RepositoryInterface */
+    /** @var RepositoryInterface<ZoneInterface> */
     private $zoneRepository;
 
     /** @var OptionsResolver */
     private $optionsResolver;
 
+    /**
+     * @param RepositoryInterface<CountryInterface> $countryRepository
+     * @param RepositoryInterface<ZoneInterface> $zoneRepository
+     */
     public function __construct(
         ChannelRepositoryInterface $channelRepository,
         RepositoryInterface $countryRepository,

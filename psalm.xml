@@ -20,30 +20,15 @@
             </errorLevel>
         </MixedArgument>
 
-        <MixedAssignment>
-            <errorLevel type="info">
-                <file name="src/DependencyInjection/Compiler/OrderItemUnitsBasedStrategyCompilerPass.php"/>
-                <file name="src/DependencyInjection/Compiler/OrderItemsBasedStrategyCompilerPass.php"/>
-            </errorLevel>
-        </MixedAssignment>
-
-        <MixedArrayAssignment>
-            <errorLevel type="info">
-                <file name="src/DependencyInjection/Compiler/OrderItemUnitsBasedStrategyCompilerPass.php"/>
-                <file name="src/DependencyInjection/Compiler/OrderItemsBasedStrategyCompilerPass.php"/>
-            </errorLevel>
-        </MixedArrayAssignment>
-        
-        <MixedArrayAccess>
-            <errorLevel type="info">
-                <file name="src/DependencyInjection/FluxSESyliusEUVatExtension.php"/>
-            </errorLevel>
-        </MixedArrayAccess>
-
         <PropertyNotSetInConstructor>
             <errorLevel type="info">
                 <file name="src/Constraints/CountryVatNumber.php"/>
             </errorLevel>
         </PropertyNotSetInConstructor>
+        <InvalidArgument>
+            <errorLevel type="info">
+                <file name="src/Fixture/Factory/EuropeanChannelExampleFactory.php" />
+            </errorLevel>
+        </InvalidArgument>
     </issueHandlers>
 </psalm>
