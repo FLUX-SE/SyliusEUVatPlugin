@@ -7,7 +7,9 @@ namespace FluxSE\SyliusEUVatPlugin\Fixture\Factory;
 use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareInterface;
 use Prometee\VIESClient\Helper\ViesHelperInterface;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\AddressExampleFactory as BaseAddressExampleFactory;
+use Sylius\Component\Addressing\Model\CountryInterface;
 use Sylius\Component\Core\Model\AddressInterface;
+use Sylius\Component\Core\Model\CustomerInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,6 +19,15 @@ class AddressExampleFactory extends BaseAddressExampleFactory
     /** @var ViesHelperInterface */
     private $viesHelper;
 
+    /**
+     * @param FactoryInterface<VATNumberAwareInterface> $addressFactory
+     * @param RepositoryInterface<CountryInterface> $countryRepository
+     * @param RepositoryInterface<CustomerInterface> $customerRepository
+     *
+     * @psalm-param FactoryInterface $addressFactory
+     * @psalm-param RepositoryInterface $countryRepository
+     * @psalm-param RepositoryInterface $customerRepository
+     */
     public function __construct(
         FactoryInterface $addressFactory,
         RepositoryInterface $countryRepository,

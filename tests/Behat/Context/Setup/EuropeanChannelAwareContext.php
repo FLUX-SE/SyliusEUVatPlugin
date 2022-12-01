@@ -24,7 +24,7 @@ final class EuropeanChannelAwareContext implements Context
      * @Given /^(its) based in the ("[^"]+" country) and allow VAT numbers for the ("[^"]+" zone)$/
      * @Given /^(this channel) is based in the ("[^"]+" country) and allow VAT numbers for the ("[^"]+" zone)$/
      */
-    public function itsBasedInAndAllowVATNumbersForTheZone(EuropeanChannelAwareInterface $channel, CountryInterface $baseCountry, ZoneInterface $europeanZone)
+    public function itsBasedInAndAllowVATNumbersForTheZone(EuropeanChannelAwareInterface $channel, CountryInterface $baseCountry, ZoneInterface $europeanZone): void
     {
         $channel->setBaseCountry($baseCountry);
         $channel->setEuropeanZone($europeanZone);

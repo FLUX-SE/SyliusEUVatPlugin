@@ -9,9 +9,6 @@ use Sylius\Behat\Page\Shop\Checkout\AddressPage as BaseAddressPage;
 
 class AddressPage extends BaseAddressPage implements AddressPageInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
@@ -20,22 +17,12 @@ class AddressPage extends BaseAddressPage implements AddressPageInterface
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @throws ElementNotFoundException
-     */
-    public function specifyShippingVatNumber($vatNumber)
+    public function specifyShippingVatNumber(string $vatNumber): void
     {
         $this->getElement('shipping_vat_number')->setValue($vatNumber);
     }
 
-    /**
-     * {@inheritdoc}
-     *
-     * @throws ElementNotFoundException
-     */
-    public function specifyBillingVatNumber($vatNumber)
+    public function specifyBillingVatNumber(string $vatNumber): void
     {
         $this->getElement('billing_vat_number')->setValue($vatNumber);
     }

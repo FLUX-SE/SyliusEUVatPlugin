@@ -31,7 +31,7 @@ final class CheckoutAddressingContext implements Context
     /**
      * @Given /^I specify the shipping vat number as "([^"]+)"$/
      */
-    public function iSpecifyTheShippingVatNumberAs($vatNumber)
+    public function iSpecifyTheShippingVatNumberAs(string $vatNumber): void
     {
         $this->addressPage->specifyShippingVatNumber($vatNumber);
     }
@@ -39,7 +39,7 @@ final class CheckoutAddressingContext implements Context
     /**
      * @Given /^I specify the billing vat number as "([^"]+)"$/
      */
-    public function iSpecifyTheBillingVatNumberAs($vatNumber)
+    public function iSpecifyTheBillingVatNumberAs(string $vatNumber): void
     {
         $this->addressPage->specifyBillingVatNumber($vatNumber);
     }
@@ -47,7 +47,7 @@ final class CheckoutAddressingContext implements Context
     /**
      * @Then /^I should be notified that the vat number in (shipping|billing) details is not corresponding with the selected country$/
      */
-    public function iShouldBeNotifiedThatTheInShippingDetailsIsNotCorrespondingWithTheSelectedCountry($type)
+    public function iShouldBeNotifiedThatTheInShippingDetailsIsNotCorrespondingWithTheSelectedCountry(string $type): void
     {
         $this->assertElementValidationMessage($type, 'vat number', 'This VAT number does not correspond to the selected country');
     }
@@ -55,19 +55,12 @@ final class CheckoutAddressingContext implements Context
     /**
      * @Then /^I should be notified that the vat number in (shipping|billing) details is not valid$/
      */
-    public function iShouldBeNotifiedThatTheInShippingDetailsIsNotValid($type)
+    public function iShouldBeNotifiedThatTheInShippingDetailsIsNotValid(string $type): void
     {
         $this->assertElementValidationMessage($type, 'vat number', 'Invalid VAT Number');
     }
 
-    /**
-     * @param string $type
-     * @param string $element
-     * @param string $expectedMessage
-     *
-     * @throws InvalidArgumentException
-     */
-    private function assertElementValidationMessage($type, $element, $expectedMessage)
+    private function assertElementValidationMessage(string $type, string $element, string $expectedMessage): void
     {
         $element = sprintf('%s_%s', $type, str_replace(' ', '_', $element));
         Assert::true($this->addressPage->checkValidationMessageFor($element, $expectedMessage));
@@ -75,10 +68,8 @@ final class CheckoutAddressingContext implements Context
 
     /**
      * @When /^I specified the shipping (address as "[^"]+", "[^"]+", "[^"]+", "[^"]+" for "[^"]+") with VAT number "([^"]+)"$/
-     *
-     * @throws UnexpectedPageException
      */
-    public function iSpecifiedTheShippingAddressWithVATNumber(AddressInterface $address, string $vatNumber)
+    public function iSpecifiedTheShippingAddressWithVATNumber(AddressInterface $address, string $vatNumber): void
     {
         $address->setVatNumber($vatNumber);
 
