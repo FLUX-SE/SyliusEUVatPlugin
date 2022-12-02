@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "prometee/vies-client-bundle": "^1.0",
+        "prometee/vies-client-bundle": "^2.0",
         "sylius/sylius": "^1.5"
     },
     "require-dev": {
