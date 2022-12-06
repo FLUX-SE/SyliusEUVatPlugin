@@ -6,7 +6,6 @@ namespace FluxSE\SyliusEUVatPlugin\Fixture\Factory;
 
 use FluxSE\SyliusEUVatPlugin\Entity\EuropeanChannelAwareInterface;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\AbstractExampleFactory;
-use Sylius\Bundle\CoreBundle\Fixture\Factory\ExampleFactoryInterface;
 use Sylius\Bundle\CoreBundle\Fixture\OptionsResolver\LazyOption;
 use Sylius\Component\Addressing\Model\CountryInterface;
 use Sylius\Component\Addressing\Model\ZoneInterface;

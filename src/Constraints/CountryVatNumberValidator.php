@@ -13,6 +13,9 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 class CountryVatNumberValidator extends ConstraintValidator
 {
+    /**
+     * @param mixed $value
+     */
     public function validate($value, Constraint $constraint): void
     {
         if (!$constraint instanceof CountryVatNumber) {

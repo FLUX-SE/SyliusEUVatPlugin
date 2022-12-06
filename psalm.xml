@@ -20,14 +20,10 @@
             </errorLevel>
         </MixedArgument>
 
-        <PropertyNotSetInConstructor>
-            <errorLevel type="info">
-                <file name="src/Constraints/CountryVatNumber.php"/>
-            </errorLevel>
-        </PropertyNotSetInConstructor>
         <InvalidArgument>
             <errorLevel type="info">
                 <file name="src/Fixture/Factory/EuropeanChannelExampleFactory.php" />
+                <file name="src/Fixture/Factory/AddressExampleFactory.php" />
             </errorLevel>
         </InvalidArgument>
     </issueHandlers>

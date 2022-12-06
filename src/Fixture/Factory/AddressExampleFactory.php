@@ -23,10 +23,6 @@ class AddressExampleFactory extends BaseAddressExampleFactory
      * @param FactoryInterface<VATNumberAwareInterface> $addressFactory
      * @param RepositoryInterface<CountryInterface> $countryRepository
      * @param RepositoryInterface<CustomerInterface> $customerRepository
-     *
-     * @psalm-param FactoryInterface $addressFactory
-     * @psalm-param RepositoryInterface $countryRepository
-     * @psalm-param RepositoryInterface $customerRepository
      */
     public function __construct(
         FactoryInterface $addressFactory,
