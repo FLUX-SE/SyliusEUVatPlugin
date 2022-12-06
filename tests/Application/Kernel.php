@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tests\FluxSE\SyliusEUVatPlugin\Application;
 
 use PSS\SymfonyMockerContainer\DependencyInjection\MockerContainer;
-use Sylius\Bundle\CoreBundle\Application\Kernel as SyliusKernel;
+use Sylius\Bundle\CoreBundle\SyliusCoreBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Resource\FileResource;
@@ -14,6 +14,9 @@ use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
+/**
+ * @property string $environment
+ */
 final class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
@@ -58,7 +61,7 @@ final class Kernel extends BaseKernel
         }
     }
 
-    private function configureRoutes($routes): void
+    private function configureRoutes(RoutingConfigurator $routes): void
     {
         foreach ($this->getConfigurationDirectories() as $confDir) {
             $this->loadRoutesConfiguration($routes, $confDir);
@@ -87,17 +90,11 @@ final class Kernel extends BaseKernel
         $loader->load($confDir . '/{services}_' . $this->environment . self::CONFIG_EXTS, 'glob');
     }
 
-    private function loadRoutesConfiguration($routes, string $confDir): void
+    private function loadRoutesConfiguration(RoutingConfigurator $routes, string $confDir): void
     {
-        if ($routes instanceof RoutingConfigurator) {
-            $routes->import($confDir . '/{routes}/*' . self::CONFIG_EXTS);
-            $routes->import($confDir . '/{routes}/' . $this->environment . '/**/*' . self::CONFIG_EXTS);
-            $routes->import($confDir . '/{routes}' . self::CONFIG_EXTS);
-        } else {
-            $routes->import($confDir . '/{routes}/*' . self::CONFIG_EXTS, '/', 'glob');
-            $routes->import($confDir . '/{routes}/' . $this->environment . '/**/*' . self::CONFIG_EXTS, '/', 'glob');
-            $routes->import($confDir . '/{routes}' . self::CONFIG_EXTS, '/', 'glob');
-        }
+        $routes->import($confDir . '/{routes}/*' . self::CONFIG_EXTS);
+        $routes->import($confDir . '/{routes}/' . $this->environment . '/**/*' . self::CONFIG_EXTS);
+        $routes->import($confDir . '/{routes}' . self::CONFIG_EXTS);
     }
 
     /**
@@ -105,6 +102,7 @@ final class Kernel extends BaseKernel
      */
     private function registerBundlesFromFile(string $bundlesFile): iterable
     {
+        /** @var array $contents */
         $contents = require $bundlesFile;
         foreach ($contents as $class => $envs) {
             if (isset($envs['all']) || isset($envs[$this->environment])) {
@@ -119,7 +117,7 @@ final class Kernel extends BaseKernel
     private function getConfigurationDirectories(): iterable
     {
         yield $this->getProjectDir() . '/config';
-        $syliusConfigDir = $this->getProjectDir() . '/config/sylius/' . SyliusKernel::MAJOR_VERSION . '.' . SyliusKernel::MINOR_VERSION;
+        $syliusConfigDir = $this->getProjectDir() . '/config/sylius/' . SyliusCoreBundle::MAJOR_VERSION . '.' . SyliusCoreBundle::MINOR_VERSION;
         if (is_dir($syliusConfigDir)) {
             yield $syliusConfigDir;
         }
