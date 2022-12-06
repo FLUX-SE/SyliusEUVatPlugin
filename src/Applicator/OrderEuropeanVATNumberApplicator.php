@@ -29,7 +29,7 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      *
      * @throws InvalidArgumentException
      */
