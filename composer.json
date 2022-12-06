@@ -16,10 +16,10 @@
     "require-dev": {
         "ext-json": "*",
         "behat/behat": "^3.7",
-        "behat/mink": "^1.10",
+        "behat/mink": "^1.9",
         "dmore/behat-chrome-extension": "^1.4",
         "dmore/chrome-mink-driver": "^2.8",
-        "friends-of-behat/mink": "^1.8",
+        "friends-of-behat/mink": "^1.9",
         "friends-of-behat/mink-browserkit-driver": "^1.4",
         "friends-of-behat/mink-debug-extension": "^2.0",
         "friends-of-behat/mink-extension": "^2.4",
