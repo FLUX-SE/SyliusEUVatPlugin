@@ -49,7 +49,7 @@ class EuropeanChannelExampleFactory extends AbstractExampleFactory
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function create(array $options = []): EuropeanChannelAwareInterface
     {
@@ -79,7 +79,7 @@ class EuropeanChannelExampleFactory extends AbstractExampleFactory
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     protected function configureOptions(OptionsResolver $resolver): void
     {

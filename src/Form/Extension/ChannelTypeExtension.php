@@ -13,7 +13,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 final class ChannelTypeExtension extends AbstractTypeExtension
 {
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {

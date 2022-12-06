@@ -17,7 +17,8 @@ class VATNumberTypeExtension extends AbstractTypeExtension
             ->add('vatNumber', TextType::class, [
                 'label' => 'flux_se.sylius_eu_vat.form.vat_number',
                 'required' => false,
-            ]);
+            ])
+        ;
     }
 
     public static function getExtendedTypes(): iterable

@@ -36,7 +36,7 @@ final class FluxSESyliusEUVatExtension extends Extension implements PrependExten
     {
         $loader = new YamlFileLoader(
             $container,
-            new FileLocator(__DIR__.'/../Resources/config')
+            new FileLocator(__DIR__ . '/../Resources/config')
         );
 
         $loader->load('services.yaml');

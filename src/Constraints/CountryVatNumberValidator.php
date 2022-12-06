@@ -39,7 +39,8 @@ class CountryVatNumberValidator extends ConstraintValidator
             $this->context->buildViolation($constraint->message)
                 ->setCode($constraint::CORRESPONDENCE_ERROR)
                 ->atPath($constraint->vatNumberPath)
-                ->addViolation();
+                ->addViolation()
+            ;
         }
     }
 
