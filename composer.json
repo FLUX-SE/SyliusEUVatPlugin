@@ -40,7 +40,7 @@
         "symfony/intl": "^5.4|^6.0",
         "symfony/runtime": "^5.4|^6.0",
         "symfony/web-profiler-bundle": "^5.4|^6.0",
-        "vimeo/psalm": "^5.0.0",
+        "vimeo/psalm": "^4|^5",
         "symfony/webpack-encore-bundle": "^1.16",
         "matthiasnoback/symfony-config-test": "^4.3"
     },
