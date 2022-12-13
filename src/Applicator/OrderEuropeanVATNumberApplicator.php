@@ -16,7 +16,6 @@ use Sylius\Component\Core\Model\AdjustmentInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Taxation\Applicator\OrderTaxesApplicatorInterface;
-use Webmozart\Assert\Assert;
 
 final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInterface
 {
@@ -57,12 +56,7 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
             return;
         }
 
-        foreach ($order->getItems() as $item) {
-            $quantity = $item->getQuantity();
-            Assert::notSame($quantity, 0, 'Cannot apply tax to order item with 0 quantity.');
-
-            $item->removeAdjustmentsRecursively(AdjustmentInterface::TAX_ADJUSTMENT);
-        }
+        $order->removeAdjustmentsRecursively(AdjustmentInterface::TAX_ADJUSTMENT);
     }
 
     private function isValidForZeroEuropeanVAT(
