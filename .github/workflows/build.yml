@@ -53,8 +53,8 @@ jobs:
                     composer global require --no-progress --no-scripts --no-plugins "symfony/flex"
             -
                 name: Get Composer cache directory
+                run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
                 id: composer-cache
-                run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
             -
                 name: Cache Composer
@@ -189,17 +189,17 @@ jobs:
                 run: symfony server:ca:install
 
             -
-                name: Run Chrome Headless
-                run: google-chrome-stable --enable-automation --disable-background-networking --no-default-browser-check --no-first-run --disable-popup-blocking --disable-default-apps --allow-insecure-localhost --disable-translate --disable-extensions --no-sandbox --enable-features=Metal --headless --remote-debugging-port=9222 --window-size=2880,1800 --proxy-server='direct://' --proxy-bypass-list='*' https://127.0.0.1 > /dev/null 2>&1 &
-
-            -
                 name: Run webserver
                 run: (cd tests/Application && symfony server:start --port=8080 --dir=public --daemon)
 
             -
+                name: Run Chrome Headless
+                run: google-chrome-stable --enable-automation --disable-background-networking --no-default-browser-check --no-first-run --disable-popup-blocking --disable-default-apps --allow-insecure-localhost --disable-features=Translate --disable-extensions --no-sandbox --enable-features=Metal --headless --remote-debugging-port=9222 --window-size=2880,1800 https://127.0.0.1 > /dev/null 2>&1 &
+
+            -
                 name: Get Composer cache directory
+                run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
                 id: composer-cache
-                run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
             -
                 name: Cache Composer
@@ -209,6 +209,7 @@ jobs:
                     key: ${{ runner.os }}-php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json **/composer.lock') }}
                     restore-keys: |
                         ${{ runner.os }}-php-${{ matrix.php }}-composer-
+
             -
                 name: Configure global composer
                 if: matrix.symfony != ''
@@ -238,7 +239,7 @@ jobs:
             -
                 name: Get Yarn cache directory
                 id: yarn-cache
-                run: echo "::set-output name=dir::$(yarn cache dir)"
+                run: echo "dir=$(yarn cache dir)" >> $GITHUB_OUTPUT
 
             -
                 name: Cache Yarn
