@@ -17,8 +17,6 @@
         "ext-json": "*",
         "behat/behat": "^3.7",
         "behat/mink": "^1.9",
-        "dmore/behat-chrome-extension": "^1.4",
-        "dmore/chrome-mink-driver": "^2.8",
         "friends-of-behat/mink": "^1.9",
         "friends-of-behat/mink-browserkit-driver": "^1.4",
         "friends-of-behat/mink-debug-extension": "^2.0",
@@ -42,7 +40,9 @@
         "symfony/web-profiler-bundle": "^5.4|^6.0",
         "vimeo/psalm": "^4|^5",
         "symfony/webpack-encore-bundle": "^1.16",
-        "matthiasnoback/symfony-config-test": "^4.3"
+        "matthiasnoback/symfony-config-test": "^4.3",
+        "robertfausk/behat-panther-extension": "^1.1",
+        "dbrekelmans/bdi": "^1.0"
     },
     "autoload": {
         "psr-4": { "FluxSE\\SyliusEUVatPlugin\\": "src/" }
