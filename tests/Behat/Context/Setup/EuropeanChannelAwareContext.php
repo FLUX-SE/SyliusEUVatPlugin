@@ -12,12 +12,8 @@ use Sylius\Component\Addressing\Model\ZoneInterface;
 
 final class EuropeanChannelAwareContext implements Context
 {
-    /** @var ObjectManager */
-    private $channelManager;
-
-    public function __construct(ObjectManager $channelManager)
+    public function __construct(private ObjectManager $channelManager)
     {
-        $this->channelManager = $channelManager;
     }
 
     /**

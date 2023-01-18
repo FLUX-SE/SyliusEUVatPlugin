@@ -16,9 +16,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AddressExampleFactory extends BaseAddressExampleFactory
 {
-    /** @var ViesHelperInterface */
-    private $viesHelper;
-
     /**
      * @param FactoryInterface<VATNumberAwareInterface> $addressFactory
      * @param RepositoryInterface<CountryInterface> $countryRepository
@@ -28,11 +25,9 @@ class AddressExampleFactory extends BaseAddressExampleFactory
         FactoryInterface $addressFactory,
         RepositoryInterface $countryRepository,
         RepositoryInterface $customerRepository,
-        ViesHelperInterface $viesHelper
+        private ViesHelperInterface $viesHelper
     ) {
         parent::__construct($addressFactory, $countryRepository, $customerRepository);
-
-        $this->viesHelper = $viesHelper;
     }
 
     protected function configureOptions(OptionsResolver $resolver): void
