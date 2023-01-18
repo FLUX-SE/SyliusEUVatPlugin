@@ -108,42 +108,15 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php: [7.3, 7.4, 8.0]
+                php: [8.0]
                 symfony: [^5.4, ^6.0]
-                sylius: [~1.9.0, ~1.10.0, ~1.11.0, ~1.12.0]
+                sylius: [~1.11.0, ~1.12.0]
                 node: [18.x]
                 mysql: [5.7]
 
                 exclude:
                     -
-                        sylius: ~1.9.0
-                        php: 8.0
-                    -
-                        sylius: ~1.10.0
-                        php: 7.3
-                    -
-                        sylius: ~1.10.0
-                        symfony: ^6.0
-                    -
                         sylius: ~1.11.0
-                        php: 7.3
-                    -
-                        sylius: ~1.11.0
-                        php: 7.4
-                    -
-                        sylius: ~1.11.0
-                        symfony: ^6.0
-                    -
-                        sylius: ~1.12.0
-                        php: 7.3
-                    -
-                        sylius: ~1.12.0
-                        php: 7.4
-                    -
-                        php: 7.3
-                        symfony: ^6.0
-                    -
-                        php: 7.4
                         symfony: ^6.0
 
         env:
@@ -217,14 +190,6 @@ jobs:
                 name: Restrict Sylius version
                 if: matrix.sylius != ''
                 run: composer require "sylius/sylius:${{ matrix.sylius }}" --no-update --no-scripts --no-interaction
-
-            -
-                name: Fix build on Sylius 1.9
-                if: matrix.sylius == '~1.9.0'
-                run: |
-                    composer require "friendsofsymfony/oauth-server-bundle:>2.0.0-alpha.0 ^2.0@dev" --no-update --no-scripts --no-interaction
-                    # Sylius issues on `json_array` type not existing
-                    composer require "doctrine/dbal:^2.6" --no-update --no-scripts --no-interaction
 
             -
                 name: Install PHP dependencies
