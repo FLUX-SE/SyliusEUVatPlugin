@@ -11,7 +11,7 @@
     ],
     "require": {
         "prometee/vies-client-bundle": "^2.0",
-        "sylius/sylius": "^1.5"
+        "sylius/sylius": "^1.11"
     },
     "require-dev": {
         "ext-json": "*",
@@ -42,7 +42,8 @@
         "symfony/webpack-encore-bundle": "^1.16",
         "matthiasnoback/symfony-config-test": "^4.3",
         "robertfausk/behat-panther-extension": "^1.1",
-        "dbrekelmans/bdi": "^1.0"
+        "dbrekelmans/bdi": "^1.0",
+        "rector/rector": "^0.15.7"
     },
     "autoload": {
         "psr-4": { "FluxSE\\SyliusEUVatPlugin\\": "src/" }
@@ -73,6 +74,9 @@
         }
     },
     "extra": {
+        "branch-alias": {
+            "dev-master": "1.2-dev"
+        },
         "runtime": {
             "project_dir": "tests/Application",
             "dotenv_path": "tests/Application/.env"
