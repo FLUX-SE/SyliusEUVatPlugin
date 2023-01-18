@@ -3,3 +3,4 @@ services:
         class: FluxSE\SyliusEUVatPlugin\Applicator\OrderEuropeanVATNumberApplicator
         arguments:
             $zoneMatcher: '@sylius.zone_matcher'
+            $taxationAddressResolver: '@sylius.taxation_address_resolver'

@@ -6,7 +6,6 @@ namespace FluxSE\SyliusEUVatPlugin\Applicator;
 
 use FluxSE\SyliusEUVatPlugin\Entity\EuropeanChannelAwareInterface;
 use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareInterface;
-use InvalidArgumentException;
 use Prometee\VIESClient\Util\VatNumberUtil;
 use Sylius\Component\Addressing\Matcher\ZoneMatcherInterface;
 use Sylius\Component\Addressing\Model\Scope;
@@ -15,27 +14,21 @@ use Sylius\Component\Core\Model\AddressInterface;
 use Sylius\Component\Core\Model\AdjustmentInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\OrderInterface;
+use Sylius\Component\Core\Resolver\TaxationAddressResolverInterface;
 use Sylius\Component\Core\Taxation\Applicator\OrderTaxesApplicatorInterface;
 
 final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInterface
 {
-    /** @var ZoneMatcherInterface */
-    private $zoneMatcher;
-
-    public function __construct(ZoneMatcherInterface $zoneMatcher)
-    {
-        $this->zoneMatcher = $zoneMatcher;
+    public function __construct(
+        private ZoneMatcherInterface $zoneMatcher,
+        private TaxationAddressResolverInterface $taxationAddressResolver
+    ) {
     }
 
-    /**
-     * @inheritdoc
-     *
-     * @throws InvalidArgumentException
-     */
     public function apply(OrderInterface $order, ZoneInterface $zone): void
     {
-        $billingAddress = $this->extractSupportedBillingAddress($order);
-        if (null === $billingAddress) {
+        $taxationAddress = $this->extractSupportedTaxationAddress($order);
+        if (null === $taxationAddress) {
             return;
         }
 
@@ -50,7 +43,7 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
         }
 
         if (false === $this->isValidForZeroEuropeanVAT(
-            $billingAddress,
+            $taxationAddress,
             $channel
         )) {
             return;
@@ -127,15 +120,15 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
         return $channel;
     }
 
-    private function extractSupportedBillingAddress(OrderInterface $order): ?VATNumberAwareInterface
+    private function extractSupportedTaxationAddress(OrderInterface $order): ?VATNumberAwareInterface
     {
-        $billingAddress = $order->getBillingAddress();
+        $taxationAddress = $this->taxationAddressResolver->getTaxationAddressFromOrder($order);
 
-        if (null === $billingAddress) {
+        if (null === $taxationAddress) {
             return null;
         }
 
-        return $billingAddress instanceof VATNumberAwareInterface ? $billingAddress : null;
+        return $taxationAddress instanceof VATNumberAwareInterface ? $taxationAddress : null;
     }
 
     private function isBaseCountrySameAsCountryCode(
