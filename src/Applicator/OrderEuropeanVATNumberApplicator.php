@@ -21,7 +21,7 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
 {
     public function __construct(
         private ZoneMatcherInterface $zoneMatcher,
-        private TaxationAddressResolverInterface $taxationAddressResolver
+        private TaxationAddressResolverInterface $taxationAddressResolver,
     ) {
     }
 
@@ -44,7 +44,7 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
 
         if (false === $this->isValidForZeroEuropeanVAT(
             $taxationAddress,
-            $channel
+            $channel,
         )) {
             return;
         }
@@ -53,19 +53,19 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
     }
 
     private function isValidForZeroEuropeanVAT(
-        VATNumberAwareInterface $billingAddress,
-        EuropeanChannelAwareInterface $channel
+        VATNumberAwareInterface $taxationAddress,
+        EuropeanChannelAwareInterface $channel,
     ): bool {
-        if (false === $billingAddress instanceof AddressInterface) {
+        if (false === $taxationAddress instanceof AddressInterface) {
             return false;
         }
 
-        $billingCountryCode = $billingAddress->getCountryCode();
-        if (null === $billingCountryCode) {
+        $taxationCountryCode = $taxationAddress->getCountryCode();
+        if (null === $taxationCountryCode) {
             return false;
         }
 
-        if (true === $this->isBaseCountrySameAsCountryCode($channel, $billingCountryCode)) {
+        if (true === $this->isBaseCountrySameAsCountryCode($channel, $taxationCountryCode)) {
             return false;
         }
 
@@ -74,29 +74,29 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
             return false;
         }
 
-        if (false === $this->addressBelongsToEUZone($billingAddress, $channelEUZone)) {
+        if (false === $this->addressBelongsToEUZone($taxationAddress, $channelEUZone)) {
             return false;
         }
 
-        $billingVatNumber = $billingAddress->getVatNumber();
-        if (null === $billingVatNumber) {
+        $taxationVatNumber = $taxationAddress->getVatNumber();
+        if (null === $taxationVatNumber) {
             return false;
         }
 
-        $vatNumberArr = VatNumberUtil::split($billingVatNumber);
+        $vatNumberArr = VatNumberUtil::split($taxationVatNumber);
         $vatCountryCode = null === $vatNumberArr ? null : $vatNumberArr[0];
 
         // Greece country ISO code is not 'GR'
-        if ('GR' === $billingCountryCode && 'EL' === $vatCountryCode) {
+        if ('GR' === $taxationCountryCode && 'EL' === $vatCountryCode) {
             return true;
         }
 
         // Northern Ireland exception
-        if ('GB' === $billingCountryCode && 'XI' === $vatCountryCode) {
+        if ('GB' === $taxationCountryCode && 'XI' === $vatCountryCode) {
             return true;
         }
 
-        return $billingCountryCode === $vatCountryCode;
+        return $taxationCountryCode === $vatCountryCode;
     }
 
     private function extractSupportedChannel(?ChannelInterface $channel): ?EuropeanChannelAwareInterface
@@ -133,14 +133,14 @@ final class OrderEuropeanVATNumberApplicator implements OrderTaxesApplicatorInte
 
     private function isBaseCountrySameAsCountryCode(
         EuropeanChannelAwareInterface $channel,
-        string $billingCountryCode
+        string $taxationCountryCode,
     ): bool {
         $baseCountry = $channel->getBaseCountry();
         if (null === $baseCountry) {
             return false;
         }
 
-        return $billingCountryCode === $baseCountry->getCode();
+        return $taxationCountryCode === $baseCountry->getCode();
     }
 
     private function addressBelongsToEUZone(AddressInterface $address, ZoneInterface $channelEUZone): bool

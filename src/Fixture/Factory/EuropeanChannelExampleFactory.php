@@ -27,7 +27,7 @@ class EuropeanChannelExampleFactory extends AbstractExampleFactory
     public function __construct(
         private ChannelRepositoryInterface $channelRepository,
         private RepositoryInterface $countryRepository,
-        private RepositoryInterface $zoneRepository
+        private RepositoryInterface $zoneRepository,
     ) {
         $this->optionsResolver = new OptionsResolver();
 
