@@ -25,7 +25,7 @@ class AddressExampleFactory extends BaseAddressExampleFactory
         FactoryInterface $addressFactory,
         RepositoryInterface $countryRepository,
         RepositoryInterface $customerRepository,
-        private ViesHelperInterface $viesHelper
+        private ViesHelperInterface $viesHelper,
     ) {
         parent::__construct($addressFactory, $countryRepository, $customerRepository);
     }

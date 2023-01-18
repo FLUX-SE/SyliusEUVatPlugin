@@ -6,6 +6,4 @@ use Symplify\EasyCodingStandard\Config\ECSConfig;
 
 return static function (ECSConfig $ecsConfig): void {
     $ecsConfig->import(__DIR__ . '/vendor/sylius-labs/coding-standard/ecs.php');
-
-    $services = $ecsConfig->services();
 };
