@@ -18,39 +18,22 @@ use Webmozart\Assert\Assert;
 
 class EuropeanChannelExampleFactory extends AbstractExampleFactory
 {
-    /** @var ChannelRepositoryInterface */
-    private $channelRepository;
-
-    /** @var RepositoryInterface<CountryInterface> */
-    private $countryRepository;
-
-    /** @var RepositoryInterface<ZoneInterface> */
-    private $zoneRepository;
-
-    /** @var OptionsResolver */
-    private $optionsResolver;
+    private OptionsResolver $optionsResolver;
 
     /**
      * @param RepositoryInterface<CountryInterface> $countryRepository
      * @param RepositoryInterface<ZoneInterface> $zoneRepository
      */
     public function __construct(
-        ChannelRepositoryInterface $channelRepository,
-        RepositoryInterface $countryRepository,
-        RepositoryInterface $zoneRepository
+        private ChannelRepositoryInterface $channelRepository,
+        private RepositoryInterface $countryRepository,
+        private RepositoryInterface $zoneRepository
     ) {
-        $this->channelRepository = $channelRepository;
-        $this->countryRepository = $countryRepository;
-        $this->zoneRepository = $zoneRepository;
-
         $this->optionsResolver = new OptionsResolver();
 
         $this->configureOptions($this->optionsResolver);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function create(array $options = []): EuropeanChannelAwareInterface
     {
         $options = $this->optionsResolver->resolve($options);
@@ -78,9 +61,6 @@ class EuropeanChannelExampleFactory extends AbstractExampleFactory
         return $channel;
     }
 
-    /**
-     * @inheritdoc
-     */
     protected function configureOptions(OptionsResolver $resolver): void
     {
         $resolver

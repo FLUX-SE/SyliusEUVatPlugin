@@ -14,18 +14,10 @@ use Webmozart\Assert\Assert;
 
 final class CheckoutAddressingContext implements Context
 {
-    /** @var AddressPageInterface */
-    private $addressPage;
-
-    /** @var SharedStorageInterface */
-    private $sharedStorage;
-
     public function __construct(
-        AddressPageInterface $addressPage,
-        SharedStorageInterface $sharedStorage
+        private AddressPageInterface $addressPage,
+        private SharedStorageInterface $sharedStorage
     ) {
-        $this->addressPage = $addressPage;
-        $this->sharedStorage = $sharedStorage;
     }
 
     /**
