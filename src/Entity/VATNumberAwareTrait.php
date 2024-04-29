@@ -17,7 +17,9 @@ trait VATNumberAwareTrait
      *
      * @var string|null
      */
-    protected $vatNumber;
+    #[ORM\Column(name: 'vat_number', type: 'string', nullable: true)]
+    #[Gedmo\Versioned]
+    protected ?string $vatNumber = null;
 
     public function getVatNumber(): ?string
     {
