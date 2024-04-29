@@ -59,7 +59,8 @@ Add default config if you want to get access to the default fixtures this plugin
 
 imports:
     - { resource: "@FluxSESyliusEUVatPlugin/config/config.yaml" }
-    - { resource: "@FluxSESyliusEUVatPlugin/config/admin.yaml" } # If you are using SyliusAdminBundle
+    # If you are using SyliusAdminBundle
+    - { resource: "@FluxSESyliusEUVatPlugin/config/admin.yaml" }
 
 ```
 
