@@ -21,6 +21,7 @@ final class DefaultEligibilityChecker implements VatRateEligibilityCheckerInterf
         AddressInterface $taxationAddress,
         ChannelInterface $channel,
     ): bool {
+        /** @var VatRateEligibilityCheckerInterface $checker */
         foreach ($this->checkers as $checker) {
             if (false === $checker->check($taxationAddress, $channel)) {
                 return false;
