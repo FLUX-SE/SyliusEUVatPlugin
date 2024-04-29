@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace FluxSE\SyliusEUVatPlugin\Extractor;
 
-use FluxSE\SyliusEUVatPlugin\Applicator\OrderEuropeanVATNumberApplicator;
 use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareInterface;
 use Sylius\Component\Core\Model\OrderInterface;
 use Sylius\Component\Core\Resolver\TaxationAddressResolverInterface;

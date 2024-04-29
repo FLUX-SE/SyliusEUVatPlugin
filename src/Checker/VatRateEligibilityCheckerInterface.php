@@ -12,7 +12,7 @@ use Sylius\Component\Core\Model\ChannelInterface;
 interface VatRateEligibilityCheckerInterface
 {
     public function check(
-        AddressInterface&VATNumberAwareInterface       $taxationAddress,
+        AddressInterface&VATNumberAwareInterface $taxationAddress,
         ChannelInterface&EuropeanChannelAwareInterface $channel,
     ): bool;
 }

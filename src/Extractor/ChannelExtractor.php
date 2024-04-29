@@ -9,7 +9,6 @@ use Sylius\Component\Core\Model\OrderInterface;
 
 final class ChannelExtractor implements ChannelExtractorInterface
 {
-
     public function extract(OrderInterface $order): ?EuropeanChannelAwareInterface
     {
         $channel = $order->getChannel();

@@ -10,6 +10,7 @@ use Sylius\Component\Core\Model\Address as BaseAddress;
 
 /**
  * @ORM\Entity()
+ *
  * @ORM\Table(name="sylius_address")
  */
 #[ORM\Table(name: 'sylius_address')]

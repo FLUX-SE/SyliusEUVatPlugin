@@ -7,14 +7,12 @@ namespace FluxSE\SyliusEUVatPlugin\Fixture\Factory;
 use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareInterface;
 use LogicException;
 use Prometee\VIESClient\Helper\ViesHelperInterface;
-use Psr\Container\ContainerInterface as PsrContainerInterface;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\AddressExampleFactory as BaseAddressExampleFactory;
 use Sylius\Component\Addressing\Model\CountryInterface;
 use Sylius\Component\Core\Model\AddressInterface;
 use Sylius\Component\Core\Model\CustomerInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AddressExampleFactory extends BaseAddressExampleFactory
@@ -61,11 +59,13 @@ class AddressExampleFactory extends BaseAddressExampleFactory
         if (false === $address instanceof VATNumberAwareInterface) {
             throw new LogicException(sprintf(
                 'The $address must be an instance of %s (%s given).',
-                VATNumberAwareInterface::class, get_class($address)
+                VATNumberAwareInterface::class,
+                get_class($address),
             ));
         }
 
         $address->setVatNumber($vatNumber);
+
         return $address;
     }
 }

@@ -14,7 +14,6 @@ use Sylius\Component\Core\Model\ChannelInterface;
 
 final class ChannelEligibilityChecker implements VatRateEligibilityCheckerInterface
 {
-
     public function __construct(
         private ZoneMatcherInterface $zoneMatcher,
     ) {
