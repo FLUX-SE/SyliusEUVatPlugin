@@ -21,7 +21,7 @@ final class OrderItemUnitsBasedStrategyCompilerPass implements CompilerPassInter
         if ($applicators instanceof ArgumentInterface) {
             return;
         }
-        $applicators[] = new Reference('flux_se.sylius_eu_vat_plugin.applicator.order_european_vatnumber_applicator');
+        $applicators[] = new Reference('flux_se.sylius_eu_vat_plugin.applicator.order_european_vat_number');
         $definition->setArgument(1, $applicators);
     }
 }
