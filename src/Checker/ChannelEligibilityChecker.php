@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace FluxSE\SyliusEUVatPlugin\Checker;
 
 use FluxSE\SyliusEUVatPlugin\Entity\EuropeanChannelAwareInterface;
+use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareInterface;
 use Sylius\Component\Addressing\Matcher\ZoneMatcherInterface;
 use Sylius\Component\Addressing\Model\Scope;
 use Sylius\Component\Addressing\Model\ZoneInterface;
@@ -19,13 +20,9 @@ final class ChannelEligibilityChecker implements VatRateEligibilityCheckerInterf
     }
 
     public function check(
-        AddressInterface $taxationAddress,
-        ChannelInterface $channel,
+        AddressInterface&VATNumberAwareInterface $taxationAddress,
+        ChannelInterface&EuropeanChannelAwareInterface $channel,
     ): bool {
-        if (false === $channel instanceof EuropeanChannelAwareInterface) {
-            return false;
-        }
-
         $channelEUZone = $channel->getEuropeanZone();
         if (null === $channelEUZone) {
             return false;
