@@ -20,13 +20,18 @@ class EuropeanChannelExampleFactory extends AbstractExampleFactory
 {
     private OptionsResolver $optionsResolver;
 
-    /**
-     * @param RepositoryInterface<CountryInterface> $countryRepository
-     * @param RepositoryInterface<ZoneInterface> $zoneRepository
-     */
     public function __construct(
+        /**
+         * @var ChannelRepositoryInterface<ChannelInterface&EuropeanChannelAwareInterface>
+         */
         private ChannelRepositoryInterface $channelRepository,
+        /**
+         * @var RepositoryInterface<CountryInterface>
+         */
         private RepositoryInterface $countryRepository,
+        /**
+         * @var RepositoryInterface<ZoneInterface>
+         */
         private RepositoryInterface $zoneRepository,
     ) {
         $this->optionsResolver = new OptionsResolver();
@@ -34,10 +39,11 @@ class EuropeanChannelExampleFactory extends AbstractExampleFactory
         $this->configureOptions($this->optionsResolver);
     }
 
-    public function create(array $options = []): EuropeanChannelAwareInterface
+    public function create(array $options = []): ChannelInterface&EuropeanChannelAwareInterface
     {
         $options = $this->optionsResolver->resolve($options);
 
+        /** @var ChannelInterface|null $channel */
         $channel = $options['channel'] ?? null;
 
         if (null === $channel) {

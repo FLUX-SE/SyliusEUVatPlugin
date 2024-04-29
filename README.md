@@ -58,17 +58,21 @@ Add default config if you want to get access to the default fixtures this plugin
 # config/packages/flux_se_sylius_eu_vat.yaml
 
 imports:
-    - { resource: "@FluxSESyliusEUVatPlugin/Resources/config/config.yaml" }
+    - { resource: "@FluxSESyliusEUVatPlugin/config/config.yaml" }
+    - { resource: "@FluxSESyliusEUVatPlugin/config/admin.yaml" } # If you are using SyliusAdminBundle
 
 ```
 
 Copy Sylius overridden templates to your templates directory (e.g `templates/bundles/`):
 
 ```bash
+# If you are using SyliusAdminBundle
 mkdir -p templates/bundles/SyliusAdminBundle/
-cp -R vendor/flux-se/sylius-eu-vat-plugin/src/Resources/views/SyliusAdminBundle/* templates/bundles/SyliusAdminBundle/
+cp -R vendor/flux-se/sylius-eu-vat-plugin/src/templates/SyliusAdminBundle/* templates/bundles/SyliusAdminBundle/
+
+# If you are using SyliusShopBundle
 mkdir -p templates/bundles/SyliusShopBundle/
-cp -R vendor/flux-se/sylius-eu-vat-plugin/src/Resources/views/SyliusShopBundle/* templates/bundles/SyliusShopBundle/
+cp -R vendor/flux-se/sylius-eu-vat-plugin/src/templates/SyliusShopBundle/* templates/bundles/SyliusShopBundle/
 ```
 
 Update `Channel` entity : `src/Entity/Channel/Channel.php`
@@ -88,6 +92,8 @@ use Sylius\Component\Core\Model\Channel as BaseChannel;
  * @ORM\Entity()
  * @ORM\Table(name="sylius_channel")
  */
+#[ORM\Entity]
+#[ORM\Table(name: 'sylius_channel')]
 class Channel extends BaseChannel implements ChannelInterface
 {
     use EuropeanChannelAwareTrait;
@@ -111,7 +117,8 @@ interface ChannelInterface extends BaseChannelInterface, EuropeanChannelAwareInt
 }
 ```
 
-If you are using YAML orm definitions :
+<details>
+  <summary>Click me : if you are using YAML ORM definitions</summary>
 
 ```yaml
 # config/doctrine/Address.orm.yml
@@ -126,6 +133,7 @@ App\Entity\Adressing\Address :
             type: string
             nullable: true
 ```
+</details>
 
 Then change the default Sylius model class :
 
@@ -156,6 +164,8 @@ use Sylius\Component\Core\Model\Address as BaseAddress;
  * @ORM\Entity()
  * @ORM\Table(name="sylius_address")
  */
+#[ORM\Entity]
+#[ORM\Table(name: 'sylius_address')]
 class Address extends BaseAddress implements AddressInterface
 {
     use VATNumberAwareTrait;
@@ -178,7 +188,9 @@ interface AddressInterface extends BaseAddressInterface, VATNumberAwareInterface
 {
 }
 ```
-If you are using YAML orm definitions :
+
+<details>
+  <summary>Click me : if you are using YAML ORM definitions</summary>
 
 ```yaml
 # config/doctrine/Channel.orm.yml
@@ -201,6 +213,7 @@ App\Entity\Channel\Channel:
                 name: european_zone_id
                 onDelete: "SET NULL"
 ```
+</details>
 
 Then change the default Sylius model class :
 
@@ -270,7 +283,11 @@ sylius_fixtures:
                                 channel: "default_channel_code" # Put an existing Channel code
                                 base_country: "FR" # Existing Country code
                                 european_zone: "EU" # Existing Zone code
-``` 
+```
+
+## API
+
+
 
 [ico-version]: https://img.shields.io/packagist/v/flux-se/sylius-eu-vat-plugin.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square

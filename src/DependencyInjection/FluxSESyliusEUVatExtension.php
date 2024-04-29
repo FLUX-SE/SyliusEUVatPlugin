@@ -22,7 +22,7 @@ final class FluxSESyliusEUVatExtension extends Extension implements PrependExten
 
     protected function getMigrationsDirectory(): string
     {
-        return '@FluxSESyliusEUVatPlugin/Migrations';
+        return '@FluxSESyliusEUVatPlugin/src/Migrations';
     }
 
     protected function getNamespacesOfMigrationsExecutedBefore(): array

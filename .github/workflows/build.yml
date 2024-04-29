@@ -28,8 +28,8 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php: [ 8.0 ]
-                symfony: [ ^5.4, ^6.0 ]
+                php: [ 8.0, 8.3 ]
+                symfony: [ ^5.4, ^6.4 ]
 
         steps:
             -
@@ -108,17 +108,11 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php: [8.0]
-                symfony: [^5.4, ^6.0]
-                sylius: [~1.11.0, ~1.12.0]
+                php: [8.0, 8.3]
+                symfony: [^5.4, ^6.4]
+                sylius: [~1.12.0, ~1.13.0]
                 node: [18.x]
                 mysql: [5.7]
-
-                exclude:
-                    -
-                        sylius: ~1.11.0
-                        symfony: ^6.0
-
         env:
             APP_ENV: test
             DATABASE_URL: "mysql://root:root@127.0.0.1/sylius?serverVersion=${{ matrix.mysql }}"
@@ -175,7 +169,7 @@ jobs:
                 uses: actions/cache@v3
                 with:
                     path: ${{ steps.composer-cache.outputs.dir }}
-                    key: ${{ runner.os }}-php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json **/composer.lock') }}
+                    key: ${{ runner.os }}-php-${{ matrix.php }}-symfony-${{ matrix.symfony }}-sylius-${{ matrix.sylius }}-composer-${{ hashFiles('**/composer.json **/composer.lock') }}
                     restore-keys: |
                         ${{ runner.os }}-php-${{ matrix.php }}-composer-
 
@@ -189,7 +183,9 @@ jobs:
             -
                 name: Restrict Sylius version
                 if: matrix.sylius != ''
-                run: composer require "sylius/sylius:${{ matrix.sylius }}" --no-update --no-scripts --no-interaction
+                run: |
+                    composer require "sylius/sylius:${{ matrix.sylius }}" --dev --no-update --no-scripts --no-interaction
+                    composer require "sylius/core-bundle:${{ matrix.sylius }}" --no-update --no-scripts --no-interaction
 
             -
                 name: Install PHP dependencies

@@ -1,6 +1,6 @@
 services:
-    
-    flux_se.sylius_eu_vat_plugin.form.extension.vatnumber:
+
+    flux_se.sylius_eu_vat_plugin.form.extension.vat_number:
         class: FluxSE\SyliusEUVatPlugin\Form\Extension\VATNumberTypeExtension
         tags:
             - { name: form.type_extension }

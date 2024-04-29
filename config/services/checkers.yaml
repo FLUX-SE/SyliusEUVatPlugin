@@ -1,0 +1,24 @@
+services:
+
+  flux_se.sylius_eu_vat_plugin.checker.intra_community_vat_rate_eligibility.default:
+    class: FluxSE\SyliusEUVatPlugin\Checker\DefaultEligibilityChecker
+    arguments:
+      - !tagged_iterator { tag: flux_se.sylius_eu_vat_plugin.checker.intra_community_vat_rate_eligibility }
+
+  FluxSE\SyliusEUVatPlugin\Checker\VatRateEligibilityCheckerInterface:
+    alias: flux_se.sylius_eu_vat_plugin.checker.intra_community_vat_rate_eligibility.default
+
+
+  FluxSE\SyliusEUVatPlugin\Checker\ChannelEligibilityChecker:
+    arguments:
+      $zoneMatcher: '@sylius.zone_matcher'
+    tags:
+      - name: flux_se.sylius_eu_vat_plugin.checker.intra_community_vat_rate_eligibility
+
+  FluxSE\SyliusEUVatPlugin\Checker\SameBaseCountryEligibilityChecker:
+    tags:
+      - name: flux_se.sylius_eu_vat_plugin.checker.intra_community_vat_rate_eligibility
+
+  FluxSE\SyliusEUVatPlugin\Checker\VatNumberEligibilityChecker:
+    tags:
+      - name: flux_se.sylius_eu_vat_plugin.checker.intra_community_vat_rate_eligibility

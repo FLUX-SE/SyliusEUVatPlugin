@@ -5,19 +5,22 @@ declare(strict_types=1);
 namespace FluxSE\SyliusEUVatPlugin\Fixture\Factory;
 
 use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareInterface;
+use LogicException;
 use Prometee\VIESClient\Helper\ViesHelperInterface;
+use Psr\Container\ContainerInterface as PsrContainerInterface;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\AddressExampleFactory as BaseAddressExampleFactory;
 use Sylius\Component\Addressing\Model\CountryInterface;
 use Sylius\Component\Core\Model\AddressInterface;
 use Sylius\Component\Core\Model\CustomerInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AddressExampleFactory extends BaseAddressExampleFactory
 {
     /**
-     * @param FactoryInterface<VATNumberAwareInterface> $addressFactory
+     * @param FactoryInterface<AddressInterface&VATNumberAwareInterface> $addressFactory
      * @param RepositoryInterface<CountryInterface> $countryRepository
      * @param RepositoryInterface<CustomerInterface> $customerRepository
      */
@@ -46,7 +49,7 @@ class AddressExampleFactory extends BaseAddressExampleFactory
         ;
     }
 
-    public function create(array $options = []): AddressInterface
+    public function create(array $options = []): AddressInterface&VATNumberAwareInterface
     {
         $address = parent::create($options);
 
@@ -55,10 +58,14 @@ class AddressExampleFactory extends BaseAddressExampleFactory
             $vatNumber = (string) $options['vat_number'];
         }
 
-        if ($address instanceof VATNumberAwareInterface) {
-            $address->setVatNumber($vatNumber);
+        if (false === $address instanceof VATNumberAwareInterface) {
+            throw new LogicException(sprintf(
+                'The $address must be an instance of %s (%s given).',
+                VATNumberAwareInterface::class, get_class($address)
+            ));
         }
 
+        $address->setVatNumber($vatNumber);
         return $address;
     }
 }
