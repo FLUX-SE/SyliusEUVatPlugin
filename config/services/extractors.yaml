@@ -1,0 +1,8 @@
+services:
+  flux_se.sylius_eu_vat_plugin.extractor.taxation_address:
+    class: FluxSE\SyliusEUVatPlugin\Extractor\TaxationAddressExtractor
+    arguments:
+      $taxationAddressResolver: '@sylius.taxation_address_resolver'
+
+  FluxSE\SyliusEUVatPlugin\Extractor\TaxationAddressExtractorInterface:
+    alias: flux_se.sylius_eu_vat_plugin.extractor.taxation_address

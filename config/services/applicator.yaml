@@ -1,0 +1,9 @@
+services:
+    flux_se.sylius_eu_vat_plugin.applicator.order_european_vat_number:
+        class: FluxSE\SyliusEUVatPlugin\Applicator\OrderEuropeanVATNumberApplicator
+        arguments:
+            $zoneMatcher: '@sylius.zone_matcher'
+            $taxationAddressExtractor: '@flux_se.sylius_eu_vat_plugin.extractor.taxation_address'
+        tags:
+            - name: sylius.taxation.items.applicator
+            - name: sylius.taxation.item_units.applicator
