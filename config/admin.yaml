@@ -1,0 +1,2 @@
+imports:
+  - { resource: "app/admin/sylius_ui.yaml" }

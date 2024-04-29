@@ -1,2 +1,3 @@
 imports:
   - { resource: "@FluxSESyliusEUVatPlugin/config/config.yaml" }
+  - { resource: "@FluxSESyliusEUVatPlugin/config/admin.yaml" }

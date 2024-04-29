@@ -6,3 +6,9 @@ services:
 
   FluxSE\SyliusEUVatPlugin\Extractor\TaxationAddressExtractorInterface:
     alias: flux_se.sylius_eu_vat_plugin.extractor.taxation_address
+
+  flux_se.sylius_eu_vat_plugin.extractor.channel:
+    class: FluxSE\SyliusEUVatPlugin\Extractor\ChannelExtractor
+
+  FluxSE\SyliusEUVatPlugin\Extractor\ChannelExtractorInterface:
+    alias: flux_se.sylius_eu_vat_plugin.extractor.taxation_address

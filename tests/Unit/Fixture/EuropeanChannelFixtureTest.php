@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Sylius\SyliusEUVatPlugin\Unit\Fixture;
+namespace Tests\FluxSE\SyliusEUVatPlugin\Unit\Fixture;
 
 use Doctrine\Persistence\ObjectManager;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
