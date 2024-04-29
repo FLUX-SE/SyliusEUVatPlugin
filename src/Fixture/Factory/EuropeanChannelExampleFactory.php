@@ -20,6 +20,9 @@ class EuropeanChannelExampleFactory extends AbstractExampleFactory
     private OptionsResolver $optionsResolver;
 
     public function __construct(
+        /**
+         * @var ChannelRepositoryInterface<EuropeanChannelAwareInterface>
+         */
         private ChannelRepositoryInterface $channelRepository,
         /**
          * @var RepositoryInterface<CountryInterface>
