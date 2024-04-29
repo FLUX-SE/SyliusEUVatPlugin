@@ -11,7 +11,7 @@
     ],
     "require": {
         "prometee/vies-client-bundle": "^2.0",
-        "sylius/sylius": "^1.11"
+        "sylius/core-bundle": "^1.12"
     },
     "require-dev": {
         "ext-json": "*",
@@ -32,18 +32,18 @@
         "phpunit/phpunit": "^9.5",
         "polishsymfonycommunity/symfony-mocker-container": "^1.0",
         "sylius-labs/coding-standard": "^4.0",
-        "symfony/browser-kit": "^5.4|^6.0",
-        "symfony/debug-bundle": "^5.4|^6.0",
-        "symfony/dotenv": "^5.4|^6.0",
-        "symfony/intl": "^5.4|^6.0",
-        "symfony/runtime": "^5.4|^6.0",
-        "symfony/web-profiler-bundle": "^5.4|^6.0",
+        "symfony/browser-kit": "^5.4|^6.4",
+        "symfony/debug-bundle": "^5.4|^6.4",
+        "symfony/dotenv": "^5.4|^6.4",
+        "symfony/intl": "^5.4|^6.4",
+        "symfony/runtime": "^5.4|^6.4",
+        "symfony/web-profiler-bundle": "^5.4|^6.4",
         "vimeo/psalm": "^4|^5",
         "symfony/webpack-encore-bundle": "^1.16",
         "matthiasnoback/symfony-config-test": "^4.3",
         "robertfausk/behat-panther-extension": "^1.1",
         "dbrekelmans/bdi": "^1.0",
-        "rector/rector": "^0.15.7"
+        "rector/rector": "^1.0"
     },
     "autoload": {
         "psr-4": { "FluxSE\\SyliusEUVatPlugin\\": "src/" }
@@ -53,6 +53,11 @@
             "Tests\\FluxSE\\SyliusEUVatPlugin\\": "tests/",
             "Tests\\FluxSE\\SyliusEUVatPlugin\\App\\": "tests/Application/src/"
         }
+    },
+    "suggest": {
+        "sylius/shop-bundle": "Use the Sylius default front shop",
+        "sylius/admin-bundle": "Use the Sylius default admin",
+        "sylius/api-bundle": "Use the Sylius default API"
     },
     "scripts": {
         "post-install-cmd": [
@@ -75,7 +80,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.2-dev"
+            "dev-master": "2.0-dev"
         },
         "runtime": {
             "project_dir": "tests/Application",
