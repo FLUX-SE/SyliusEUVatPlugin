@@ -11,6 +11,7 @@ use Sylius\Component\Addressing\Model\CountryInterface;
 use Sylius\Component\Addressing\Model\ZoneInterface;
 use Sylius\Component\Channel\Context\ChannelNotFoundException;
 use Sylius\Component\Channel\Repository\ChannelRepositoryInterface;
+use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Webmozart\Assert\Assert;
@@ -21,7 +22,7 @@ class EuropeanChannelExampleFactory extends AbstractExampleFactory
 
     public function __construct(
         /**
-         * @var ChannelRepositoryInterface<EuropeanChannelAwareInterface>
+         * @var ChannelRepositoryInterface<ChannelInterface&EuropeanChannelAwareInterface>
          */
         private ChannelRepositoryInterface $channelRepository,
         /**
@@ -38,11 +39,11 @@ class EuropeanChannelExampleFactory extends AbstractExampleFactory
         $this->configureOptions($this->optionsResolver);
     }
 
-    public function create(array $options = []): EuropeanChannelAwareInterface
+    public function create(array $options = []): ChannelInterface&EuropeanChannelAwareInterface
     {
         $options = $this->optionsResolver->resolve($options);
 
-        /** @var EuropeanChannelAwareInterface|null $channel */
+        /** @var (ChannelInterface&EuropeanChannelAwareInterface)|null $channel */
         $channel = $options['channel'] ?? null;
 
         if (null === $channel) {
@@ -72,7 +73,7 @@ class EuropeanChannelExampleFactory extends AbstractExampleFactory
                 'base_country',
                 'european_zone',
             ])
-            ->setAllowedTypes('channel', ['string', EuropeanChannelAwareInterface::class])
+            ->setAllowedTypes('channel', ['string', ChannelInterface::class])
             ->setNormalizer('channel', LazyOption::findOneBy($this->channelRepository, 'code'))
             ->setAllowedTypes('base_country', ['string', CountryInterface::class])
             ->setNormalizer('base_country', LazyOption::findOneBy($this->countryRepository, 'code'))

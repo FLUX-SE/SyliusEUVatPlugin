@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace FluxSE\SyliusEUVatPlugin\Checker;
 
+use FluxSE\SyliusEUVatPlugin\Entity\EuropeanChannelAwareInterface;
 use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareInterface;
 use Prometee\VIESClient\Util\VatNumberUtil;
 use Sylius\Component\Core\Model\AddressInterface;
@@ -12,15 +13,11 @@ use Sylius\Component\Core\Model\ChannelInterface;
 final class VatNumberEligibilityChecker implements VatRateEligibilityCheckerInterface
 {
     public function check(
-        AddressInterface $taxationAddress,
-        ChannelInterface $channel,
+        AddressInterface&VATNumberAwareInterface $taxationAddress,
+        ChannelInterface&EuropeanChannelAwareInterface $channel,
     ): bool {
         $taxationCountryCode = $taxationAddress->getCountryCode();
         if (null === $taxationCountryCode) {
-            return false;
-        }
-
-        if (false === $taxationAddress instanceof VATNumberAwareInterface) {
             return false;
         }
 
