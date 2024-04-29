@@ -1,7 +1,7 @@
 imports:
     - { resource: "services/applicator.yaml" }
+    - { resource: "services/extractors.yaml" }
     - { resource: "services/fixture.yaml" }
     - { resource: "services/form.yaml" }
-    - { resource: "services/listener.yaml" }
     - { resource: "services/validator.yaml" }
 

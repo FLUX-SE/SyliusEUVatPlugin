@@ -1,7 +1,0 @@
-services:
-    flux_se.sylius_eu_vat_plugin.block_event_listener.order_show:
-        class: Sylius\Bundle\UiBundle\Block\BlockEventListener
-        arguments:
-            - '@@FluxSESyliusEUVatPlugin/Admin/Channel/europeanChannelForm.html.twig'
-        tags:
-            - {name: kernel.event_listener, event: sonata.block.event.sylius.admin.channel.update.form, method: onBlockEvent}

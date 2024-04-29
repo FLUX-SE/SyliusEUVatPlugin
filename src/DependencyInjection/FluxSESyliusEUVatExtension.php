@@ -36,7 +36,7 @@ final class FluxSESyliusEUVatExtension extends Extension implements PrependExten
     {
         $loader = new YamlFileLoader(
             $container,
-            new FileLocator(__DIR__ . '/../Resources/config'),
+            new FileLocator(__DIR__ . '/../../config'),
         );
 
         $loader->load('services.yaml');
@@ -45,10 +45,5 @@ final class FluxSESyliusEUVatExtension extends Extension implements PrependExten
     public function prepend(ContainerBuilder $container): void
     {
         $this->prependDoctrineMigrations($container);
-    }
-
-    public function getAlias(): string
-    {
-        return 'flux_se_sylius_eu_vat';
     }
 }
