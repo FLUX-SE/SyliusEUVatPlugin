@@ -14,8 +14,6 @@ trait VATNumberAwareTrait
      * @ORM\Column(name="vat_number", type="string", nullable=true)
      *
      * @Gedmo\Versioned()
-     *
-     * @var string|null
      */
     #[ORM\Column(name: 'vat_number', type: 'string', nullable: true)]
     #[Gedmo\Versioned]

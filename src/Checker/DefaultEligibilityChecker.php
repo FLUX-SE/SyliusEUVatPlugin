@@ -21,9 +21,8 @@ final class DefaultEligibilityChecker implements VatRateEligibilityCheckerInterf
 
     public function check(
         VATNumberAwareInterface&AddressInterface $taxationAddress,
-        ChannelInterface&EuropeanChannelAwareInterface $channel
+        ChannelInterface&EuropeanChannelAwareInterface $channel,
     ): bool {
-
         foreach ($this->checkers as $checker) {
             if (false === $checker->check($taxationAddress, $channel)) {
                 return false;
