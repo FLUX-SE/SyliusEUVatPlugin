@@ -45,5 +45,19 @@ final class FluxSESyliusEUVatExtension extends Extension implements PrependExten
     public function prepend(ContainerBuilder $container): void
     {
         $this->prependDoctrineMigrations($container);
+
+        if ($container->hasExtension('sylius_api')) {
+            $this->prependApiPlatformMapping($container);
+        }
+    }
+
+    private function prependApiPlatformMapping(ContainerBuilder $container): void
+    {
+        /** @var array<string, array<string, string>> $metadata */
+        $metadata = $container->getParameter('kernel.bundles_metadata');
+
+        $path = $metadata['FluxSESyliusEUVatPlugin']['path'] . '/config/api_resources';
+
+        $container->prependExtensionConfig('api_platform', ['mapping' => ['paths' => [$path]]]);
     }
 }

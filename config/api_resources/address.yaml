@@ -1,0 +1,4 @@
+'%sylius.model.address.class%':
+  properties:
+    vatNumber:
+      writable: true
