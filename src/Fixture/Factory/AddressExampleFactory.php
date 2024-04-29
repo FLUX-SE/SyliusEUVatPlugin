@@ -18,7 +18,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class AddressExampleFactory extends BaseAddressExampleFactory
 {
     /**
-     * @param FactoryInterface<AddressInterface&VATNumberAwareInterface> $addressFactory
+     * @param FactoryInterface<AddressInterface> $addressFactory
      * @param RepositoryInterface<CountryInterface> $countryRepository
      * @param RepositoryInterface<CustomerInterface> $customerRepository
      */
@@ -47,7 +47,7 @@ class AddressExampleFactory extends BaseAddressExampleFactory
         ;
     }
 
-    public function create(array $options = []): AddressInterface&VATNumberAwareInterface
+    public function create(array $options = []): AddressInterface
     {
         $address = parent::create($options);
 
