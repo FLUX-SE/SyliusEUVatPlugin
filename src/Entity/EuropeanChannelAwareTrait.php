@@ -17,7 +17,9 @@ trait EuropeanChannelAwareTrait
      *
      * @var CountryInterface|null
      */
-    protected $baseCountry;
+    #[ORM\JoinColumn(name: 'base_country_id', onDelete: 'SET NULL')]
+    #[ORM\ManyToOne(targetEntity: CountryInterface::class, fetch: 'EAGER')]
+    protected ?CountryInterface $baseCountry = null;
 
     /**
      * @ORM\ManyToOne(targetEntity="Sylius\Component\Addressing\Model\ZoneInterface", fetch="EAGER")
@@ -26,7 +28,9 @@ trait EuropeanChannelAwareTrait
      *
      * @var ZoneInterface|null
      */
-    protected $europeanZone;
+    #[ORM\JoinColumn(name: 'european_zone_id', onDelete: 'SET NULL')]
+    #[ORM\ManyToOne(targetEntity: ZoneInterface::class, fetch: 'EAGER')]
+    protected ?ZoneInterface $europeanZone = null;
 
     public function getBaseCountry(): ?CountryInterface
     {
