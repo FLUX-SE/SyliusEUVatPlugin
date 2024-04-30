@@ -1,3 +1,18 @@
+# UPGRADE FROM `v1.2.0` TO `v2.0.0`
+
+* **BC BREAK**: new bundle folder structure : `src/Resources/*` has been moved to the top level
+  * `src/Resources/config` -> `config`
+  * `src/Resources/views` -> `templates`
+  * `src/Resources/translations` -> `translations`
+* **BC BREAK**: Rename applicator service ID from
+  `flux_se.sylius_eu_vat_plugin.applicator.order_european_vatnumber_applicator` to
+  `flux_se.sylius_eu_vat_plugin.applicator.order_european_vat_number`
+* **BC BREAK**: Part of the class `OrderEuropeanVATNumberApplicator` has been extracted to
+  `src/Extractor` and `src/Checker` services.
+* **BC BREAK**: Rename applicator service ID from
+  `flux_se.sylius_eu_vat_plugin.form.extension.vatnumber` to
+  `flux_se.sylius_eu_vat_plugin.form.extension.vat_number`
+
 # UPGRADE FROM `v1.0.8` TO `v1.1.0`
 
 * Execute this sql query to avoid the `Migration` script to be re-added :
