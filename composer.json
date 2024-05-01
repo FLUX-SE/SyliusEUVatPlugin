@@ -41,7 +41,7 @@
         "symfony/web-profiler-bundle": "^5.4|^6.4",
         "vimeo/psalm": "^4|^5",
         "symfony/webpack-encore-bundle": "^1.16",
-        "matthiasnoback/symfony-config-test": "^4.3",
+        "matthiasnoback/symfony-config-test": "^5.1",
         "robertfausk/behat-panther-extension": "^1.1",
         "dbrekelmans/bdi": "^1.0",
         "rector/rector": "^1.0"
