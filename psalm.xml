@@ -26,5 +26,10 @@
                 <file name="src/Fixture/Factory/AddressExampleFactory.php" />
             </errorLevel>
         </InvalidArgument>
+        <MissingClassConstType>
+            <errorLevel type="info">
+                <file name="src/Constraints/CountryVatNumber.php" />
+            </errorLevel>
+        </MissingClassConstType>
     </issueHandlers>
 </psalm>
