@@ -6,21 +6,17 @@ namespace FluxSE\SyliusEUVatPlugin\Constraints;
 
 use Symfony\Component\Validator\Constraint;
 
-/**
- * @Annotation
- */
 class CountryVatNumber extends Constraint
 {
+    /** @var string */
     public const CORRESPONDENCE_ERROR = '403';
 
-    /** @var string */
-    public $message = 'flux_se.sylius_eu_vat.country_vat_number.invalid';
+    public string $message = 'flux_se.sylius_eu_vat.country_vat_number.invalid';
 
     /** @var string[] */
     public $groups = [];
 
-    /** @var string */
-    public $vatNumberPath = 'vatNumber';
+    public string $vatNumberPath = 'vatNumber';
 
     public function getTargets()
     {
