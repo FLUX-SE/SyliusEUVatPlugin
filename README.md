@@ -69,11 +69,11 @@ Copy Sylius overridden templates to your templates directory (e.g `templates/bun
 ```bash
 # If you are using SyliusAdminBundle
 mkdir -p templates/bundles/SyliusAdminBundle/
-cp -R vendor/flux-se/sylius-eu-vat-plugin/src/templates/SyliusAdminBundle/* templates/bundles/SyliusAdminBundle/
+cp -R vendor/flux-se/sylius-eu-vat-plugin/templates/SyliusAdminBundle/* templates/bundles/SyliusAdminBundle/
 
 # If you are using SyliusShopBundle
 mkdir -p templates/bundles/SyliusShopBundle/
-cp -R vendor/flux-se/sylius-eu-vat-plugin/src/templates/SyliusShopBundle/* templates/bundles/SyliusShopBundle/
+cp -R vendor/flux-se/sylius-eu-vat-plugin/templates/SyliusShopBundle/* templates/bundles/SyliusShopBundle/
 ```
 
 Update `Channel` entity : `src/Entity/Channel/Channel.php`
