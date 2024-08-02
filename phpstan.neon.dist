@@ -1,6 +1,5 @@
 parameters:
     reportUnmatchedIgnoredErrors: false
-    checkMissingIterableValueType: false
 
     level: max
 
@@ -11,4 +10,17 @@ parameters:
         - tests/Unit
 
     ignoreErrors:
+        - identifier: missingType.iterableValue
         - '/Parameter #1 \$configuration of method Symfony\\Component\\DependencyInjection\\Extension\\Extension::processConfiguration\(\) expects Symfony\\Component\\Config\\Definition\\ConfigurationInterface, Symfony\\Component\\Config\\Definition\\ConfigurationInterface\|null given\./'
+        # Symfony 6
+        -
+            message: '/Property Tests\\FluxSE\\SyliusEUVatPlugin\\Unit\\Checker\\.+EligibilityCheckerTest::\$[^ ]+ .+ does not accept object\./'
+            paths:
+                - tests/Unit/Checker/ChannelEligibilityCheckerTest.php
+                - tests/Unit/Checker/VatNumberEligibilityCheckerTest.php
+        # Symfony 5
+        -
+            message: '/Property Tests\\FluxSE\\SyliusEUVatPlugin\\Unit\\Checker\\.+EligibilityCheckerTest::\$[^ ]+ .+ does not accept object\|null\./'
+            paths:
+                - tests/Unit/Checker/ChannelEligibilityCheckerTest.php
+                - tests/Unit/Checker/VatNumberEligibilityCheckerTest.php

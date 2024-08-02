@@ -13,7 +13,10 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class VatNumberEligibilityCheckerTest extends WebTestCase
 {
+    /** @var AddressFactoryInterface<AddressInterface&VATNumberAwareInterface> */
     private AddressFactoryInterface $addressFactory;
+
+    /** @var ChannelFactoryInterface<ChannelInterface&EuropeanChannelAwareInterface> */
     private ChannelFactoryInterface $channelFactory;
 
     protected function setUp(): void
@@ -41,7 +44,7 @@ class VatNumberEligibilityCheckerTest extends WebTestCase
 
         $result = $eligibilityChecker->check($address, $channel);
 
-        $this->assertEquals($expectedResult, $result);
+        self::assertEquals($expectedResult, $result);
     }
 
     public static function getTestsConfig(): iterable
