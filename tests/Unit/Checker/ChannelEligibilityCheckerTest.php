@@ -16,16 +16,26 @@ use Sylius\Component\Core\Factory\AddressFactoryInterface;
 use Sylius\Component\Core\Model\AddressInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ChannelEligibilityCheckerTest extends WebTestCase
 {
-    private ZoneRepositoryInterface&MockObject $zoneRepositoryMock;
+    /** @var RepositoryInterface<ZoneInterface>&ZoneRepositoryInterface<ZoneInterface>&MockObject */
+    private ZoneRepositoryInterface|RepositoryInterface|MockObject $zoneRepositoryMock;
+
     private ZoneMatcherInterface $zoneMatcher;
+
+    /** @var ZoneFactoryInterface<ZoneInterface> */
     private ZoneFactoryInterface $zoneFactory;
+
     /** @var FactoryInterface<ZoneMemberInterface>  */
     private FactoryInterface $zoneMemberFactory;
+
+    /** @var AddressFactoryInterface<AddressInterface&VATNumberAwareInterface> */
     private AddressFactoryInterface $addressFactory;
+
+    /** @var ChannelFactoryInterface<ChannelInterface&EuropeanChannelAwareInterface> */
     private ChannelFactoryInterface $channelFactory;
 
     protected function setUp(): void
@@ -58,7 +68,7 @@ class ChannelEligibilityCheckerTest extends WebTestCase
         }
 
         $this->zoneRepositoryMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('findByAddress')
             ->willReturnCallback(function (AddressInterface $address) use ($euZone) {
                 $zones = [];
@@ -73,21 +83,20 @@ class ChannelEligibilityCheckerTest extends WebTestCase
         ;
 
         $this->zoneRepositoryMock
-            ->expects($this->once())
+            ->expects(self::once())
             ->method('findByMembers')
             ->willReturn([])
         ;
 
-        /** @var AddressInterface&VATNumberAwareInterface $address */
         $address = $this->addressFactory->createNew();
         $address->setCountryCode($addressCountryCode);
-        /** @var ChannelInterface&EuropeanChannelAwareInterface $channel */
+
         $channel = $this->channelFactory->createNew();
         $channel->setEuropeanZone($euZone);
 
         $result = $eligibilityChecker->check($address, $channel);
 
-        $this->assertEquals($expectedResult, $result);
+        self::assertEquals($expectedResult, $result);
     }
 
     public static function getTestsConfig(): iterable
