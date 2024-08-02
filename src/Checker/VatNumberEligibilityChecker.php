@@ -33,6 +33,15 @@ final class VatNumberEligibilityChecker implements VatRateEligibilityCheckerInte
         if ('GR' === $taxationCountryCode && 'EL' === $vatCountryCode) {
             return true;
         }
+        // Greece with not possible vat country code
+        if ('GR' === $taxationCountryCode && 'GR' === $vatCountryCode) {
+            return false;
+        }
+
+        // GB is out of Europe exception
+        if ('GB' === $taxationCountryCode && 'GB' === $vatCountryCode) {
+            return false;
+        }
 
         // Northern Ireland exception
         if ('GB' === $taxationCountryCode && 'XI' === $vatCountryCode) {
