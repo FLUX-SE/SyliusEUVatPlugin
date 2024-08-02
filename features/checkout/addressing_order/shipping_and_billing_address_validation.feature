@@ -25,7 +25,7 @@ Feature: Order addressing validation with VAT field
         And I should be notified that the vat number in billing details is not corresponding with the selected country
 
     @ui
-    Scenario: Address an order with a country different from the VAT country number
+    Scenario: Address an order with a country equal to the VAT country number
         Given I have product "PHP T-Shirt" in the cart
         And I am at the checkout addressing step
         And I specify the shipping address as "Ankh Morpork", "Frost Alley", "90210", "France" for "Jon Snow"
