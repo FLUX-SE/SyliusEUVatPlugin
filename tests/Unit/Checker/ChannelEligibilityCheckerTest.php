@@ -10,19 +10,18 @@ use Sylius\Component\Addressing\Factory\ZoneFactoryInterface;
 use Sylius\Component\Addressing\Matcher\ZoneMatcherInterface;
 use Sylius\Component\Addressing\Model\ZoneInterface;
 use Sylius\Component\Addressing\Model\ZoneMemberInterface;
-use Sylius\Component\Addressing\Repository\ZoneRepositoryInterface;
 use Sylius\Component\Channel\Factory\ChannelFactoryInterface;
 use Sylius\Component\Core\Factory\AddressFactoryInterface;
 use Sylius\Component\Core\Model\AddressInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
-use Sylius\Component\Resource\Factory\FactoryInterface;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Sylius\Resource\Factory\FactoryInterface;
+use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ChannelEligibilityCheckerTest extends WebTestCase
 {
-    /** @var RepositoryInterface<ZoneInterface>&ZoneRepositoryInterface<ZoneInterface>&MockObject */
-    private ZoneRepositoryInterface|RepositoryInterface|MockObject $zoneRepositoryMock;
+    /** @var RepositoryInterface<ZoneInterface>&MockObject */
+    private RepositoryInterface|MockObject $zoneRepositoryMock;
 
     private ZoneMatcherInterface $zoneMatcher;
 
@@ -40,7 +39,7 @@ class ChannelEligibilityCheckerTest extends WebTestCase
 
     protected function setUp(): void
     {
-        $this->zoneRepositoryMock = $this->createMock(ZoneRepositoryInterface::class);
+        $this->zoneRepositoryMock = $this->createMock(RepositoryInterface::class);
         static::getContainer()->set('sylius.repository.zone', $this->zoneRepositoryMock);
         $this->zoneMatcher = static::getContainer()->get('sylius.zone_matcher');
         $this->zoneFactory = static::getContainer()->get('sylius.factory.zone');
@@ -60,6 +59,7 @@ class ChannelEligibilityCheckerTest extends WebTestCase
     ): void {
         $eligibilityChecker = new ChannelEligibilityChecker($this->zoneMatcher);
 
+        /** @var ZoneInterface $euZone */
         $euZone = $this->zoneFactory->createNew();
         foreach ($availableCountries as $countryCode) {
             $zoneMember = $this->zoneMemberFactory->createNew();
@@ -88,9 +88,11 @@ class ChannelEligibilityCheckerTest extends WebTestCase
             ->willReturn([])
         ;
 
+        /** @var AddressInterface&VATNumberAwareInterface $address */
         $address = $this->addressFactory->createNew();
         $address->setCountryCode($addressCountryCode);
 
+        /** @var ChannelInterface&EuropeanChannelAwareInterface $channel */
         $channel = $this->channelFactory->createNew();
         $channel->setEuropeanZone($euZone);
 
