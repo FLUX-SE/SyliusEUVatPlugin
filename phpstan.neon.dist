@@ -24,3 +24,35 @@ parameters:
             paths:
                 - tests/Unit/Checker/ChannelEligibilityCheckerTest.php
                 - tests/Unit/Checker/VatNumberEligibilityCheckerTest.php
+        # Sylius 1.12
+        -
+            message: '/PHPDoc (type|tag @var) for property .* contains generic type Sylius\\Component\\Channel\\Repository\\ChannelRepositoryInterface.* but interface Sylius\\Component\\Channel\\Repository\\ChannelRepositoryInterface is not generic\./'
+            paths:
+                - tests/Unit/Checker/VatNumberEligibilityCheckerTest.php
+                - src/Fixture/Factory/EuropeanChannelExampleFactory.php
+        -
+            message: '/PHPDoc tag @var for property .* contains generic type Sylius\\Component\\Core\\Factory\\AddressFactoryInterface.* but interface Sylius\\Component\\Core\\Factory\\AddressFactoryInterface is not generic\./'
+            paths:
+                - tests/Unit/Checker/VatNumberEligibilityCheckerTest.php
+                - tests/Unit/Checker/ChannelEligibilityCheckerTest.php
+        -
+            message: '/PHPDoc tag @var for property .* contains generic type Sylius\\Component\\Addressing\\Factory\\ZoneFactoryInterface.* but interface Sylius\\Component\\Addressing\\Factory\\ZoneFactoryInterface is not generic\./'
+            paths:
+                - tests/Unit/Checker/ChannelEligibilityCheckerTest.php
+        -
+            message: '/PHPDoc tag @var for property .* contains generic type Sylius\\Component\\Channel\\Factory\\ChannelFactoryInterface.* but interface Sylius\\Component\\Channel\\Factory\\ChannelFactoryInterface is not generic\./'
+            paths:
+                - tests/Unit/Checker/ChannelEligibilityCheckerTest.php
+                - tests/Unit/Checker/VatNumberEligibilityCheckerTest.php
+
+        # Sylius 1.13
+        -
+            message: '/.* expects Sylius\\Component\\Resource\\Factory\\FactoryInterface, Sylius\\Resource\\Factory\\FactoryInterface.* given\./'
+            paths:
+                - src/Fixture/Factory/AddressExampleFactory.php
+                - tests/Unit/Checker/ChannelEligibilityCheckerTest.php
+        -
+            message: '/.* expects Sylius\\Component\\Resource\\Repository\\RepositoryInterface, Sylius\\Resource\\Doctrine\\Persistence\\RepositoryInterface.* given\./'
+            paths:
+                - src/Fixture/Factory/AddressExampleFactory.php
+                - src/Fixture/Factory/EuropeanChannelExampleFactory.php
