@@ -1,2 +1,3 @@
 imports:
     - { resource: "app/fixtures.yaml" }
+    - { resource: "app/admin/sylius_ui.yaml" }
