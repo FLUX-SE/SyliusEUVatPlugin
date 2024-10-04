@@ -40,7 +40,6 @@
         "symfony/intl": "^5.4|^6.4",
         "symfony/runtime": "^5.4|^6.4",
         "symfony/web-profiler-bundle": "^5.4|^6.4",
-        "vimeo/psalm": "^4|^5",
         "symfony/webpack-encore-bundle": "^1.16",
         "matthiasnoback/symfony-config-test": "^5.1",
         "robertfausk/behat-panther-extension": "^1.1",
