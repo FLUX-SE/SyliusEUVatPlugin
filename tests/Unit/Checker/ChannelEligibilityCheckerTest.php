@@ -14,8 +14,8 @@ use Sylius\Component\Channel\Factory\ChannelFactoryInterface;
 use Sylius\Component\Core\Factory\AddressFactoryInterface;
 use Sylius\Component\Core\Model\AddressInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
-use Sylius\Resource\Factory\FactoryInterface;
 use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
+use Sylius\Resource\Factory\FactoryInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ChannelEligibilityCheckerTest extends WebTestCase
@@ -61,6 +61,7 @@ class ChannelEligibilityCheckerTest extends WebTestCase
 
         /** @var ZoneInterface $euZone */
         $euZone = $this->zoneFactory->createNew();
+        $euZone->setType(ZoneInterface::TYPE_COUNTRY);
         foreach ($availableCountries as $countryCode) {
             $zoneMember = $this->zoneMemberFactory->createNew();
             $zoneMember->setCode($countryCode);
@@ -69,23 +70,10 @@ class ChannelEligibilityCheckerTest extends WebTestCase
 
         $this->zoneRepositoryMock
             ->expects(self::once())
-            ->method('findByAddress')
-            ->willReturnCallback(function (AddressInterface $address) use ($euZone) {
-                $zones = [];
-                foreach ($euZone->getMembers() as $zoneMember) {
-                    if ($zoneMember->getCode() === $address->getCountryCode()) {
-                        $zones[] = $euZone;
-                    }
-                }
-
-                return $zones;
+            ->method('findAll')
+            ->willReturnCallback(function () use ($euZone) {
+                return [$euZone];
             })
-        ;
-
-        $this->zoneRepositoryMock
-            ->expects(self::once())
-            ->method('findByMembers')
-            ->willReturn([])
         ;
 
         /** @var AddressInterface&VATNumberAwareInterface $address */
