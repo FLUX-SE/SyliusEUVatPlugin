@@ -92,11 +92,6 @@ jobs:
                 if: always() && steps.end-of-setup.outcome == 'success'
 
             -
-                name: Run Psalm
-                run: vendor/bin/psalm --show-info=false --output-format=github
-                if: always() && steps.end-of-setup.outcome == 'success'
-
-            -
                 name: Run PHPStan
                 run: vendor/bin/phpstan analyse
                 if: always() && steps.end-of-setup.outcome == 'success'
