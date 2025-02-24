@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\FluxSE\SyliusEUVatPlugin\Unit\Checker;
 
 use FluxSE\SyliusEUVatPlugin\Checker\VatNumberEligibilityChecker;
@@ -52,27 +54,27 @@ class VatNumberEligibilityCheckerTest extends WebTestCase
         yield [
             'FR',
             'FR12345678987',
-            true
+            true,
         ];
         yield [
             'GB',
             'XI12345678987',
-            true
+            true,
         ];
         yield [
             'GB',
             'GB12345678987',
-            false
+            false,
         ];
         yield [
             'GR',
             'EL12345678987',
-            true
+            true,
         ];
         yield [
             'GR',
             'GR12345678987',
-            false
+            false,
         ];
     }
 }

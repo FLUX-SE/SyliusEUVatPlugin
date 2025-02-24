@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Tests\FluxSE\SyliusEUVatPlugin\Unit\Fixture;
 
 use Doctrine\Persistence\ObjectManager;
+use FluxSE\SyliusEUVatPlugin\Fixture\EuropeanChannelFixture;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 use PHPUnit\Framework\TestCase;
-use FluxSE\SyliusEUVatPlugin\Fixture\EuropeanChannelFixture;
 use Sylius\Bundle\CoreBundle\Fixture\Factory\ExampleFactoryInterface;
 
 final class EuropeanChannelFixtureTest extends TestCase
@@ -44,7 +44,7 @@ final class EuropeanChannelFixtureTest extends TestCase
     {
         return new EuropeanChannelFixture(
             $this->getMockBuilder(ObjectManager::class)->getMock(),
-            $this->getMockBuilder(ExampleFactoryInterface::class)->getMock()
+            $this->getMockBuilder(ExampleFactoryInterface::class)->getMock(),
         );
     }
 }

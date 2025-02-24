@@ -14,7 +14,7 @@ final class CheckoutAddressingContext implements Context
 {
     public function __construct(
         private AddressPageInterface $addressPage,
-        private SharedStorageInterface $sharedStorage
+        private SharedStorageInterface $sharedStorage,
     ) {
     }
 
@@ -68,7 +68,7 @@ final class CheckoutAddressingContext implements Context
         $key = sprintf(
             'billing_address_%s_%s',
             strtolower((string) $address->getFirstName()),
-            strtolower((string) $address->getLastName())
+            strtolower((string) $address->getLastName()),
         );
         $this->sharedStorage->set($key, $address);
 
@@ -78,7 +78,7 @@ final class CheckoutAddressingContext implements Context
         $key = sprintf(
             'shipping_address_%s_%s',
             strtolower((string) $address->getFirstName()),
-            strtolower((string) $address->getLastName())
+            strtolower((string) $address->getLastName()),
         );
         $this->sharedStorage->set($key, $address);
 

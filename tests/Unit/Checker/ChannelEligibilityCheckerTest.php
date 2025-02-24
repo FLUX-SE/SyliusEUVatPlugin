@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\FluxSE\SyliusEUVatPlugin\Unit\Checker;
 
 use FluxSE\SyliusEUVatPlugin\Checker\ChannelEligibilityChecker;
@@ -28,7 +30,7 @@ class ChannelEligibilityCheckerTest extends WebTestCase
     /** @var ZoneFactoryInterface<ZoneInterface> */
     private ZoneFactoryInterface $zoneFactory;
 
-    /** @var FactoryInterface<ZoneMemberInterface>  */
+    /** @var FactoryInterface<ZoneMemberInterface> */
     private FactoryInterface $zoneMemberFactory;
 
     /** @var AddressFactoryInterface<AddressInterface&VATNumberAwareInterface> */
@@ -50,6 +52,7 @@ class ChannelEligibilityCheckerTest extends WebTestCase
 
     /**
      * @dataProvider getTestsConfig
+     *
      * @param string[] $availableCountries
      */
     public function testCheck(
@@ -94,34 +97,34 @@ class ChannelEligibilityCheckerTest extends WebTestCase
         yield [
             [
                 'FR',
-                'GB'
+                'GB',
             ],
             'FR',
-            true
+            true,
         ];
         yield [
             [
                 'FR',
-                'GB'
+                'GB',
             ],
             'GB',
-            true
+            true,
         ];
         yield [
             [
                 'FR',
-                'GB'
+                'GB',
             ],
             'XX',
-            false
+            false,
         ];
         yield [
             [
                 'FR',
-                'ES'
+                'ES',
             ],
             'GB',
-            false
+            false,
         ];
     }
 }
