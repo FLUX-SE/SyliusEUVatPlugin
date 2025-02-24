@@ -22,7 +22,7 @@ final class FluxSESyliusEUVatExtension extends Extension implements PrependExten
 
     protected function getMigrationsDirectory(): string
     {
-        return '@FluxSESyliusEUVatPlugin/src/Migrations';
+        return '@FluxSESyliusEUVatPlugin/migrations';
     }
 
     protected function getNamespacesOfMigrationsExecutedBefore(): array
@@ -40,6 +40,14 @@ final class FluxSESyliusEUVatExtension extends Extension implements PrependExten
         );
 
         $loader->load('services.yaml');
+
+        if ($container->hasParameter('kernel.bundles')) {
+            /** @var string[] $bundles */
+            $bundles = $container->getParameter('kernel.bundles');
+            if (array_key_exists('SyliusShopBundle', $bundles)) {
+                $loader->load('services/integrations/sylius_shop.yaml');
+            }
+        }
     }
 
     public function prepend(ContainerBuilder $container): void

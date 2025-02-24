@@ -1,0 +1,13 @@
+sylius_twig_hooks:
+    hooks:
+        'sylius_shop.checkout.address.content.form.addresses.billing_address':
+            address_book:
+                props:
+                    template: '@FluxSESyliusEUVatPlugin/shop/checkout/address/content/form/addresses/address_book.html.twig'
+        'sylius_shop.checkout.address.content.form.addresses.shipping_address':
+            address_book:
+                props:
+                    template: '@FluxSESyliusEUVatPlugin/shop/checkout/address/content/form/addresses/address_book.html.twig'
+        'sylius_shop.shared.form.address':
+            vat_number:
+                template: '@FluxSESyliusEUVatPlugin/shared/form/address/vat_number.html.twig'

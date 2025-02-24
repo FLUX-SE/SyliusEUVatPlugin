@@ -1,7 +1,0 @@
-sylius_ui:
-  events:
-    sylius.admin.channel.update.form:
-      blocks:
-        vat_number:
-          template: '@FluxSESyliusEUVatPlugin/Admin/Channel/europeanChannelForm.html.twig'
-          priority: 10
