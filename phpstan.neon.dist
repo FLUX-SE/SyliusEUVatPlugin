@@ -10,7 +10,6 @@ parameters:
         - tests/Unit
 
     ignoreErrors:
-        - identifier: missingType.iterableValue
         - message: '/Property FluxSE\\SyliusEUVatPlugin\\Twig\\Component\\Checkout\\Address\\FormComponent::\$formView is never read, only written\./'
           paths:
             - src/Twig/Component/Checkout/Address/FormComponent.php
@@ -18,3 +17,6 @@ parameters:
           paths:
             - tests/Unit/Checker/ChannelEligibilityCheckerTest.php
             - tests/Unit/Checker/VatNumberEligibilityCheckerTest.php
+        - message: '/Method FluxSE\\SyliusEUVatPlugin\\Fixture\\Factory\\AddressExampleFactory::create\(\) has parameter \$options with no value type specified in iterable type array\./'
+          paths:
+            - src/Fixture/Factory/AddressExampleFactory.php

@@ -25,6 +25,9 @@ final class FluxSESyliusEUVatExtension extends Extension implements PrependExten
         return '@FluxSESyliusEUVatPlugin/migrations';
     }
 
+    /**
+     * @return string[]
+     */
     protected function getNamespacesOfMigrationsExecutedBefore(): array
     {
         return [

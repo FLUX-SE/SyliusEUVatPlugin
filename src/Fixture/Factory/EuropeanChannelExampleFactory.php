@@ -39,6 +39,9 @@ class EuropeanChannelExampleFactory extends AbstractExampleFactory
         $this->configureOptions($this->optionsResolver);
     }
 
+    /**
+     * @param mixed[] $options
+     */
     public function create(array $options = []): ChannelInterface&EuropeanChannelAwareInterface
     {
         $options = $this->optionsResolver->resolve($options);
