@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/8.1/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          backupGlobals="false"
          colors="true"
          bootstrap="vendor/autoload.php">
@@ -12,7 +12,7 @@
     </testsuites>
 
     <php>
-        <server name="KERNEL_CLASS" value="Tests\FluxSE\SyliusEUVatPlugin\Application\Kernel" />
+        <server name="KERNEL_CLASS" value="Tests\FluxSE\SyliusEUVatPlugin\App\Kernel" />
         <server name="IS_DOCTRINE_ORM_SUPPORTED" value="true" />
     </php>
 </phpunit>
