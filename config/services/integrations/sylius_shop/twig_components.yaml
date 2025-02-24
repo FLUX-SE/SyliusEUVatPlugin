@@ -1,6 +1,6 @@
 services:
 
-    sylius_eu_vat.shop.twig.component.checkout.address.form:
+    flux_se.sylius_eu_vat.shop.twig.component.checkout.address.form:
         decorates: sylius_shop.twig.component.checkout.address.form
         class: FluxSE\SyliusEUVatPlugin\Twig\Component\Checkout\Address\FormComponent
         arguments:

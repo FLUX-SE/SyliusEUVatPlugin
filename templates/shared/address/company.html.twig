@@ -1,0 +1,6 @@
+{% set address = hookable_metadata.context.address %}
+
+{% if address.company is not null or address.vatNumber is not null  %}
+    <span>{% hook 'company' %}</span>
+{% endif %}
+

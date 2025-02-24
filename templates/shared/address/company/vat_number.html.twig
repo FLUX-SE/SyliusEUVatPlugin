@@ -1,5 +1,5 @@
 {% set vat_number = hookable_metadata.context.address.vatNumber %}
 {% if vat_number is not null %}
-    <span>{{ 'flux_se.sylius_eu_vat.ui.eu_vat_number'|trans }} : <strong>{{ vat_number }}</strong></span>
+    ({{ 'flux_se.sylius_eu_vat.ui.eu_vat_number'|trans }} : <strong>{{ vat_number }}</strong>)
 {% endif %}
 

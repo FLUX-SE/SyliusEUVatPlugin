@@ -1,0 +1,7 @@
+services:
+
+    flux_se.sylius_eu_vat_plugin.matcher.country_code_zone:
+        class: FluxSE\SyliusEUVatPlugin\Matcher\CountryCodeZoneMatcher
+        arguments:
+            - '@sylius.repository.zone'
+    FluxSE\SyliusEUVatPlugin\Matcher\CountryCodeZoneMatcherInterface: '@flux_se.sylius_eu_vat_plugin.matcher.country_code_zone'

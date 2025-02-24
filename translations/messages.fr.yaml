@@ -1,9 +1,9 @@
 flux_se:
     sylius_eu_vat:
         form:
-            vat_number: 'Numéro de TVA de l''UE'
+            vat_number: 'Numéro de TVA de l''Union Européenne'
             base_country: 'Pays de l''entité juridique'
             european_zone: 'Zone de l''union européenne'
         ui:
-            eu_vat_number: 'Numéro de TVA Européen'
-            european_channel: 'Informations européenne requises'
+            eu_vat_number: 'TVA EU'
+            european_channel: 'Informations de l''Union Européennes requises'

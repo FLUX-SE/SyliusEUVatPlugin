@@ -1,0 +1,7 @@
+sylius_twig_hooks:
+    hooks:
+        'sylius_admin.order.update.content.form.billing_address': &sylius_admin_order_update_content_form_billing_address
+            vat_number:
+                template: '@FluxSESyliusEUVatPlugin/admin/order/form/common/vat_number.html.twig'
+                priority: -100
+        'sylius_admin.order.update.content.form.shipping_address': *sylius_admin_order_update_content_form_billing_address
