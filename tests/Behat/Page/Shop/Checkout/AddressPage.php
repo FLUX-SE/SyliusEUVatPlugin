@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\FluxSE\SyliusEUVatPlugin\Behat\Page\Shop\Checkout;
 
-use Behat\Mink\Exception\ElementNotFoundException;
 use Sylius\Behat\Page\Shop\Checkout\AddressPage as BaseAddressPage;
 
 class AddressPage extends BaseAddressPage implements AddressPageInterface
