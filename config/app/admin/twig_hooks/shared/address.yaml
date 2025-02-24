@@ -1,0 +1,10 @@
+sylius_twig_hooks:
+    hooks:
+        'sylius_admin.shared.address':
+            vat_number:
+                template: '@FluxSESyliusEUVatPlugin/shared/address/vat_number.html.twig'
+                priority: -100
+        'sylius_admin.shared.form.address':
+            vat_number:
+                template: '@FluxSESyliusEUVatPlugin/shared/form/address/vat_number.html.twig'
+                priority: -100
