@@ -92,6 +92,9 @@ class ChannelEligibilityCheckerTest extends WebTestCase
         self::assertEquals($expectedResult, $result);
     }
 
+    /**
+     * @return iterable<array{string[], string, bool}>
+     */
     public static function getTestsConfig(): iterable
     {
         yield [

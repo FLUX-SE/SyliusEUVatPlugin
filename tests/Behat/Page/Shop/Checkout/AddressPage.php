@@ -8,6 +8,9 @@ use Sylius\Behat\Page\Shop\Checkout\AddressPage as BaseAddressPage;
 
 class AddressPage extends BaseAddressPage implements AddressPageInterface
 {
+    /**
+     * @return array<string, string>
+     */
     protected function getDefinedElements(): array
     {
         return array_merge(parent::getDefinedElements(), [
