@@ -12,6 +12,7 @@ use Sylius\Component\Addressing\Factory\ZoneFactoryInterface;
 use Sylius\Component\Addressing\Matcher\ZoneMatcherInterface;
 use Sylius\Component\Addressing\Model\ZoneInterface;
 use Sylius\Component\Addressing\Model\ZoneMemberInterface;
+use Sylius\Component\Addressing\Repository\ZoneRepositoryInterface;
 use Sylius\Component\Channel\Factory\ChannelFactoryInterface;
 use Sylius\Component\Core\Factory\AddressFactoryInterface;
 use Sylius\Component\Core\Model\AddressInterface;
@@ -41,9 +42,9 @@ class ChannelEligibilityCheckerTest extends WebTestCase
 
     protected function setUp(): void
     {
-        $this->zoneRepositoryMock = $this->createMock(RepositoryInterface::class);
+        $this->zoneRepositoryMock = $this->createMock(ZoneRepositoryInterface::class);
         static::getContainer()->set('sylius.repository.zone', $this->zoneRepositoryMock);
-        $this->zoneMatcher = static::getContainer()->get('sylius.zone_matcher');
+        $this->zoneMatcher = static::getContainer()->get('sylius.matcher.zone');
         $this->zoneFactory = static::getContainer()->get('sylius.factory.zone');
         $this->zoneMemberFactory = static::getContainer()->get('sylius.factory.zone_member');
         $this->addressFactory = static::getContainer()->get('sylius.factory.address');
@@ -73,9 +74,21 @@ class ChannelEligibilityCheckerTest extends WebTestCase
 
         $this->zoneRepositoryMock
             ->expects(self::once())
-            ->method('findAll')
-            ->willReturnCallback(function () use ($euZone) {
-                return [$euZone];
+            ->method('findByAddress')
+            ->willReturnCallback(function () use ($euZone, $expectedResult) {
+                if ($expectedResult) {
+                    return [$euZone];
+                }
+
+                return [];
+            })
+        ;
+
+        $this->zoneRepositoryMock
+            ->expects(self::once())
+            ->method('findByMembers')
+            ->willReturnCallback(function () {
+                return [];
             })
         ;
 
