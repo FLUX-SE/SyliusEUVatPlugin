@@ -1,0 +1,11 @@
+<div class="g-col-12 card mb-3">
+    <div class="card-header">
+        <div class="card-title">{{ 'flux_se.sylius_eu_vat.ui.european_channel'|trans }}</div>
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            {% hook 'european_channel' %}
+        </div>
+    </div>
+</div>

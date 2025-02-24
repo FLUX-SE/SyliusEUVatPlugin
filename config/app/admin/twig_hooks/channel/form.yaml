@@ -1,0 +1,15 @@
+sylius_twig_hooks:
+    hooks:
+        'sylius_admin.channel.create.content.form.sections': &sylius_admin_channel_create_content_form_sections
+            european_channel:
+                template: '@FluxSESyliusEUVatPlugin/admin/channel/content/form/sections/european_channel.html.twig'
+                priority: -100
+        'sylius_admin.channel.create.content.form.sections.european_channel': &sylius_admin_channel_create_content_form_sections_european_channel
+            base_country:
+                template: '@FluxSESyliusEUVatPlugin/admin/channel/content/form/sections/european_channel/base_country.html.twig'
+                priority: 200
+            european_zone:
+                template: '@FluxSESyliusEUVatPlugin/admin/channel/content/form/sections/european_channel/european_zone.html.twig'
+                priority: 100
+        'sylius_admin.channel.update.content.form.sections': *sylius_admin_channel_create_content_form_sections
+        'sylius_admin.channel.update.content.form.sections.european_channel': *sylius_admin_channel_create_content_form_sections_european_channel

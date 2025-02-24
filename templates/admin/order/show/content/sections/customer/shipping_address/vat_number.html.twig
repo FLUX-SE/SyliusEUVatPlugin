@@ -1,0 +1,10 @@
+{% set order = hookable_metadata.context.resource %}
+
+{% if order.shippingAddress is not null and order.shippingAddress.vatNumber is not null %}
+<div>
+    <strong>{{ 'flux_se.sylius_eu_vat.ui.eu_vat_number'|trans }}:</strong>
+</div>
+<div class="mb-3" {{ sylius_test_html_attribute('shipping-address-vat-number') }}>
+    {{ order.shippingAddress.vatNumber }}
+</div>
+{% endif %}

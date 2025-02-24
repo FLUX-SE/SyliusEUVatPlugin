@@ -1,9 +1,9 @@
 flux_se:
     sylius_eu_vat:
         form:
-            vat_number: 'USt-ID'
+            vat_number: 'USt-ID der Europäischen Union'
             base_country: 'Herkunftsland'
             european_zone: 'Europäische Zone'
         ui:
             eu_vat_number: 'USt-ID'
-            european_channel: 'Information in Europa benötigt'
+            european_channel: 'Informationen der Europäischen Union erforderlich'

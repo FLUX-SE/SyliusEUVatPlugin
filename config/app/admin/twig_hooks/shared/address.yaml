@@ -1,9 +1,19 @@
 sylius_twig_hooks:
     hooks:
-        'sylius_admin.shared.address':
+        'sylius_admin.order.show.content.sections.customer':
+            billing_address_vat_number:
+                template: '@FluxSESyliusEUVatPlugin/admin/order/show/content/sections/customer/billing_address/vat_number.html.twig'
+                priority: 150
+            shipping_address_vat_number:
+                template: '@FluxSESyliusEUVatPlugin/admin/order/show/content/sections/customer/shipping_address/vat_number.html.twig'
+                priority: 50
+        'sylius_admin.shared.address.company':
+            company:
+                template: '@SyliusShop/shared/address/company.html.twig'
+                priority: 200
             vat_number:
-                template: '@FluxSESyliusEUVatPlugin/shared/address/vat_number.html.twig'
-                priority: -100
+                template: '@FluxSESyliusEUVatPlugin/shared/address/company/vat_number.html.twig'
+                priority: 100
         'sylius_admin.shared.form.address':
             vat_number:
                 template: '@FluxSESyliusEUVatPlugin/shared/form/address/vat_number.html.twig'

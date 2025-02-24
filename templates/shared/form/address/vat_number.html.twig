@@ -1,1 +1,4 @@
-{{ form_row(hookable_metadata.context.form.vatNumber, sylius_test_form_attribute(hookable_metadata.context.type|default(null) ~ 'vatNumber')) }}
+{% set form = hookable_metadata.context.form %}
+{% if form.vatNumber is defined %}
+    {{ form_row(form.vatNumber, sylius_test_form_attribute(hookable_metadata.context.type|default(null) ~ 'vatNumber')) }}
+{% endif %}

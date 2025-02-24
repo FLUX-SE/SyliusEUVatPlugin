@@ -1,2 +1,2 @@
 imports:
-  - { resource: "app/admin/sylius_twig_hooks.yaml" }
+    - { resource: "app/admin/**/*.yaml" }

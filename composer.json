@@ -50,7 +50,8 @@
         "doctrine/orm": "^2.20",
         "doctrine/data-fixtures": "^1.8",
         "lchrusciel/api-test-case": "^5.3",
-        "phpstan/phpstan-phpunit": "^1.4"
+        "phpstan/phpstan-phpunit": "^1.4",
+        "matthiasnoback/symfony-config-test": "^5.2"
     },
     "autoload": {
         "psr-4": { "FluxSE\\SyliusEUVatPlugin\\": "src/" }
