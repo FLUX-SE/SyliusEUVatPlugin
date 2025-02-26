@@ -13,8 +13,7 @@ class CountryVatNumber extends Constraint
 
     public string $message = 'flux_se.sylius_eu_vat.country_vat_number.invalid';
 
-    /** @var string[] */
-    public $groups = [];
+    public $groups;
 
     public string $vatNumberPath = 'vatNumber';
 
