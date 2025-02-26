@@ -40,7 +40,7 @@ final class CheckoutAddressingContext implements Context
     public function iProceedOrderWithShippingMethodAndPayment(
         ShippingMethodInterface $shippingMethod,
         PaymentMethodInterface $paymentMethod,
-    ): void{
+    ): void {
         $this->checkoutContext->iProceedOrderWithShippingMethodAndPayment($shippingMethod, $paymentMethod);
     }
 
@@ -138,7 +138,7 @@ final class CheckoutAddressingContext implements Context
      */
     public function iSpecifyTheVatNumberAs(string $type, string $vatNumber): void
     {
-        $this->content[$type.'Address']['vatNumber'] = $vatNumber;
+        $this->content[$type . 'Address']['vatNumber'] = $vatNumber;
     }
 
     /**

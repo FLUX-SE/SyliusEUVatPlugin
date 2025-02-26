@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Tests\FluxSE\SyliusEUVatPlugin\Behat\Context\Ui\Shop\Checkout;
 
 use Behat\Behat\Context\Context;
-use Sylius\Behat\Service\SharedStorageInterface;
-use Tests\FluxSE\SyliusEUVatPlugin\App\Entity\Addressing\AddressInterface;
 use Tests\FluxSE\SyliusEUVatPlugin\Behat\Page\Shop\Checkout\AddressPageInterface;
 use Webmozart\Assert\Assert;
 
