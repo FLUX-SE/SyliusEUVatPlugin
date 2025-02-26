@@ -13,11 +13,9 @@ class CountryVatNumber extends Constraint
 
     public string $message = 'flux_se.sylius_eu_vat.country_vat_number.invalid';
 
-    public $groups;
-
     public string $vatNumberPath = 'vatNumber';
 
-    public function getTargets()
+    public function getTargets(): string|array
     {
         return self::CLASS_CONSTRAINT;
     }
