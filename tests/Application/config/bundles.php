@@ -62,6 +62,6 @@ return [
     Symfony\UX\StimulusBundle\StimulusBundle::class => ['all' => true],
     Sylius\TwigExtra\Symfony\SyliusTwigExtraBundle::class => ['all' => true],
     Symfony\UX\Icons\UXIconsBundle::class => ['all' => true],
-    FluxSE\SyliusEUVatPlugin\FluxSESyliusEUVatPlugin::class => ['all' => true],
     Prometee\VIESClientBundle\VIESClientBundle::class => ['all' => true],
+    FluxSE\SyliusEUVatPlugin\FluxSESyliusEUVatPlugin::class => ['all' => true],
 ];
