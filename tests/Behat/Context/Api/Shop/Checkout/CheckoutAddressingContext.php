@@ -11,6 +11,7 @@ use Sylius\Behat\Context\Api\Resources;
 use Sylius\Behat\Context\Api\Shop\CheckoutContext;
 use Sylius\Behat\Service\SharedStorageInterface;
 use Sylius\Component\Core\Formatter\StringInflector;
+use Sylius\Component\Core\Model\AddressInterface;
 use Sylius\Component\Core\Model\PaymentMethodInterface;
 use Sylius\Component\Core\Model\ShippingMethodInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +19,11 @@ use Webmozart\Assert\Assert;
 
 final class CheckoutAddressingContext implements Context
 {
-    /** @var string[] */
+    /** @var array{
+     *     shippingAddress?: array<string, string|null>,
+     *     billingAddress?: array<string, string|null>,
+     * }
+     */
     private array $content = [];
 
     public function __construct(
@@ -101,7 +106,7 @@ final class CheckoutAddressingContext implements Context
      * @When /^I specify the(?:| required) shipping (address as "([^"]+)", "([^"]+)", "([^"]+)", "([^"]+)" for "([^"]+)")$/
      * @When /^I specify the shipping (address for "([^"]+)" from "([^"]+)", "([^"]+)", "([^"]+)", "([^"]+)", "([^"]+)")$/
      */
-    public function iSpecifyTheShippingAddressAs(\Sylius\Component\Core\Model\AddressInterface $address): void
+    public function iSpecifyTheShippingAddressAs(AddressInterface $address): void
     {
         $this->fillAddress('shippingAddress', $address);
     }
@@ -111,12 +116,12 @@ final class CheckoutAddressingContext implements Context
      * @When /^the (?:customer|visitor) specify the billing (address as "([^"]+)", "([^"]+)", "([^"]+)", "([^"]+)" for "([^"]+)")$/
      * @When /^I specify the billing (address for "([^"]+)" from "([^"]+)", "([^"]+)", "([^"]+)", "([^"]+)", "([^"]+)")$/
      */
-    public function iSpecifyTheBillingAddressAs(\Sylius\Component\Core\Model\AddressInterface $address): void
+    public function iSpecifyTheBillingAddressAs(AddressInterface $address): void
     {
         $this->fillAddress('billingAddress', $address);
     }
 
-    private function fillAddress(string $addressType, \Sylius\Component\Core\Model\AddressInterface $address): void
+    private function fillAddress(string $addressType, AddressInterface $address): void
     {
         $this->content[$addressType]['city'] = $address->getCity() ?? '';
         $this->content[$addressType]['street'] = $address->getStreet() ?? '';
@@ -149,18 +154,6 @@ final class CheckoutAddressingContext implements Context
             $this->client->getLastResponse(),
             'Invalid VAT Number',
             sprintf('%s.%s', StringInflector::nameToCamelCase($addressType), 'vatNumber'),
-        ));
-    }
-
-    private function assertVatNumberMessage(string $addressType): void
-    {
-        $response = $this->client->getLastResponse();
-
-        Assert::same($response->getStatusCode(), 422);
-        Assert::true($this->responseChecker->hasViolationWithMessage(
-            $response,
-            'Please select proper province.',
-            sprintf('%s.%s', $addressType, 'vatNumber'),
         ));
     }
 

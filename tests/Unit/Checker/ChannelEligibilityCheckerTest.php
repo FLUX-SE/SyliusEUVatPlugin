@@ -17,14 +17,13 @@ use Sylius\Component\Channel\Factory\ChannelFactoryInterface;
 use Sylius\Component\Core\Factory\AddressFactoryInterface;
 use Sylius\Component\Core\Model\AddressInterface;
 use Sylius\Component\Core\Model\ChannelInterface;
-use Sylius\Resource\Doctrine\Persistence\RepositoryInterface;
 use Sylius\Resource\Factory\FactoryInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class ChannelEligibilityCheckerTest extends WebTestCase
 {
-    /** @var RepositoryInterface<ZoneInterface>&MockObject */
-    private RepositoryInterface|MockObject $zoneRepositoryMock;
+    /** @var ZoneRepositoryInterface<ZoneInterface>|MockObject */
+    private ZoneRepositoryInterface|MockObject $zoneRepositoryMock;
 
     private ZoneMatcherInterface $zoneMatcher;
 
