@@ -5,33 +5,45 @@ Feature: Order addressing validation with VAT field
     I want to be prevented from adding a false VAT number
 
     Background:
-        Given the store operates on a single channel in "United States"
-        And its based in the "United States" country and allow VAT numbers for the "US" zone
+        And the store operates on a single channel
+        And the store operates in "France"
+        And the store has a zone "European Union" with code "EU"
+        And this zone has the "France" country member
+        And this channel is based in the "France" country and allow VAT numbers for the "EU" zone
         And the store ships everywhere for free
         And the store has a product "PHP T-Shirt" priced at "$19.99"
-        And the store operates in "France"
         And I am a logged in customer
+        And I have product "PHP T-Shirt" in the cart
 
-    @ui
+    @api @ui @javascript
     Scenario: Address an order with a country different from the VAT country number
-        Given I have product "PHP T-Shirt" in the cart
-        And I am at the checkout addressing step
-        And I specify the shipping address as "Ankh Morpork", "Frost Alley", "90210", "United States" for "Jon Snow"
-        And I specify the billing address as "Ankh Morpork", "Frost Alley", "90210", "United States" for "Eddard Stark"
-        And I specify the shipping vat number as "FR01234567891"
-        And I specify the billing vat number as "FR01234567891"
+        Given I am at the checkout addressing step
+        When I specify the billing address as "Paris", "1 avenue Notre Dame", "75001", "France" for "Dupont Jean"
+        And I specify the billing vat number as "ES01234567891"
+        And I specify the shipping address as "Paris", "1 avenue Notre Dame", "75001", "France" for "Dupont Jean"
+        And I specify the shipping vat number as "ES01234567891"
         And I try to complete the addressing step
-        Then I should be notified that the vat number in shipping details is not corresponding with the selected country
-        And I should be notified that the vat number in billing details is not corresponding with the selected country
+        Then I should be notified that the VAT number in shipping details is not corresponding with the selected country
+        And I should be notified that the VAT number in billing details is not corresponding with the selected country
 
-    @ui
+    @api @ui @javascript
     Scenario: Address an order with a country equal to the VAT country number
-        Given I have product "PHP T-Shirt" in the cart
-        And I am at the checkout addressing step
-        And I specify the shipping address as "Ankh Morpork", "Frost Alley", "90210", "France" for "Jon Snow"
-        And I specify the billing address as "Ankh Morpork", "Frost Alley", "90210", "France" for "Eddard Stark"
-        And I specify the shipping vat number as "FR01234567891"
+        Given I am at the checkout addressing step
+        When I specify the billing address as "Paris", "1 avenue Notre Dame", "75001", "France" for "Dupont Jean"
         And I specify the billing vat number as "FR01234567891"
+        And I specify the shipping address as "Paris", "1 avenue Notre Dame", "75001", "France" for "Dupont Jean"
+        And I specify the shipping vat number as "FR01234567891"
         And I try to complete the addressing step
-        And I should be notified that the vat number in shipping details is not valid
-        And I should be notified that the vat number in billing details is not valid
+        Then I should be notified that the VAT number in shipping details is not valid
+        And I should be notified that the VAT number in billing details is not valid
+
+    @api @ui @javascript
+    Scenario: Address an order with a country equal to the VAT country number
+        Given the store operates in "United States"
+        And I am at the checkout addressing step
+        When I specify the billing address as "Gotham", "Mountain Drive", "1007", "United States" for "Bruce Wayne"
+        And I try to specify the billing vat number as "99-0999999"
+        And I specify the shipping address as "Gotham", "Mountain Drive", "1007", "United States" for "Bruce Wayne"
+        And I try to specify the shipping vat number as "99-0999999"
+        Then I should not be able to specify VAT number manually for shipping address
+        And I should not be able to specify VAT number manually for billing address
