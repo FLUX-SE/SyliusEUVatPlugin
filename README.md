@@ -61,19 +61,9 @@ imports:
     - { resource: "@FluxSESyliusEUVatPlugin/config/config.yaml" }
     # If you are using SyliusAdminBundle
     - { resource: "@FluxSESyliusEUVatPlugin/config/admin.yaml" }
+    # If you are using SyliusShopBundle
+    - { resource: "@FluxSESyliusEUVatPlugin/config/shop.yaml" }
 
-```
-
-Copy Sylius overridden templates to your templates directory (e.g `templates/bundles/`):
-
-```bash
-# If you are using SyliusAdminBundle
-mkdir -p templates/bundles/SyliusAdminBundle/
-cp -R vendor/flux-se/sylius-eu-vat-plugin/templates/SyliusAdminBundle/* templates/bundles/SyliusAdminBundle/
-
-# If you are using SyliusShopBundle
-mkdir -p templates/bundles/SyliusShopBundle/
-cp -R vendor/flux-se/sylius-eu-vat-plugin/templates/SyliusShopBundle/* templates/bundles/SyliusShopBundle/
 ```
 
 Update `Channel` entity : `src/Entity/Channel/Channel.php`
@@ -89,10 +79,6 @@ use Doctrine\ORM\Mapping as ORM;
 use FluxSE\SyliusEUVatPlugin\Entity\EuropeanChannelAwareTrait;
 use Sylius\Component\Core\Model\Channel as BaseChannel;
 
-/**
- * @ORM\Entity()
- * @ORM\Table(name="sylius_channel")
- */
 #[ORM\Entity]
 #[ORM\Table(name: 'sylius_channel')]
 class Channel extends BaseChannel implements ChannelInterface
@@ -161,10 +147,6 @@ use Doctrine\ORM\Mapping as ORM;
 use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareTrait;
 use Sylius\Component\Core\Model\Address as BaseAddress;
 
-/**
- * @ORM\Entity()
- * @ORM\Table(name="sylius_address")
- */
 #[ORM\Entity]
 #[ORM\Table(name: 'sylius_address')]
 class Address extends BaseAddress implements AddressInterface
