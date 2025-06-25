@@ -11,4 +11,4 @@ services:
     class: FluxSE\SyliusEUVatPlugin\Extractor\ChannelExtractor
 
   FluxSE\SyliusEUVatPlugin\Extractor\ChannelExtractorInterface:
-    alias: flux_se.sylius_eu_vat_plugin.extractor.taxation_address
+    alias: flux_se.sylius_eu_vat_plugin.extractor.channel
