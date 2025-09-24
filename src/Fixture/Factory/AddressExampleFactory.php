@@ -51,10 +51,8 @@ class AddressExampleFactory extends BaseAddressExampleFactory
     {
         $address = parent::create($options);
 
-        $vatNumber = null;
-        if (isset($options['vat_number'])) {
-            $vatNumber = (string) $options['vat_number'];
-        }
+        /** @var string|null $vatNumber */
+        $vatNumber = $options['vat_number'] ?? null;
 
         if (false === $address instanceof VATNumberAwareInterface) {
             throw new LogicException(sprintf(
