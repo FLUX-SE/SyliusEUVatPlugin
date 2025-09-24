@@ -105,7 +105,7 @@ jobs:
             matrix:
                 php: [8.2, 8.3, 8.4]
                 symfony: [^6.4, ^7.2]
-                sylius: [~2.0.0]
+                sylius: [~2.0.0, ~2.1.0]
                 node: [20.x]
                 mysql: [5.7, 9]
         env:
