@@ -1,0 +1,6 @@
+services:
+
+    FluxSE\SyliusEUVatPlugin\Mapper\AddressMapper:
+        decorates: sylius.mapper.address
+        arguments:
+            - '.inner'
