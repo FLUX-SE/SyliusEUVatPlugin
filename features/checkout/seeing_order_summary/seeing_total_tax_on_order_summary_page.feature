@@ -30,6 +30,19 @@ Feature: Seeing tax total on order summary page
     And my tax total should be "$0.00"
 
   @api @ui @javascript
+  Scenario: Seeing the tax total of 20% when VAT number is blank the second time
+    Given I have product "The Sorting Hat" in the cart
+    When I specify the billing address as "Paris", "1 avenue Notre Dame", "75001", "France" for "Dupont Jean"
+    And I specify the billing vat number as "FR10632012100"
+    And I complete the addressing step
+    When I specify the billing address as "Paris2", "1 avenue Notre Dame", "75002", "France" for "Dupont Jean2"
+    And I do not specify the billing vat number
+    And I complete the addressing step
+    And I proceed with "Free" shipping method and "Offline" payment
+    Then I should be on the checkout summary step
+    And my tax total should be "$20.00"
+
+  @api @ui @javascript
   Scenario: Seeing the tax total of 20% when VAT number country is the same as the channel base country on order summary page
     Given I have product "The Sorting Hat" in the cart
     And this channel is based in the "France" country and allow VAT numbers for the "EU" zone
