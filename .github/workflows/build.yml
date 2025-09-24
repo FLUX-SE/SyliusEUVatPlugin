@@ -87,6 +87,11 @@ jobs:
                 if: always() && steps.end-of-setup.outcome == 'success'
 
             -
+                name: Container lint
+                run: (cd tests/Application && bin/console lint:container)
+                if: always() && steps.end-of-setup.outcome == 'success'
+
+            -
                 name: Run ECS
                 run: vendor/bin/ecs check src
                 if: always() && steps.end-of-setup.outcome == 'success'

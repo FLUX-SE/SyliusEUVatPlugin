@@ -3,4 +3,4 @@ services:
     FluxSE\SyliusEUVatPlugin\Mapper\AddressMapper:
         decorates: sylius_api.mapper.address
         arguments:
-            - '.inner'
+            - '@.inner'
