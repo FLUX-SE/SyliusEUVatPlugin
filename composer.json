@@ -46,7 +46,7 @@
         "phpstan/phpstan-mockery": "^1.1",
         "phpstan/phpstan-symfony": "^1.4",
         "theofidry/alice-data-fixtures": "^1.7",
-        "doctrine/orm": "^2.20",
+        "doctrine/orm": "^3.6",
         "doctrine/data-fixtures": "^1.8",
         "lchrusciel/api-test-case": "^5.3",
         "phpstan/phpstan-phpunit": "^1.4",
