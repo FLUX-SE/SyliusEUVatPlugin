@@ -155,6 +155,11 @@ jobs:
                     mysql root password: "root"
 
             -
+                uses: browser-actions/setup-chrome@v2
+                with:
+                    install-chromedriver: 'true'
+
+            -
                 name: Output PHP version for Symfony CLI
                 run: php -v | head -n 1 | awk '{ print $2 }' > .php-version
 
