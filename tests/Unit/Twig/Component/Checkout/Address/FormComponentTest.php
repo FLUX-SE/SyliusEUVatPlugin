@@ -87,10 +87,10 @@ final class FormComponentTest extends TestCase
             'phoneNumber' => '+33102030405',
             'company' => 'Acme',
             'countryCode' => 'FR',
-            'provinceName' => 'Île-de-France',
             'street' => '1 Main Street',
             'city' => 'Paris',
             'postcode' => '75001',
+            'provinceName' => 'Île-de-France',
             'vatNumber' => 'FR12345678901',
         ], $this->component->formValues['billingAddress']);
     }
