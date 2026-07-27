@@ -79,7 +79,7 @@ final class CheckoutAddressingContext implements Context
         $this->content = [];
     }
 
-    /** @param array<array-key, mixed> $content */
+    /** @param array<string, mixed> $content */
     private function addressOrder(array $content): void
     {
         $this->client
@@ -92,11 +92,17 @@ final class CheckoutAddressingContext implements Context
     private function getCartTokenValue(): ?string
     {
         if ($this->sharedStorage->has('cart_token')) {
-            return $this->sharedStorage->get('cart_token');
+            /** @var string|null $cartToken */
+            $cartToken = $this->sharedStorage->get('cart_token');
+
+            return $cartToken;
         }
 
         if ($this->sharedStorage->has('previous_cart_token')) {
-            return $this->sharedStorage->get('previous_cart_token');
+            /** @var string|null $previousCartToken */
+            $previousCartToken = $this->sharedStorage->get('previous_cart_token');
+
+            return $previousCartToken;
         }
 
         return null;
@@ -183,6 +189,7 @@ final class CheckoutAddressingContext implements Context
 
     private function isViolationWithMessageInResponse(Response $response, string $message, ?string $property = null): bool
     {
+        /** @var array<array{message: string, propertyPath: string}> $violations */
         $violations = $this->responseChecker->getResponseContent($response)['violations'];
         foreach ($violations as $violation) {
             if ($violation['message'] === $message && $property === null) {

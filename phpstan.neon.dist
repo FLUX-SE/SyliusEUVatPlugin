@@ -10,10 +10,11 @@ parameters:
         - tests/Unit
 
     ignoreErrors:
-        - message: '/Property FluxSE\\SyliusEUVatPlugin\\Twig\\Component\\Checkout\\Address\\FormComponent::\$formView is never read, only written\./'
+        - message: '/Property FluxSE\\SyliusEUVatPlugin\\Twig\\Component\\Checkout\\Address\\FormComponent::\$formView .+/'
           paths:
             - src/Twig/Component/Checkout/Address/FormComponent.php
-        - message: '/Property Tests\\FluxSE\\SyliusEUVatPlugin\\Unit\\Checker\\.+EligibilityCheckerTest::\$[^ ]+ .+ does not accept object\|null\./'
+        # Tests
+        - message: '/Property Tests\\FluxSE\\SyliusEUVatPlugin\\.+Test::\$.+ \(.+\) does not accept object\./'
           paths:
             - tests/Unit/Checker/ChannelEligibilityCheckerTest.php
             - tests/Unit/Checker/VatNumberEligibilityCheckerTest.php

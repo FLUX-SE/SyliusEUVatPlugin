@@ -14,10 +14,13 @@ class AddressPage extends BaseAddressPage implements AddressPageInterface
      */
     protected function getDefinedElements(): array
     {
-        return array_merge(parent::getDefinedElements(), [
+        /** @var array<string, string> $definedElements */
+        $definedElements = array_merge(parent::getDefinedElements(), [
             'billing_vat_number' => '[data-test-billing-address] [data-test-vat-number]',
             'shipping_vat_number' => '[data-test-shipping-address] [data-test-vat-number]',
         ]);
+
+        return $definedElements;
     }
 
     public function specifyShippingVatNumber(string $vatNumber): void

@@ -13,6 +13,9 @@ use Symfony\UX\LiveComponent\Attribute\LiveArg;
 use Symfony\UX\LiveComponent\Attribute\LiveListener;
 use Symfony\UX\TwigComponent\Attribute\ExposeInTemplate;
 
+/**
+ * @property array<string, array<string, mixed>> $formValues
+ */
 class FormComponent extends BaseFormComponent
 {
     /**
