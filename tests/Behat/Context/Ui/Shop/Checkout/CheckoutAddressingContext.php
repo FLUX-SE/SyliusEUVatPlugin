@@ -20,7 +20,7 @@ final class CheckoutAddressingContext implements Context
      * @When /^I try to specify the shipping vat number as "([^"]+)"$/
      * @When /^I do not specify the shipping vat number$/
      */
-    public function iSpecifyTheShippingVatNumberAs(string $vatNumber = ""): void
+    public function iSpecifyTheShippingVatNumberAs(string $vatNumber = ''): void
     {
         $this->addressPage->specifyShippingVatNumber($vatNumber);
     }
@@ -30,7 +30,7 @@ final class CheckoutAddressingContext implements Context
      * @When /^I try to specify the billing vat number as "([^"]+)"$/
      * @When /^I do not specify the billing vat number$/
      */
-    public function iSpecifyTheBillingVatNumberAs(string $vatNumber = ""): void
+    public function iSpecifyTheBillingVatNumberAs(string $vatNumber = ''): void
     {
         $this->addressPage->specifyBillingVatNumber($vatNumber);
     }

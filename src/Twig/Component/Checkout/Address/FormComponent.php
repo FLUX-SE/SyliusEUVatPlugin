@@ -7,6 +7,7 @@ namespace FluxSE\SyliusEUVatPlugin\Twig\Component\Checkout\Address;
 use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareInterface;
 use Sylius\Bundle\ShopBundle\Twig\Component\Checkout\Address\AddressBookComponent;
 use Sylius\Bundle\ShopBundle\Twig\Component\Checkout\Address\FormComponent as BaseFormComponent;
+use Sylius\Component\Core\Model\CustomerInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\UX\LiveComponent\Attribute\LiveArg;
 use Symfony\UX\LiveComponent\Attribute\LiveListener;
@@ -23,10 +24,21 @@ class FormComponent extends BaseFormComponent
     #[LiveListener(AddressBookComponent::SYLIUS_SHOP_ADDRESS_UPDATED)]
     public function addressFieldUpdated(#[LiveArg] mixed $addressId, #[LiveArg] string $field): void
     {
-        parent::addressFieldUpdated($addressId, $field);
+        $customer = $this->customerContext->getCustomer();
+        if (!$customer instanceof CustomerInterface) {
+            return;
+        }
 
-        /** @var VATNumberAwareInterface $address */
-        $address = $this->addressRepository->find($addressId);
+        if (!is_scalar($addressId)) {
+            return;
+        }
+
+        $address = $this->addressRepository->findOneByCustomer((string) $addressId, $customer);
+        if (!$address instanceof VATNumberAwareInterface) {
+            return;
+        }
+
+        parent::addressFieldUpdated($addressId, $field);
         $this->formValues[$field]['vatNumber'] = $address->getVatNumber();
     }
 }

@@ -137,7 +137,7 @@ final class CheckoutAddressingContext implements Context
      * @When /^I try to specify the (shipping|billing) vat number as "([^"]+)"$/
      * @When /^I do not specify the (shipping|billing) vat number$/
      */
-    public function iSpecifyTheVatNumberAs(string $type, string $vatNumber = ""): void
+    public function iSpecifyTheVatNumberAs(string $type, string $vatNumber = ''): void
     {
         $this->content[$type . 'Address']['vatNumber'] = $vatNumber;
     }
