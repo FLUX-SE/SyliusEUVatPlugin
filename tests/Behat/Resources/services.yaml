@@ -1,14 +1,13 @@
-services:
+parameters:
+  sylius.behat.page.shop.checkout.address.class: Tests\FluxSE\SyliusEUVatPlugin\Behat\Page\Shop\Checkout\AddressPage
 
-  flux_se.sylius_eu_vat.behat.page.shop.checkout.address:
-    class: Tests\FluxSE\SyliusEUVatPlugin\Behat\Page\Shop\Checkout\AddressPage
-    parent: sylius.behat.page.shop.checkout.address
+services:
 
   flux_se.sylius_eu_vat.behat.context.ui.shop.checkout.addressing:
     public: true
     class: Tests\FluxSE\SyliusEUVatPlugin\Behat\Context\Ui\Shop\Checkout\CheckoutAddressingContext
     arguments:
-      $addressPage: '@flux_se.sylius_eu_vat.behat.page.shop.checkout.address'
+      $addressPage: '@sylius.behat.page.shop.checkout.address'
 
   flux_se.sylius_eu_vat.behat.context.api.shop.checkout.addressing:
     public: true
