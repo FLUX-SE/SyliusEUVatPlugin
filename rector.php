@@ -9,7 +9,7 @@ use Rector\TypeDeclaration\Rector\ClassMethod\AddVoidReturnTypeWhereNoReturnRect
 return RectorConfig::configure()
     ->withPaths([
         __DIR__ . '/src',
-        __DIR__ . '/tests/Application/src',
+        __DIR__ . '/tests/TestApplication/src',
         __DIR__ . '/tests/Behat',
         __DIR__ . '/tests/Unit',
     ])

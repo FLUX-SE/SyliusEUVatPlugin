@@ -5,7 +5,10 @@
 /etc/build/*
 !/etc/build/.gitignore
 
-/tests/Application/yarn.lock
+/var/
+
+/tests/TestApplication/.env.local
+/tests/TestApplication/.env.*.local
 
 /.phpunit.result.cache
 /phpunit.xml

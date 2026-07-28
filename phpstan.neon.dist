@@ -5,7 +5,7 @@ parameters:
 
     paths:
         - src
-        - tests/Application/src
+        - tests/TestApplication/src
         - tests/Behat
         - tests/Unit
 

@@ -4,7 +4,7 @@
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          backupGlobals="false"
          colors="true"
-         bootstrap="vendor/autoload.php">
+         bootstrap="vendor/sylius/test-application/config/bootstrap.php">
     <testsuites>
         <testsuite name="FluxSESyliusEUVatPlugin Test Suite">
             <directory>tests</directory>
@@ -12,7 +12,7 @@
     </testsuites>
 
     <php>
-        <server name="KERNEL_CLASS" value="Tests\FluxSE\SyliusEUVatPlugin\App\Kernel" />
+        <server name="KERNEL_CLASS" value="Sylius\TestApplication\Kernel" />
         <server name="IS_DOCTRINE_ORM_SUPPORTED" value="true" />
     </php>
 </phpunit>

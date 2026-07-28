@@ -50,7 +50,8 @@
         "doctrine/orm": "^2.5|^3.0",
         "doctrine/data-fixtures": "^1.8|^2.0",
         "lchrusciel/api-test-case": "^5.3",
-        "matthiasnoback/symfony-config-test": "^5.2"
+        "matthiasnoback/symfony-config-test": "^5.2",
+        "sylius/test-application": "^2.0.0@alpha"
     },
     "autoload": {
         "psr-4": { "FluxSE\\SyliusEUVatPlugin\\": "src/" }
@@ -58,7 +59,7 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\FluxSE\\SyliusEUVatPlugin\\": "tests/",
-            "Tests\\FluxSE\\SyliusEUVatPlugin\\App\\": "tests/Application/src/"
+            "Tests\\FluxSE\\SyliusEUVatPlugin\\App\\": "tests/TestApplication/src/"
         }
     },
     "suggest": {
@@ -81,7 +82,7 @@
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": false,
             "phpstan/extension-installer": true,
-            "symfony/flex": false,
+            "symfony/flex": true,
             "symfony/runtime": true,
             "php-http/discovery": true
         }
@@ -90,9 +91,10 @@
         "branch-alias": {
             "dev-master": "3.0-dev"
         },
+        "public-dir": "vendor/sylius/test-application/public",
         "runtime": {
-            "project_dir": "tests/Application",
-            "dotenv_path": "tests/Application/.env"
+            "project_dir": "tests/TestApplication",
+            "dotenv_path": "tests/TestApplication/.env"
         }
     }
 }
