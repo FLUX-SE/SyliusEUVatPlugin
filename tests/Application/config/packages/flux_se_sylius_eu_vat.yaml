@@ -1,4 +1,0 @@
-imports:
-  - { resource: "@FluxSESyliusEUVatPlugin/config/config.yaml" }
-  - { resource: "@FluxSESyliusEUVatPlugin/config/shop.yaml" }
-  - { resource: "@FluxSESyliusEUVatPlugin/config/admin.yaml" }

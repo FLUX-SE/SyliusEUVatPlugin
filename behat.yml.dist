@@ -19,7 +19,7 @@ default:
 
         Behat\MinkExtension:
             files_path: "%paths.base%/vendor/sylius/sylius/src/Sylius/Behat/Resources/fixtures/"
-            base_url: "https://127.0.0.1:8080/"
+            base_url: "http://127.0.0.1:8080/"
             default_session: symfony
             javascript_session: javascript_chrome
             sessions:
@@ -28,7 +28,7 @@ default:
                 javascript_chrome:
                     panther:
                         options:
-                            webServerDir: "%paths.base%/tests/Application/public"
+                            webServerDir: "%paths.base%/vendor/sylius/test-application/public"
                         manager_options:
                             connection_timeout_in_ms: 5000
                             request_timeout_in_ms: 120000
@@ -43,9 +43,9 @@ default:
             browser_name: 'behat_browser'
 
         FriendsOfBehat\SymfonyExtension:
-            bootstrap: tests/Application/config/bootstrap.php
+            bootstrap: vendor/sylius/test-application/config/bootstrap.php
             kernel:
-                class: Tests\FluxSE\SyliusEUVatPlugin\App\Kernel
+                class: Sylius\TestApplication\Kernel
 
         FriendsOfBehat\VariadicExtension: ~
 

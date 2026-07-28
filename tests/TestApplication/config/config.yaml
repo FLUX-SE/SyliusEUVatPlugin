@@ -1,0 +1,38 @@
+imports:
+    - { resource: "@FluxSESyliusEUVatPlugin/config/config.yaml" }
+    - { resource: "@FluxSESyliusEUVatPlugin/config/shop.yaml" }
+    - { resource: "@FluxSESyliusEUVatPlugin/config/admin.yaml" }
+    - { resource: "services_test.php" }
+
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    App:
+                        is_bundle: false
+                        type: attribute
+                        dir: '%kernel.project_dir%/../../../tests/TestApplication/src/Entity'
+                        prefix: 'Tests\FluxSE\SyliusEUVatPlugin\App\Entity'
+                        alias: App
+
+sylius_addressing:
+    resources:
+        address:
+            classes:
+                model: Tests\FluxSE\SyliusEUVatPlugin\App\Entity\Addressing\Address
+
+sylius_channel:
+    resources:
+        channel:
+            classes:
+                model: Tests\FluxSE\SyliusEUVatPlugin\App\Entity\Channel\Channel
+
+twig:
+    paths:
+        '%kernel.project_dir%/../../../tests/TestApplication/templates': ~
+
+when@test:
+    sylius_payment:
+        encryption:
+            enabled: false
