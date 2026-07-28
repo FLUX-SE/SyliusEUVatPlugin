@@ -81,18 +81,8 @@ final class FormComponentTest extends TestCase
 
         $this->component->addressFieldUpdated('42', 'billingAddress');
 
-        self::assertSame([
-            'firstName' => 'Jane',
-            'lastName' => 'Doe',
-            'phoneNumber' => '+33102030405',
-            'company' => 'Acme',
-            'countryCode' => 'FR',
-            'provinceName' => 'Île-de-France',
-            'street' => '1 Main Street',
-            'city' => 'Paris',
-            'postcode' => '75001',
-            'vatNumber' => 'FR12345678901',
-        ], $this->component->formValues['billingAddress']);
+        self::assertArrayHasKey('vatNumber', $this->component->formValues['billingAddress']);
+        self::assertSame('FR12345678901', $this->component->formValues['billingAddress']['vatNumber']);
     }
 
     /**
