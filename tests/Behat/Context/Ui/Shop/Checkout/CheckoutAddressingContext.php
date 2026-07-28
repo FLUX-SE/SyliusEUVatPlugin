@@ -17,22 +17,50 @@ final class CheckoutAddressingContext implements Context
 
     /**
      * @When /^I specify the shipping vat number as "([^"]+)"$/
-     * @When /^I try to specify the shipping vat number as "([^"]+)"$/
-     * @When /^I do not specify the shipping vat number$/
      */
-    public function iSpecifyTheShippingVatNumberAs(string $vatNumber = ''): void
+    public function iSpecifyTheShippingVatNumberAs(string $vatNumber): void
     {
         $this->addressPage->specifyShippingVatNumber($vatNumber);
     }
 
     /**
-     * @When /^I specify the billing vat number as "([^"]+)"$/
-     * @When /^I try to specify the billing vat number as "([^"]+)"$/
-     * @When /^I do not specify the billing vat number$/
+     * @When /^I try to specify the shipping vat number as "([^"]+)"$/
      */
-    public function iSpecifyTheBillingVatNumberAs(string $vatNumber = ''): void
+    public function iTryToSpecifyTheShippingVatNumberAs(string $vatNumber): void
+    {
+        $this->addressPage->tryToSpecifyShippingVatNumber($vatNumber);
+    }
+
+    /**
+     * @When /^I do not specify the shipping vat number$/
+     */
+    public function iDoNotSpecifyTheShippingVatNumber(): void
+    {
+        $this->addressPage->specifyShippingVatNumber('');
+    }
+
+    /**
+     * @When /^I specify the billing vat number as "([^"]+)"$/
+     */
+    public function iSpecifyTheBillingVatNumberAs(string $vatNumber): void
     {
         $this->addressPage->specifyBillingVatNumber($vatNumber);
+    }
+
+    /**
+     * @When /^I try to specify the billing vat number as "([^"]+)"$/
+     */
+    public function iTryToSpecifyTheBillingVatNumberAs(string $vatNumber): void
+    {
+        $this->addressPage->tryToSpecifyBillingVatNumber($vatNumber);
+    }
+
+    /**
+     * @When /^I do not specify the billing vat number$/
+     */
+    public function iDoNotSpecifyTheBillingVatNumber(): void
+    {
+        $this->addressPage->specifyBillingVatNumber('');
     }
 
     /**

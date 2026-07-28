@@ -12,6 +12,10 @@ interface AddressPageInterface extends BaseAddressPageInterface
 
     public function specifyBillingVatNumber(string $vatNumber): void;
 
+    public function tryToSpecifyShippingVatNumber(string $vatNumber): void;
+
+    public function tryToSpecifyBillingVatNumber(string $vatNumber): void;
+
     public function hasShippingVatNumberInput(): bool;
 
     public function hasBillingVatNumberInput(): bool;
