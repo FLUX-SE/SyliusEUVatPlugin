@@ -67,17 +67,7 @@
         "sylius/admin-bundle": "Use the Sylius default admin",
         "sylius/api-bundle": "Use the Sylius default API"
     },
-    "scripts": {
-        "post-install-cmd": [
-            "@php bin/create_node_symlink.php"
-        ],
-        "post-update-cmd": [
-            "@php bin/create_node_symlink.php"
-        ],
-        "post-create-project-cmd": [
-            "@php bin/create_node_symlink.php"
-        ]
-    },
+
     "config": {
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": false,
