@@ -37,6 +37,7 @@ default:
         api_eu_vat_checkout:
             contexts:
                 - sylius.behat.context.hook.doctrine_orm
+                - sylius.behat.context.hook.guest_cart
 
                 - sylius.behat.context.setup.geographical
                 - sylius.behat.context.setup.cart
@@ -50,6 +51,7 @@ default:
                 - sylius.behat.context.setup.zone
 
                 - sylius.behat.context.transform.address
+                - sylius.behat.context.transform.cart
                 - sylius.behat.context.transform.customer
                 - sylius.behat.context.transform.country
                 - sylius.behat.context.transform.lexical
@@ -60,6 +62,7 @@ default:
                 - sylius.behat.context.transform.tax_category
                 - sylius.behat.context.transform.zone
 
+                - sylius.behat.context.api.shop.cart
                 - sylius.behat.context.api.shop.checkout.complete
 
                 - flux_se.sylius_eu_vat.behat.context.api.shop.checkout.addressing
