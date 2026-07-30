@@ -150,6 +150,9 @@ jobs:
 
             -
                 name: Run Behat
+                env:
+                    PANTHER_NO_SANDBOX: "1"
+                    PANTHER_CHROME_ARGUMENTS: "--disable-dev-shm-usage"
                 run: vendor/bin/behat --colors --strict -vvv --no-interaction || vendor/bin/behat --colors --strict -vvv --no-interaction --rerun
 
             -
