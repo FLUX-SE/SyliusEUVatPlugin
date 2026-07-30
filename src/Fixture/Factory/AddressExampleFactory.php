@@ -47,6 +47,7 @@ class AddressExampleFactory extends BaseAddressExampleFactory
         ;
     }
 
+    /** @param mixed[] $options */
     public function create(array $options = []): AddressInterface&VATNumberAwareInterface
     {
         $address = parent::create($options);
