@@ -13,7 +13,7 @@ Feature: Order addressing validation with VAT field
         And the store ships everywhere for free
         And the store has a product "PHP T-Shirt" priced at "$19.99"
         And I am a logged in customer
-        And I have product "PHP T-Shirt" in the cart
+        And I add product "PHP T-Shirt" to the cart
 
     @api @ui @javascript
     Scenario: Address an order with a country different from the VAT country number
