@@ -140,7 +140,7 @@ jobs:
                     php_version: "${{ matrix.php }}"
                     symfony_version: "${{ matrix.symfony }}"
                     sylius_version: "${{ matrix.sylius }}"
-                    node_version: "24.x"
+                    node_version: "22.x"
                     chrome_version: stable
                     database: "mysql:${{ matrix.mysql }}"
 
