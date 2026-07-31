@@ -83,9 +83,9 @@ class AddressPage extends BaseAddressPage implements AddressPageInterface
     {
         $this->waitForElementUpdate('form');
 
-        $driverHelperWaitForElement = [DriverHelper::class, 'waitForElement'];
-        if (is_callable($driverHelperWaitForElement)) {
-            $driverHelperWaitForElement($this->getSession(), $selector, $timeout);
+        // @phpstan-ignore-next-line
+        if (method_exists(DriverHelper::class, 'waitForElement')) {
+            DriverHelper::waitForElement($this->getSession(), $selector, $timeout);
 
             return;
         }
