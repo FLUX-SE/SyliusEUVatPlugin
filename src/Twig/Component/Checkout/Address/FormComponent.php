@@ -7,6 +7,7 @@ namespace FluxSE\SyliusEUVatPlugin\Twig\Component\Checkout\Address;
 use FluxSE\SyliusEUVatPlugin\Entity\VATNumberAwareInterface;
 use Sylius\Bundle\ShopBundle\Twig\Component\Checkout\Address\AddressBookComponent;
 use Sylius\Bundle\ShopBundle\Twig\Component\Checkout\Address\FormComponent as BaseFormComponent;
+use Sylius\Component\Core\Model\AddressInterface;
 use Sylius\Component\Core\Model\CustomerInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\UX\LiveComponent\Attribute\LiveArg;
@@ -36,7 +37,12 @@ class FormComponent extends BaseFormComponent
             return;
         }
 
-        $address = $this->addressRepository->findOneByCustomer((string) $addressId, $customer);
+        $address = $customer->getAddresses()->filter(static function (AddressInterface $address) use ($addressId): bool {
+            $id = $address->getId();
+
+            return (is_scalar($id) || $id instanceof \Stringable) && (string) $id === (string) $addressId;
+        })->first();
+
         if (!$address instanceof VATNumberAwareInterface) {
             return;
         }
