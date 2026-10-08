@@ -1,0 +1,5 @@
+services:
+    flux_se.sylius_eu_vat.shop.modifier.vat_number_address_form_values:
+        class: FluxSE\SyliusEUVatPlugin\Modifier\VATNumberAddressFormValuesModifier
+        tags:
+            - { name: sylius_shop.modifier.address_form_values }

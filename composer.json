@@ -11,7 +11,7 @@
     ],
     "require": {
         "prometee/vies-client-bundle": "^3.0",
-        "sylius/core-bundle": "^2.0"
+        "sylius/core-bundle": "^2.2.10"
     },
     "require-dev": {
         "ext-json": "*",
@@ -36,7 +36,7 @@
         "robertfausk/behat-panther-extension": "^1.1",
         "sylius-labs/coding-standard": "^4.1",
         "sylius-labs/suite-tags-extension": "^0.2.0",
-        "sylius/sylius": "^2.0",
+        "sylius/sylius": "^2.2.10",
         "symfony/browser-kit": "^6.4|^7.4",
         "symfony/debug-bundle": "^6.4|^7.4",
         "symfony/dotenv": "^6.4|^7.4",
@@ -86,5 +86,8 @@
             "project_dir": "tests/TestApplication",
             "dotenv_path": "tests/TestApplication/.env"
         }
+    },
+    "conflict": {
+        "sylius/shop-bundle": "<2.2.10"
     }
 }
