@@ -31,6 +31,11 @@ This plugin is adding :
 
 ![Shop account order details](docs/assets/shop-account-order-details.png "Shop account order details")
 
+## Requirements
+
+- Sylius 2.2.10 or later within the 2.x series.
+- When using the optional Sylius Shop bundle, it must also be version 2.2.10 or later.
+
 ## Installation
 
 ```bash
